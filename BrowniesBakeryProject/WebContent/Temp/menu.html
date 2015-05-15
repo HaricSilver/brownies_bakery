@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+}
+/*start tag test*/
+body {
+	background: rgba(245,245,245,.5);
+}
+a {
+	text-decoration: none;
+	color: white;
+}
+a:hover {
+	cursor: pointer;
+}
+/*end tag test*/
+#div-menu {
+	width: 100%;
+	height: 42px;
+	background: #3a5795;
+	position: fixed;
+	z-index: 99999;
+	border-bottom: 1px solid rgba(0,0,90,.5);
+}
+.ul-mn > li {
+	position: relative;
+	list-style-type: none;
+	float: left;
+	width: 80px;
+	text-align: center;
+}
+.ul-mn > li > a {
+	text-decoration: none;
+	color: white;
+	font-size: 17px;
+	font-weight: bold;
+	line-height: 42px;
+	padding: 6px 16px;
+	border-radius: 1px;
+}
+.ul-mn > li > a:hover {
+	background: black;
+}
+.div-mn-left, .div-mn-mid, .div-mn-right {
+	position: absolute;/*abs*/
+	float: left;
+	height: 42px;
+}
+.div-mn-left {
+	left: 45px;
+}
+.div-mn-mid {
+	right: 270px;
+}
+.div-mn-right {
+	right: 9px;
+}
+.div-mn-right > ul {
+	display: inline-block;
+}
+.div-mn-right > ul > li {
+	font-weight: bold;
+	list-style-type: none;
+	float: left;
+	line-height: 42px;
+}
+.div-mn-right > ul > li > a {
+	padding: 6px 9px;
+	border-radius: 3px;
+}
+.div-mn-right > ul > li > a:hover {
+	text-decoration: underline;
+}
+/*submenu 1*/
+.submenu-1 {
+	position:absolute;
+	padding: 8px 9px;
+	background: #fff;
+	border-radius: 2px;
+	border: 1px solid rgba(204,204,204,.8);
+	left: 4px;
+	overflow:hidden;
+	opacity:1;
+	
+	max-height:0;
+	
+    /*-webkit-transform: scaleY(0);
+	-webkit-transform-origin:top;
+    -webkit-transition: -webkit-transform 0.26s ease;*/
+	
+	-webkit-transition: all .1s ease;
+	-moz-transition: all .1s ease;
+	transition: all .1s ease;
+}
+.submenu-1 > li {
+	list-style-type: none;
+	text-align: left;
+}
+.submenu-1 > li:hover {
+	background: #e7e7e7;
+}
+.submenu-1 > li:hover > a {
+	color: #333;
+}
+.submenu-1 > li > a {
+	display:block;
+	width: 180px;
+	padding: 5px 9px;
+	text-decoration: none;
+	color: black;
+	font-size: 17px;
+	font-weight: bold;
+	color: #666;
+	border-radius: 2px;
+}
+.ul-mn > li:hover > .submenu-1 {
+	/*-webkit-transform: scaleY(1);*/
+	max-height:300px;
+	opacity:1;
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	transition: all 1s ease;
+}
+.ul-mn > li:hover > .caret {
+	display:block;
+}
+.ul-mn > li:hover >
+.caret {
+	border-bottom: 8px solid #fff;
+	border-left: 9px solid transparent;
+	border-right: 9px solid transparent;
+	content: "";
+	position: absolute;
+	bottom:-1px;
+	left: 19px;
+	z-index:999;
+}
+</style>
+</head>
+<body>
+<div id='div-menu'>
+  <div class='div-mn-left'>
+    <ul class='ul-mn'>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Order</a></li>
+      <li><a href="#">News</a>
+          <span class='caret'></span>
+          <ul class='submenu-1'>
+            <li><a href="#">Sale</a></li>
+            <li><a href="#">Promotions</a></li>
+          </ul>
+      </li>
+      <li><a href="#">About</a></li>
+      <li ><a href="#">Contact</a></li>
+    </ul>
+  </div>
+  <div class='div-mn-mid'> 
+    <!--<div class='div-search'>
+      <input type="text" placeholder="Search here..."/>
+      <button class='btn-search'></button>
+    </div>--> 
+  </div>
+  <div class='div-mn-right'>
+    <ul>
+      <li><a href="#">Login</a></li>
+      <li><a href="#">Register</a></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

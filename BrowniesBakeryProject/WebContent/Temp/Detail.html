@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Test detail produce</title>
+<script src="../js/jquery-2.1.3.js"></script>
+<style type='text/css'>
+.body {
+	background: black;
+}
+.imgs-detail {
+}
+.imgs-detail:after {
+	clear: both;
+	content: ".";
+	display: block;
+	height: 0;
+	line-height: 0;
+	visibility: hidden;
+}
+.imgs-left {
+	float: left;
+	width: 590px;
+	position: relative;
+}
+.limg {
+	width: 500px;
+	height: 500px;
+	margin-left: 45px;
+	display:none;
+}
+.current {
+	display:block;
+}
+.imgs-right {
+	float: left;
+}
+.imgs-right {
+	float: left;
+	background: rgba(204,204,204,.1);
+	height: 500px;
+	position: relative;
+}
+.rimg {
+	width: 100px;
+	height: 100px;
+}
+/*arrow*/
+.arrow-left, .arrow-right, .arrow-top, .arrow-bottom {
+	position: absolute;
+	width: 45px;
+	height: 45px;
+	cursor: pointer;
+	display: none;
+}
+.arrow-left {
+	left: 0;
+	background: url(../images/a16.png) -8px -38px;
+}
+.arrow-right {
+	right: 0;
+	background: url(../images/a16.png) -68px -38px;
+}
+.imgs-left:hover .arrow-left, .imgs-left:hover .arrow-right {
+	display: block;
+}
+.arrow-top {
+	top: 0;
+	background: url(../images/a16t.png) 0 0;
+}
+.arrow-bottom {
+	bottom: 0;
+	background: url(../images/a16t.png) 0 90px;
+}
+</style>
+<script type='text/javascript'>
+$(document).ready(function(e) {
+    // format right imgs
+	$('.imgs-right table').css('margin-top',($('.imgs-detail').height()-$('.imgs-right table').height())/2);
+	// fomat arrow
+	$('.arrow-left, .arrow-right').css('top',($('.imgs-detail').height()-$('.arrow-left, .arrow-right').height())/2);
+	$('.arrow-top, .arrow-bottom').css('left',($('.imgs-right').width()-$('.arrow-top, .arrow-bottom').width())/2);
+	// function click right image
+	$('.rimg').click(function() {
+		$('.limg').attr('src',$(this).attr('src'));
+	});
+	//handle event click arrow right
+	$('.arrow-right').click(function() {
+		
+	});
+	
+	function createThumbnai () {
+		var htmlThumb = "<div class='imgs-right'><span class='arrow-top'></span><span class='arrow-bottom'></span><table>";
+		var count = 0;
+		$.each($('limg').length, function(key, value) {
+			if (count++<3) {// in row
+				htmlThumb += "<img class='rimg' src='"+value.attr('src')+"' />";
+			} else {// end row
+				htmlThumb += "</td></tr>"
+			}
+		});
+		htmlThumb += "</table></div>"
+	};
+});
+</script>
+</head>
+
+<body>
+<div class='body'>
+  <div class='imgs-detail'>
+    <div class='imgs-left'><span class='arrow-left'></span><span class='arrow-right'></span> 
+    	<img class='limg current' src="../images/1.jpg" />
+        <img class='limg' src='../images/2.jpg' />
+        <img class='limg' src='../images/3.jpg' />
+        <img class='limg' src='../images/4.jpg' />
+        <img class='limg' src='../images/banh kem bcake (5).jpg' />
+        <img class='limg' src='../images/banh-kem-ngon-ngay-8-3 (2).jpg' />
+        <img class='limg' src='../images/bi-mat-yeu-thuong-tu-banh-kem-lanh-baskin-robbins.jpg' />
+        <img class='limg' src='../images/full_banh_kem_huongviet_08.jpg' />
+        <img class='limg' src='../images/index.jpg' />
+    </div>
+    <div class='imgs-right'> <span class='arrow-top'></span><span class="arrow-bottom"></span>
+      <table>
+        <tr>
+          <td><img class='rimg' src="../images/1.jpg" /> <img class='rimg' src="../images/2.jpg" /> <img class='rimg' src="../images/3.jpg" /></td>
+        </tr>
+        <tr>
+          <td><img class='rimg' src="../images/4.jpg" /> <img class='rimg' src="../images/banh kem bcake (5).jpg" /> <img class='rimg' src="../images/banh-kem-ngon-ngay-8-3 (2).jpg" /></td>
+        </tr>
+        <tr>
+          <td><img class='rimg' src="../images/bi-mat-yeu-thuong-tu-banh-kem-lanh-baskin-robbins.jpg" /> <img class='rimg' src="../images/full_banh_kem_huongviet_08.jpg" /> <img class='rimg' src="../images/index.jpg" /></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

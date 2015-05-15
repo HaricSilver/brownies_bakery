@@ -6,10 +6,1112 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Brownies Bakery</title>
+
+	<link href="images/icon.ico" rel="shortcut icon" type="image/x-icon" />
+	<link type="text/css" rel='stylesheet'
+		href="plugins/confirm/hs_confirm.css" />
+	<link rel="stylesheet" href="plugins/flexslider/flexslider.css"
+		type="text/css" />
+	<script src="js/jquery-2.1.3.js"></script>
+	<script src='plugins/confirm/jquery.hs_confirm.js'></script>
+	<script src="plugins/flexslider/jquery.flexslider.js"></script>
+	<script src="js/jssor.slider.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		$(window).load(function() {
+			$('.flexslider').flexslider({
+				animation : 'slide',
+				slideshowSpeed : 3000,
+				animationSpeed : 800,
+				itemWidth : 500,
+				controlNav : false,
+				randomize : true,
+				minItems : 3,
+				maxItems : 3,
+				move : 1
+			});
+		});
+	</script>
+	<style type="text/css">
+@font-face {
+	font-family: Eutemia;
+	src: url(fonts/Eutemia.ttf);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+/*start tag test*/
+body {
+	background: rgba(245, 245, 245, .5);
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	cursor: pointer;
+}
+/*end tag test*/
+#div-menu {
+	width: 100%;
+	height: 41px;
+	background: #336699;
+	/*#3a5795;*/
+	position: fixed;
+	z-index: 99999;
+	border-bottom: 1px solid rgba(0, 0, 90, .5);
+	font-family: cursive;
+}
+
+.ul-mn {
+	display: inline-block;
+}
+
+.ul-mn>li {
+	position: relative;
+	list-style-type: none;
+	float: left;
+	text-align: center;
+}
+
+.ul-mn>li>a {
+	text-decoration: none;
+	color: white;
+	font-size: 17px;
+	font-weight: bold;
+	line-height: 42px;
+	padding: 6px 16px;
+	border-radius: 1px;
+}
+
+.ul-mn>li>a:hover {
+	background: rgba(3, 57, 108, .5);
+}
+
+.div-mn-left, .div-mn-mid, .div-mn-right {
+	/*position: absolute;*/ /*abs*/
+	float: left;
+	height: 42px;
+}
+
+.div-mn-left {
+	/*left: 45px;*/
+	padding-left: 33px;
+}
+
+.div-mn-mid {
+	/*left:180px;*/
+	padding-left: 180px;
+}
+
+.div-mn-right {
+	/*right: 9px;*/
+	float: right;
+	padding-right: 33px;
+}
+
+.div-mn-right>ul {
+	display: inline-block;
+}
+
+.div-mn-right>ul>li {
+	font-weight: bold;
+	list-style-type: none;
+	float: left;
+	line-height: 42px;
+}
+
+.div-mn-right>ul>li>a {
+	padding: 6px 9px;
+	border-radius: 3px;
+}
+
+.div-mn-right>ul>li>a:hover {
+	text-decoration: underline;
+}
+/*submenu 1*/
+.div-submenu {
+	position: absolute;
+	border: 1px solid rgba(204, 204, 204, .8);
+	padding: 6px 9px;
+	background: #fff;
+	border-radius: 2px;
+	left: 0;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.submenu-1 {
+	max-height: 0;
+	overflow: hidden;
+	-o-transition: all 1.2s ease;
+	-webkit-transition: all .1s ease;
+	-moz-transition: all .1s ease;
+	transition: all .1s ease;
+}
+
+.submenu-1>li {
+	list-style-type: none;
+	z-index: 99;
+	background: #fff;
+	text-align: left;
+}
+
+.ul-mn>li:hover>.div-submenu>.submenu-1 {
+	display: block;
+	max-height: 300px;
+	-o-transition: all 1.2s ease;
+	-webkit-transition: all 1.2s ease;
+	-moz-transition: all 1.2s ease;
+	transition: all 1.2s ease;
+}
+
+.ul-mn>li:hover>.div-submenu {
+	opacity: 1;
+	visibility: visible;
+}
+
+.submenu-1>li>a {
+	display: block;
+	width: 180px;
+	padding: 5px 9px;
+	border-radius: 2px;
+	text-decoration: none;
+	color: black;
+	font-size: 17px;
+	font-weight: bold;
+	color: #666;
+}
+
+.submenu-1>li>a:hover {
+	background: #e7e7e7;
+	color: #333;
+}
+
+.caret {
+	border-bottom: 8px solid #fff;
+	border-left: 9px solid transparent;
+	border-right: 9px solid transparent;
+	content: "";
+	position: absolute;
+}
+
+.div-submenu .caret {
+	top: -8px;
+	left: 19px;
+}
+/*format div search*/
+.div-search {
+	position: relative;
+	margin-top: 8px;
+	width: 270px;
+}
+
+.div-search input {
+	position: absolute;
+	width: 100%;
+	padding: 4px;
+	border: 1px solid #e7e7e7;
+	border-radius: 2px;
+	font-size: 14px;
+	padding-right: 25px;
+}
+
+.div-search .btn-search {
+	background-image: url(images/search_icon2.png);
+	background-repeat: no-repeat;
+	background-color: transparent;
+	background-position: right;
+	width: 25px;
+	height: 18px;
+	border: none;
+	border-left: 1px solid rgba(6, 6, 6, 0.1);
+	position: absolute;
+	top: 5px;
+	right: -30px;
+}
+
+.div-search .btn-search:hover {
+	background-image: url(images/search_icon_hover.png);
+	cursor: pointer;
+}
+</style>
 </h:head>
 <h:body>
 	<f:view>
-		<h:button value="Test JSF 2.2.8 - It's OK, let's go!"></h:button>
+
+		<!-- <div id="fb-root"></div>
+	<script>(function(d, s, id) {
+ 	 var js, fjs = d.getElementsByTagName(s)[0];
+ 	 if (d.getElementById(id)) return;
+ 	 js = d.createElement(s); js.id = id;
+ 	 js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.3";
+ 	 fjs.parentNode.insertBefore(js, fjs);
+}	(document, 'script', 'facebook-jssdk'));</script>  -->
+
+		<div id='div-menu'>
+			<div class='div-mn-left'>
+				<a href='#'><h:graphicImage value="images/icon.png"
+					style="height: 40px; cursor: pointer" /></a>
+				<ul class='ul-mn'>
+					<!--<li><a href="#">Home</a></li>-->
+					<li><a href="#">Order</a></li>
+					<li><a href="#">News</a>
+						<div class='div-submenu'>
+							<span class='caret'></span>
+							<ul class='submenu-1'>
+								<li><a href="#">Sale</a></li>
+								<li><a href="#">Promotions</a></li>
+							</ul>
+						</div></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</div>
+			<div class='div-mn-mid'>
+				<div class='div-search'>
+					<h:inputText type="text" placeholder="Search here..." />
+					<button class='btn-search'></button>
+					<div class='div-search-adv'>
+						<span class='caret'></span>
+					</div>
+				</div>
+				<!--style search textbox-->
+				<style type='text/css'>
+.div-search-adv {
+	min-height: 180px;
+	min-width: 360px;
+	background: rgba(255, 255, 255, 1);
+	border: 1px solid rgba(192, 192, 192, .5);
+	border-radius: 2px;
+	position: absolute;
+	top: 34px;
+	right: -45px;
+	display: none;
+}
+
+.div-search-adv .caret {
+	right: 15px;
+	top: -7px;
+}
+</style>
+				<script type='text/javascript'>
+					$(document).ready(function(e) {
+						$('.btn-search').click(function(e) {
+							$('.div-search-adv').stop().slideToggle(50);
+						});
+					});
+				</script>
+			</div>
+			<div class='div-mn-right'>
+				<!--<ul>
+      <li><a href="#" id="login">Login</a></li>
+      <li><a href="#">Register</a></li>
+    </ul>-->
+				<div class="shopping-cart">
+					<span class='c-price'>22.550.000 VND</span> <span class='amount'>3</span>
+					<span class="arrow-bottom"></span> <span class='caret'></span>
+					<div class='cart-detail'>
+						<table class='items'>
+							<tr>
+								<td><h:graphicImage value="images/1.jpg" /></td>
+								<td><a href='#'>Banh kem sieu ngon</a></td>
+								<td>x1</td>
+								<td>500.000 VND</td>
+								<td><h:button class='btn del' value="x"></h:button></td>
+							</tr>
+							<tr>
+								<td><h:graphicImage value="images/2.jpg" /></td>
+								<td title="Banh kem sieu ngon, khong ngon khong lay tien luon"><a
+									href='#'>Banh kem sieu ngon, khong ngon khong lay tien luon</a></td>
+								<td>x1000</td>
+								<td>19.500.000 VND</td>
+								<td><h:button class='btn del' value="x"></h:button></td>
+							</tr>
+							<tr>
+								<td><h:graphicImage value="images/3.jpg" /></td>
+								<td><a href='#'>Banh kem sieu ngon</a></td>
+								<td>x1</td>
+								<td>500.000 VND</td>
+								<td><h:button class='btn del' value="x"></h:button></td>
+							</tr>
+						</table>
+						<table class='payment'>
+							<tr>
+								<td>Total:</td>
+								<td>20.500.000 VND</td>
+							</tr>
+							<tr>
+								<td>VAT(10%):</td>
+								<td>2.050.000 VND</td>
+							</tr>
+							<tr>
+								<td>Payment:</td>
+								<td>22.550.000 VND</td>
+							</tr>
+							<tr>
+								<td colspan="2"><h:button class='btn money' value="View Cart"></h:button>
+									<h:button class='btn money' value="Checkout"></h:button></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<!--style shopping cart-->
+			<style type='text/css'>
+.shopping-cart {
+	line-height: 42px;
+	position: relative;
+	margin-right: 9px;
+}
+
+.c-price {
+	background: url(images/shopping-cart.png) no-repeat left center;
+	padding: 5px;
+	padding-left: 27px;
+	font-weight: bold;
+	color: white;
+	border-radius: 2px;
+}
+
+.amount {
+	position: absolute;
+	left: 10px;
+	top: 5px;
+	line-height: normal;
+	color: white;
+	background: red;
+	padding: 1px 3px;
+	border-radius: 2px;
+	font-size: 9px;
+	font-weight: bold;
+}
+
+.cart-detail {
+	position: absolute;
+	right: 0;
+	max-height: 0;
+	background: #fff;
+	border: 1px solid rgba(204, 204, 204, 1);
+	overflow: hidden;
+	visibility: hidden;
+	-o-transition: all .2s ease;
+	-webkit-transition: all .2s ease;
+	-moz-transition: all .2s ease;
+	transition: all .2s ease;
+	padding: 5px;
+}
+
+.shopping-cart:hover>.cart-detail {
+	visibility: visible;
+	max-height: 500px;
+	-o-transition: all .8s ease;
+	-webkit-transition: all .8 ease;
+	-moz-transition: all .8s ease;
+	transition: all .8s ease;
+}
+
+.shopping-cart .caret {
+	bottom: -1px;
+	left: 5px;
+	z-index: 99;
+	visibility: hidden;
+	-o-transition: all .2s ease;
+	-webkit-transition: all .2s ease;
+	-moz-transition: all .2s ease;
+	transition: all .2s ease;
+}
+
+.shopping-cart:hover>.caret {
+	visibility: visible;
+	-o-transition: all .8s ease;
+	-webkit-transition: all .8 ease;
+	-moz-transition: all .8s ease;
+	transition: all .8s ease;
+}
+
+.arrow-bottom {
+	content: "";
+	width: 0;
+	border-top: 5px solid #fff;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	position: absolute;
+}
+
+.shopping-cart .arrow-bottom {
+	right: -12px;
+	top: 19px;
+}
+
+.shopping-cart:hover {
+	background-color: rgba(3, 57, 108, .5);
+}
+
+.shopping-cart:hover>.arrow-bottom {
+	display: none;
+}
+
+.cart-detail {
+	line-height: normal;
+}
+
+.items {
+	width: 100%;
+	text-align: left;
+	white-space: nowrap;
+}
+
+.items img {
+	width: 47px;
+	height: 47px;
+	border: 1px solid;
+	margin: 0 3px;
+}
+
+.items tr:hover {
+	/*background:#e7e7e7;*/
+	color: rgba(102, 102, 102, 1);
+}
+
+.items td {
+	padding: 3px 5px 3px 0;
+	margin: 0;
+	border-bottom: 1px dashed rgba(204, 204, 204, 1);
+}
+
+.items td:nth-child(2) {
+	text-align: left;
+	max-width: 180px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.items td:nth-child(3) {
+	color: rgba(103, 103, 103, 1);
+}
+
+.items td:nth-child(4) {
+	text-align: right;
+}
+
+.items a:visited {
+	color: inherit;
+}
+
+.items a:hover {
+	color: rgba(0, 0, 255, 1);
+}
+
+.payment {
+	width: 100%;
+	text-align: right;
+	padding: 5px 0;
+}
+
+.payment tr td:first-child {
+	font-weight: bold;
+	color: rgba(51, 51, 51, 1);
+}
+
+.btn {
+	border: none;
+	background: #336699;
+	border-radius: 3px;
+	color: #fff;
+	padding: 6px 12px;
+}
+
+.btn:hover {
+	background: rgba(0, 64, 128, 1);
+}
+
+.del {
+	font-weight: 900;
+	font-size: 15px;
+	line-height: 1.5;
+	padding: 1px 5px;
+}
+
+.money {
+	margin-top: 5px;
+	margin-right: 5px;
+	font-weight: bold;
+}
+</style>
+			<!--<script type='text/javascript'>
+  $(document).ready(function(e) {
+    $('#login').openDialog({
+			title: 'Đăng nhập',
+			confirmText: 'Đăng nhập',
+			cancelText: 'Quay lại',
+			confirm: function(){alert('ok');},
+			cancel: function(){alert('cancel');}
+		});
+  });
+  </script>-->
+		</div>
+		<!--ads slider-->
+		<div class='ads-slider'>
+			<div class="flexslider">
+				<ul class="slides">
+					<li><h:graphicImage value="images/1.jpg" /></li>
+					<li><h:graphicImage value="images/2.jpg" /></li>
+					<li><h:graphicImage value="images/3.jpg" /></li>
+					<li><h:graphicImage value="images/4.jpg" /></li>
+					<li><h:graphicImage value="images/index.jpg" /></li>
+				</ul>
+			</div>
+		</div>
+		<!--end slider-->
+
+		<!--wrapper-->
+		<style type='text/css'>
+/*format wrapper*/
+.wrapper {
+	padding-top: 18px;
+	width: 1257px;
+	margin: auto;
+}
+
+.wrapper-left, .wrapper-right {
+	float: left;
+	min-height: 500px;
+	padding: 5px;
+}
+
+.wrapper-left {
+	width: 300px;
+}
+
+.box-top-right {
+	background: none repeat scroll 0 0 #00ccff;
+	height: 18px;
+	line-height: 18px;
+	position: absolute;
+	left: -1px;
+	top: -1px;
+	width: 80px;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 3px 0;
+}
+
+.wpl-content {
+	position: relative;
+	border: 1px dashed #00ccff;
+	margin-bottom: 5px;
+	/*min-height: 300px;*/
+	padding: 2px;
+	padding-top: 27px;
+	padding-bottom: 18px;
+}
+
+.wpl-item {
+	position: relative;
+	width: 288px;
+	height: 102px;
+	margin: auto;
+	padding: 3px;
+	border-radius: 2px;
+}
+
+.wpl-item:hover {
+	background: rgba(226, 226, 226, .5);
+}
+
+.wpl-item img {
+	width: 100px;
+	height: 100px;
+	border: 1px solid;
+	float: left;
+}
+
+.wpl-item-content {
+	width: 176px;
+	padding: 5px;
+	float: left;
+}
+
+.wpl-item-content p {
+	max-width: 182px;
+	max-height: 50px;
+	overflow: hidden;
+	font-size: 20px;
+	position: absolute;
+	bottom: 55px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.p-price {
+	position: absolute;
+	bottom: 18px;
+	padding: 5px;
+	border-radius: 3px;
+	border: 1px solid rgba(0, 102, 0, .6);
+	background: rgba(0, 128, 0, 0.6);;
+	font-weight: bold;
+}
+
+.p-price:hover {
+	background: rgba(0, 128, 0, 1);
+	border: 1px solid rgba(0, 102, 0, 1);
+}
+
+.clr {
+	clear: both;
+}
+/*format wrapper right*/
+.wrapper-right {
+	max-width: 942px;
+	padding-left: 0;
+}
+
+*.wpr-content {
+	
+}
+
+.wpr-item {
+	display: inline-block;
+	width: 300px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	padding: 2px;
+	padding-bottom: 52px;
+	border: 1px solid #E6E6E6;
+	border-radius: 1px;
+	position: relative;
+	background: rgba(192, 192, 192, 0.1);
+}
+
+.wpr-item:hover {
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.36);
+}
+
+.sale {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 68px;
+	height: 67px;
+	background: url(images/sale.png);
+}
+
+.wpr-item img {
+	width: 300px;
+	height: 300px;
+}
+
+.title {
+	font-size: 18px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 200px;
+	/*margin: auto;*/
+}
+
+.box-price {
+	color: rgba(255, 0, 0, 1);
+	text-align: left;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.sale-price {
+	color: rgba(153, 153, 153, 1);
+	font-weight: normal;
+	text-decoration: line-through;
+}
+
+.wpr-item-content {
+	position: absolute;
+	padding: 5px;
+	padding-bottom: 0;
+	bottom: 0;
+	left: 0;
+	width: 295px;
+	height: 45px;
+	margin: 0 auto;
+	background-color: rgba(230, 230, 230, .3);
+	transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	border-top: 0 solid rgba(0, 0, 255, 0);
+	overflow: hidden;
+}
+
+.wpr-item-content:hover {
+	height: 270px;
+	background-color: rgba(255, 255, 255, 0.8);
+	border-top: 2px solid rgba(0, 0, 255, 0.5);
+}
+/*cart icon*/
+.cart-icon {
+	background: url("images/cart_icon1.png") repeat-x scroll 45px 0
+		rgba(0, 0, 0, 0);
+	width: 45px;
+	height: 45px;
+	position: absolute;
+	right: 2px;
+	bottom: 2px;
+}
+
+.cart-icon:hover {
+	background-position: left 0;
+}
+
+.detail-icon {
+	background: url("images/detail.png") repeat-x scroll 0 0
+		rgba(0, 0, 0, 0);
+	width: 45px;
+	height: 45px;
+	position: absolute;
+	left: -45px;
+	bottom: 2px;
+	opacity: 0;
+	transition: left 0.7s ease;
+	-moz-transition: left 0.7s ease;
+	-webkit-transition: left 0.7s ease;
+	-o-transition: left 0.7s ease;
+}
+
+.detail-icon:hover {
+	background-position: right 0;
+}
+
+.wpr-item-content:hover .detail-icon {
+	left: 207px;
+	opacity: 1;
+	transition: left 1.2s ease, opacity 1.5s ease;
+	-moz-transition: left 1.2s ease, opacity 1.5s ease;
+	-webkit-transition: left 1.2s ease, opacity 1.5s ease;
+	-o-transition: left 1.2s ease, opacity 1.5s ease;
+}
+
+.share-icon {
+	background: url("images/share.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+	width: 45px;
+	height: 45px;
+	position: absolute;
+	left: -90px;
+	bottom: 2px;
+	opacity: 0;
+	transition: left 0.7s ease;
+	-moz-transition: left 0.7s ease;
+	-webkit-transition: left 0.7s ease;
+	-o-transition: left 0.7s ease;
+}
+
+.share-icon:hover {
+	background-position: right 0;
+}
+
+.wpr-item-content:hover .share-icon {
+	left: 156px;
+	opacity: 1;
+	transition: left 1.8s ease, opacity 1.5s ease;
+	-moz-transition: left 1.8s ease, opacity 1.5s ease;
+	-webkit-transition: left 1.8s ease, opacity 1.5s ease;
+	-o-transition: left 1.8s ease, opacity 1.5s ease;
+}
+</style>
+
+<div class='wrapper'>
+  <div class='wrapper-left'>
+    <div class='wpl-content'> <span class='box-top-right'>Sale</span>
+      <div class='wpl-item' title="Banh kem sinh nhat cua thang quang teo"> <h:graphicImage value="images/1.jpg" />
+        <div class='wpl-item-content'>
+          <p>Banh kem sinh nhat cua thang quang teo</p>
+          <span class='p-price'>350.000 VND</span> </div>
+      </div>
+      <div class='wpl-item'> <h:graphicImage value="images/2.jpg" />
+        <div class='wpl-item-content'>
+          <p>Banh kem sinh nhat</p>
+          <span class='p-price'>350.000 VND</span> </div>
+      </div>
+      <div class='wpl-item'> <h:graphicImage value="images/bi-mat-yeu-thuong-tu-banh-kem-lanh-baskin-robbins.jpg" />
+        <div class='wpl-item-content'>
+          <p>Banh kem sinh nhat</p>
+          <span class='p-price'>350.000 VND</span> </div>
+      </div>
+    </div>
+    <div class='wpl-content'> <span class='box-top-right'>Offer</span>
+      <div class='wpl-item'> <h:graphicImage value="images/1.jpg" />
+        <div class='wpl-item-content'>
+          <p>Banh kem sinh nhat</p>
+          <span class='p-price'>350.000 VND</span> </div>
+      </div>
+      <div class='wpl-item'> <h:graphicImage value="images/2.jpg" />
+        <div class='wpl-item-content'>
+          <p>Banh kem sinh nhat</p>
+          <span class='p-price'>350.000 VND</span> </div>
+      </div>
+      <div class='wpl-item'> <h:graphicImage value="images/bi-mat-yeu-thuong-tu-banh-kem-lanh-baskin-robbins.jpg" />
+        <div class='wpl-item-content'>
+          <p>Banh kem sinh nhat</p>
+          <span class='p-price'>350.000 VND</span> </div>
+      </div>
+    </div>
+    <div class='wpl-content'> <span class='box-top-right'>New</span>
+      <div class='wpl-item'> <h:graphicImage value="images/1.jpg" />
+        <div class='wpl-item-content'>
+          <p>Banh kem sinh nhat</p>
+          <span class='p-price'>350.000 VND</span> </div>
+      </div>
+      <div class='wpl-item'> <h:graphicImage value="images/2.jpg" />
+        <div class='wpl-item-content'>
+          <p>Banh kem sinh nhat</p>
+          <span class='p-price'>350.000 VND</span> </div>
+      </div>
+      <div class='wpl-item'> <h:graphicImage value="images/bi-mat-yeu-thuong-tu-banh-kem-lanh-baskin-robbins.jpg" />
+        <div class='wpl-item-content'>
+          <p>Banh kem sinh nhat</p>
+          <span class='p-price'>350.000 VND</span> </div>
+      </div>
+      <div class='wpl-item'> <h:graphicImage value="images/2.jpg" />
+        <div class='wpl-item-content'>
+          <p>Banh kem sinh nhat</p>
+          <span class='p-price'>350.000 VND</span> </div>
+      </div>
+    </div>
+  </div>  
+  
+    <!--scrip show detail images of produce-->
+  <script type='text/javascript'>
+  $(document).ready(function(e) {
+    $('.detail-icon').openDialog({
+			title: 'Produce name and price',
+			width: '1170px',
+			height: '90%',
+			popup:true,
+		});
+  });
+  </script>
+  
+  <div class='wrapper-right'> 
+    <!--wpr content-->
+    <div class='wpr-content'>
+      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <span class='sale'></span><h:graphicImage value="images/1.jpg" />
+        <div class='wpr-item-content'>
+          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
+          <div class='box-price'><span class='sale-price'>499.000<span class="currency"> VND</span></span> <span class='price'>350.000</span> <span class='currency'> VND</span> <a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a><a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
+        </div>
+      </div>
+      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/2.jpg" />
+        <div class='wpr-item-content'>
+          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
+          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span> <a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
+        </div>
+      </div>
+      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/3.jpg" />
+        <div class='wpr-item-content'>
+          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
+          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span> <a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
+        </div>
+      </div>
+      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <span class='sale'></span><h:graphicImage value="images/4.jpg" />
+        <div class='wpr-item-content'>
+          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
+          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span> <a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
+        </div>
+      </div>
+      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/banh kem bcake (5).jpg" />
+        <div class='wpr-item-content'>
+          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
+          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span> <a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
+        </div>
+      </div>
+      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/banh-kem-ngon-ngay-8-3 (2).jpg" />
+        <div class='wpr-item-content'>
+          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
+          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span><a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a> </div>
+        </div>
+      </div>
+      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/bi-mat-yeu-thuong-tu-banh-kem-lanh-baskin-robbins.jpg" />
+        <div class='wpr-item-content'>
+          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
+          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span><a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
+        </div>
+      </div>
+      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <span class='sale'></span><h:graphicImage value="images/full_banh_kem_huongviet_08.jpg" />
+        <div class='wpr-item-content'>
+          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
+          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span><a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a> </div>
+        </div>
+      </div>
+      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/index.jpg" />
+        <div class='wpr-item-content'>
+          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
+          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span> <a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
+        </div>
+      </div>
+      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/1.jpg" />
+        <div class='wpr-item-content'>
+          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
+          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span> <a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
+        </div>
+      </div>
+      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/2.jpg" />
+        <div class='wpr-item-content'>
+          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
+          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span> <a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
+        </div>
+      </div>
+      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/3.jpg" />
+        <div class='wpr-item-content'>
+          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
+          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span><a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a> </div>
+        </div>
+      </div>
+      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/4.jpg" />
+        <div class='wpr-item-content'>
+          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
+          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span><a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a> </div>
+        </div>
+      </div>
+      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/1.jpg" />
+        <div class='wpr-item-content'>
+          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
+          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span><a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a> </div>
+        </div>
+      </div>
+      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/2.jpg" />
+        <div class='wpr-item-content'>
+          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
+          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span> <a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
+        </div>
+      </div>
+      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/3.jpg" />
+        <div class='wpr-item-content'>
+          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
+          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span><a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a> </div>
+        </div>
+      </div>
+      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/4.jpg" />
+        <div class='wpr-item-content'>
+          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
+          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span> <a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
+        </div>
+      </div>
+      <!--end content--> 
+    </div>
+  </div>
+</div>
+  <!--bottom-->
+<style type='text/css'>
+/*format bottom*/
+#bottom {
+	clear: both;
+	width: 100%;
+	background: rgba(51,51,51,.5);
+	font-size: 13px;
+	color: #fff;
+	padding: 5px 0;
+}
+#bottom p {
+	line-height: 20px;
+	margin-left: 15px;
+}
+#info {
+	width: 100%;
+	background: rgba(204, 204, 204, 0.5);
+	font-family: cursive;
+}
+@keyframes hvr-wobble-vertical {
+  16.65% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+
+  33.3% {
+    -webkit-transform: translateY(-6px);
+    transform: translateY(-6px);
+  }
+
+  49.95% {
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+  }
+
+  66.6% {
+    -webkit-transform: translateY(-2px);
+    transform: translateY(-2px);
+  }
+
+  83.25% {
+    -webkit-transform: translateY(1px);
+    transform: translateY(1px);
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+.hvr-wobble-vertical {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+}
+.hvr-wobble-vertical:hover, .hvr-wobble-vertical:focus, .hvr-wobble-vertical:active {
+  -webkit-animation-name: hvr-wobble-vertical;
+  animation-name: hvr-wobble-vertical;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+.ileft, .iright {
+	padding: 5px 15px;
+}
+.ileft:after, .iright:after {
+	clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+.ileft {
+	float:left;
+}
+.iright {
+	float:right;
+}
+</style>
+<div class='clr'></div>
+<div id='info'>
+  <div class='ileft'> Liên hệ:
+    <p><a href="#" class="hvr-wobble-vertical"><h:graphicImage alt="phone" value="images/social-icons/Phone.png" width="22px" height="22px" /></a> 0989899999 (Mr.Cường) - 06513456898 <a href="#" class="hvr-wobble-vertical"><h:graphicImage alt="email" value="images/social-icons/email1.png" width="24px" height="24px" /></a> Haric.Silver@gmail.com </p>
+    <a href="#" class="hvr-wobble-vertical"><h:graphicImage alt="" value="images/social-icons/thacmac.png" width="22px" height="22px" /></a> 258 Đỗ Xuân Hợp - Phước Long A - Quận 9 - Tp.HCM</div>
+  <div class='iright'>
+    <p>Follow us:</p>
+    <a href="http://facebook.com" class="hvr-wobble-vertical"><h:graphicImage alt="email" value="images/social-icons/fb.png" width="24px" height="24px" /></a> <a href="#" class="hvr-wobble-vertical"><h:graphicImage alt="email" value="images/social-icons/tw1.png" width="24px" height="24px" /></a> <a href="#" class="hvr-wobble-vertical"><h:graphicImage alt="email" value="images/social-icons/g.png" width="24px" height="24px" /></a> <a href="#" class="hvr-wobble-vertical"><h:graphicImage alt="bing" value="images/social-icons/bing.png" width="24px" height="24px" /></a> <a href="#" class="hvr-wobble-vertical"><h:graphicImage alt="youtube" value="images/social-icons/y.png" width="24px" height="24px" /></a> </div>
+  <div id='bottom'>
+    <p> Copy right © 2014-2015 by 2school.vn - XHTML Valid </p>
+  </div>
+</div>
+<div class="fb-page" data-href="https://www.facebook.com/TeaMobi" data-hide-cover="true" data-show-facepile="true" data-show-posts="false">
+  <div class="fb-xfbml-parse-ignore">
+    <blockquote cite="https://www.facebook.com/TeaMobi"><a href="https://www.facebook.com/TeaMobi">TeaMobi</a></blockquote>
+  </div>
+</div>
 	</f:view>
 </h:body>
 </html>

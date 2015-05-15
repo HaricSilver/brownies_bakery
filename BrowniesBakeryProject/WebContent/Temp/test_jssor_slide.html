@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script src="../js/jquery-2.1.3.js"></script>
+<script src="../../../../Downloads/jssor.carousel.slider.for.bootstrap.example/js/jssor.slider.mini.js"></script>
+</head>
+
+<body>
+<div id="slider1_container" style="position: relative; top: 0px; left: 0px; width:700px;height:200px;"> 
+  <!-- Slides Container -->
+  <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width:700px;height:200px;">
+    <div><a u="image" href="#"><img src="../images/1.jpg" /></a>
+      <div u="caption" t="*" t2="*" style="position: absolute; top: 50px; left: 100px; width: 50px;height: 50px;background:red;">hihihi</div>
+      <div u="caption" t="*" t2="*" style="position: absolute; top: 100px; left: 140px; width: 50px;height: 50px;background:red;">hihihi</div>
+      <div u="caption" t="*" t2="*" style="position: absolute; top: 240px; left: 90px; width: 50px;height: 50px;background:red;">hihihi</div>
+      <div u="caption" t="*" t2="*" style="position: absolute; top: 150px; left: 500px; width: 50px;height: 50px;background:red;">hihihi</div>
+      <div u="caption" t="*" t2="*" style="position: absolute; top: 90px; left: 80px; width: 50px;height: 50px;background:red;">hihihi</div>
+      <img u="thumb" src="../images/1.jpg" /></div>
+    <div><a u="image" href="#"><img src="../images/2.jpg" /></a><img u="thumb" src="../images/2.jpg" /></div>
+    <div><a u="image" href="#"><img src="../images/3.jpg" /></a><img u="thumb" src="../images/3.jpg" /></div>
+    <div><a u="image" href="#"><img src="../images/4.jpg" /></a><img u="thumb" src="../images/4.jpg" /></div>
+    
+    <!--test-->
+    <div><a u="image" href="#"><img src="../images/1.jpg" /></a><img u="thumb" src="../images/1.jpg" /><span>Hello, How are you?</span></div>
+    <div><a u="image" href="#"><img src="../images/2.jpg" /></a><img u="thumb" src="../images/2.jpg" /></div>
+    <div><a u="image" href="#"><img src="../images/3.jpg" /></a><img u="thumb" src="../images/3.jpg" /></div>
+    <div><a u="image" href="#"><img src="../images/4.jpg" /></a><img u="thumb" src="../images/4.jpg" /></div>
+    <div><a u="image" href="#"><img src="../images/1.jpg" /></a><img u="thumb" src="../images/1.jpg" /><span>Hello, How are you?</span></div>
+    <div><a u="image" href="#"><img src="../images/2.jpg" /></a><img u="thumb" src="../images/2.jpg" /></div>
+    <div><a u="image" href="#"><img src="../images/3.jpg" /></a><img u="thumb" src="../images/3.jpg" /></div>
+    <div><a u="image" href="#"><img src="../images/4.jpg" /></a><img u="thumb" src="../images/4.jpg" /></div>
+  </div>
+  
+  <script>jssor_slider1_starter('slider1_container');</script> 
+  <!--arrow navigation--> 
+  <span u="arrowleft" class="jssora16l"  > </span> <span u="arrowright" class="jssora16r"  > </span> 
+  
+  <!-- bullet navigator container --> 
+  <!-- <div u="navigator" class="jssor-bullet"> 
+    <div u="prototype"></div>
+  </div>--> 
+  
+  <!-- thumbnail navigator container -->
+  <div u="thumbnavigator" class="thumbnail">
+    <div u="slides" style="cursor: default;">
+      <div u="prototype" class="p">
+        <div u="thumbnailtemplate" class="i"></div>
+        <div class="o"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+			/*arrow*/
+            .jssora16l, .jssora16r {
+                display: block;
+                position: absolute;
+                /* size of arrow element */
+                width: 45px;
+                height: 45px;
+                cursor: pointer;
+                background: url(../images/a02.png) no-repeat;
+                overflow: hidden;
+            }
+            .jssora16l { background-position: -8px -38px;left:8px }
+            .jssora16r { background-position: -68px -38px;right:8px }
+            .jssora16l:hover { background-position: -128px -38px; }
+            .jssora16r:hover { background-position: -188px -38px; }
+            .jssora16l.jssora16ldn { background-position: -248px -38px; }
+            .jssora16r.jssora16rdn { background-position: -308px -38px; }
+			
+			/*bullet*/
+			.jssor-bullet {
+                position: absolute;
+				bottom: 16px;
+				right: 6px;
+            }
+            .jssor-bullet div, .jssor-bullet div:hover, .jssor-bullet .av {
+                position: absolute;
+                /* size of bullet elment */
+                width: 11px;
+                height: 11px;
+                background: url(../images/b10.png) no-repeat;
+                overflow: hidden;
+                cursor: pointer;
+            }
+            .jssor-bullet div { background-position: -10px -10px; }
+            .jssor-bullet div:hover, .jssor-bullet .av:hover { background-position: -40px -10px; }
+            .jssor-bullet .av { background-position: -70px -10px; }
+            .jssor-bullet .dn, .jssor-bullet .dn:hover { background-position: -100px -10px; }
+			
+			/*thumbnail*/
+			.thumbnail {
+				overflow:hidden;
+                position: absolute;
+                width: 100%;
+                height: 80px;
+				left:0;
+				bottom:0;
+				background:rgba(204,204,204,.3);
+            }
+                .thumbnail .p {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 72px;
+                    height: 72px;
+                }
+
+                .thumbnail .i {
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    width: 72px;
+                    height: 72px;
+                    filter: alpha(opacity=80);
+                    opacity: .8;
+                }
+
+                .thumbnail .p:hover .i, .thumbnail .pav .i {
+                    filter: alpha(opacity=100);
+                    opacity: 1;
+                }
+
+                .thumbnail .o {
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    width: 70px;
+                    height: 70px;
+                    border: 1px solid #000;
+                    transition: border-color .6s;
+                    -moz-transition: border-color .6s;
+                    -webkit-transition: border-color .6s;
+                    -o-transition: border-color .6s;
+                }
+
+                .thumbnail .pav .o {
+                    border-color: #0099ff;
+                }
+
+                .thumbnail .p:hover .o {
+                    border-color: #fff;
+                    transition: none;
+                    -moz-transition: none;
+                    -webkit-transition: none;
+                    -o-transition: none;
+                }
+
+                .thumbnail .p.pdn .o {
+                    border-color: #0099ff;
+                }
+
+                * html .thumbnail .o {
+                    width: 72px;
+                    height: 72px;
+                }
+        </style>
+<script>
+    jQuery(document).ready(function ($) {
+        //Define an array of slideshow transition code
+        var _SlideshowTransitions = [
+        {$Duration:1500,x:-0.3,y:0.5,$Zoom:1,$Rotate:0.1,$During:{$Left:[0.6,0.4],$Top:[0.6,0.4],$Rotate:[0.6,0.4],$Zoom:[0.6,0.4]},$Easing:{$Left:$JssorEasing$.$EaseInQuad,$Top:$JssorEasing$.$EaseInQuad,$Opacity:$JssorEasing$.$EaseLinear,$Rotate:$JssorEasing$.$EaseInQuad},$Opacity:2,$Brother:{$Duration:1000,$Zoom:11,$Rotate:-0.5,$Easing:{$Opacity:$JssorEasing$.$EaseLinear,$Rotate:$JssorEasing$.$EaseInQuad},$Opacity:2,$Shift:200}},
+        {$Duration:1600,x:-0.2,$Delay:40,$Cols:12,$During:{$Left:[0.4,0.6]},$SlideOut:true,$Formation:$JssorSlideshowFormations$.$FormationStraight,$Assembly:260,$Easing:{$Left:$JssorEasing$.$EaseInOutExpo,$Opacity:$JssorEasing$.$EaseInOutQuad},$Opacity:2,$Outside:true,$Round:{$Top:0.5},$Brother:{$Duration:1000,x:0.2,$Delay:40,$Cols:12,$Formation:$JssorSlideshowFormations$.$FormationStraight,$Assembly:1028,$Easing:{$Left:$JssorEasing$.$EaseInOutExpo,$Opacity:$JssorEasing$.$EaseInOutQuad},$Opacity:2,$Round:{$Top:0.5}}},
+		{$Duration:1200,$Opacity:2},
+		{$Duration:800,$Delay:30,$Cols:8,$Rows:4,$Formation:$JssorSlideshowFormations$.$FormationStraightStairs,$Assembly:2050,$Opacity:2},
+		{$Duration:1000,$Delay:80,$Cols:8,$Rows:4,$Opacity:2},
+		{$Duration:1200,x:0.2,y:-0.1,$Delay:20,$Cols:8,$Rows:4,$Clip:15,$During:{$Left:[0.3,0.7],$Top:[0.3,0.7]},$Formation:$JssorSlideshowFormations$.$FormationStraightStairs,$Assembly:260,$Easing:{$Left:$JssorEasing$.$EaseInWave,$Top:$JssorEasing$.$EaseInWave,$Clip:$JssorEasing$.$EaseOutQuad},$Round:{$Left:1.3,$Top:2.5}},
+		{$Duration:1200,x:0.2,y:-0.1,$Delay:80,$Cols:8,$Rows:4,$Clip:15,$During:{$Left:[0.3,0.7],$Top:[0.3,0.7]},$SlideOut:true,$ChessMode:{$Column:3,$Row:3},$Easing:{$Left:$JssorEasing$.$EaseInWave,$Top:$JssorEasing$.$EaseInWave,$Clip:$JssorEasing$.$EaseOutQuad},$Outside:true,$Round:{$Left:1.3,$Top:2.5}},
+		{$Duration:1500,x:0.2,y:-0.1,$Delay:80,$Cols:8,$Rows:4,$Clip:15,$During:{$Left:[0.2,0.8],$Top:[0.2,0.8]},$ChessMode:{$Column:15,$Row:15},$Easing:{$Left:$JssorEasing$.$EaseInWave,$Top:$JssorEasing$.$EaseInWave,$Clip:$JssorEasing$.$EaseLinear},$Round:{$Left:0.8,$Top:2.5}},
+		{$Duration:1800,x:1,y:0.2,$Delay:30,$Cols:10,$Rows:5,$Clip:15,$During:{$Left:[0.3,0.7],$Top:[0.3,0.7]},$SlideOut:true,$Reverse:true,$Formation:$JssorSlideshowFormations$.$FormationStraightStairs,$Assembly:2050,$Easing:{$Left:$JssorEasing$.$EaseInOutSine,$Top:$JssorEasing$.$EaseOutWave,$Clip:$JssorEasing$.$EaseInOutQuad},$Outside:true,$Round:{$Top:1.3}},
+		{$Duration:1000,$Delay:30,$Cols:8,$Rows:4,$Clip:15,$SlideOut:true,$Formation:$JssorSlideshowFormations$.$FormationStraightStairs,$Assembly:2049,$Easing:$JssorEasing$.$EaseOutQuad},
+		{$Duration:1000,$Delay:80,$Cols:8,$Rows:4,$Clip:15,$SlideOut:true,$Easing:$JssorEasing$.$EaseOutQuad},
+		{$Duration:1500,x:-1,y:-0.5,$Delay:50,$Cols:8,$Rows:4,$Formation:$JssorSlideshowFormations$.$FormationStraight,$Assembly:513,$Easing:{$Left:$JssorEasing$.$EaseSwing,$Top:$JssorEasing$.$EaseInJump},$Round:{$Top:1.5}},
+		{$Duration:600,x:1,y:-1,$Delay:50,$Cols:8,$Rows:4,$SlideOut:true,$ChessMode:{$Column:3,$Row:12},$Easing:{$Left:$JssorEasing$.$EaseInCubic,$Top:$JssorEasing$.$EaseInCubic,$Opacity:$JssorEasing$.$EaseOutQuad},$Opacity:2},
+		{$Duration:600,x:-1,y:1,$Delay:50,$Cols:8,$Rows:4,$ChessMode:{$Column:3,$Row:12},$Easing:{$Left:$JssorEasing$.$EaseInCubic,$Top:$JssorEasing$.$EaseInCubic,$Opacity:$JssorEasing$.$EaseOutQuad},$Opacity:2},
+        ];
+		var _CaptionTransitions = [
+		{$Duration:900,x:-0.6,y:-0.6,$Rotate:0.05,$Easing:{$Left:$JssorEasing$.$EaseInOutSine,$Top:$JssorEasing$.$EaseInOutSine},$Opacity:2},
+		{$Duration:900,x:-0.6,y:0.6,$Rotate:0.05,$Easing:{$Left:$JssorEasing$.$EaseInOutSine,$Top:$JssorEasing$.$EaseInOutSine},$Opacity:2},
+		{$Duration:1200,x:-0.6,y:-0.6,$Zoom:3,$Rotate:2,$Easing:{$Left:$JssorEasing$.$EaseInCubic,$Top:$JssorEasing$.$EaseInCubic,$Rotate:$JssorEasing$.$EaseInWave},$Opacity:2},
+		{$Duration:1800,x:0.5,$Zoom:11,$Rotate:-1.5,$Easing:{$Left:$JssorEasing$.$EaseInOutElastic,$Zoom:$JssorEasing$.$EaseInElastic,$Rotate:$JssorEasing$.$EaseInOutElastic},$Opacity:2,$During:{$Zoom:[0,0.8],$Opacity:[0,0.7]},$Round:{$Rotate:0.5}},
+		{$Duration:900,$Clip:2,$Easing:{$Clip:$JssorEasing$.$EaseInOutCubic},$Opacity:2},
+		{$Duration:900,$Zoom:1.7,$Easing:$JssorEasing$.$EaseInCubic,$Opacity:2},
+		{$Duration:1200,x:0.6,y:-0.6,$Zoom:6,$Easing:{$Left:$JssorEasing$.$EaseInCubic,$Top:$JssorEasing$.$EaseInCubic,$Zoom:$JssorEasing$.$EaseInElastic},$Opacity:2},
+		{$Duration:1200,x:-0.8,y:0.5,$Zoom:11,$Easing:{$Left:$JssorEasing$.$EaseLinear,$Top:$JssorEasing$.$EaseOutCubic,$Zoom:$JssorEasing$.$EaseInCubic},$Opacity:2,$During:{$Top:[0,0.5]}},
+		{$Duration:1200,x:-0.6,y:0.6,$Zoom:11,$Easing:{$Left:$JssorEasing$.$EaseInSine,$Top:$JssorEasing$.$EaseOutJump,$Zoom:$JssorEasing$.$EaseInCubic},$Opacity:2,$Round:{$Top:0.5}},
+		{$Duration:900,x:0.6,y:-0.6,$Zoom:11,$Rotate:1,$Easing:{$Left:$JssorEasing$.$EaseInCubic,$Top:$JssorEasing$.$EaseInCubic,$Zoom:$JssorEasing$.$EaseInCubic,$Opacity:$JssorEasing$.$EaseLinear,$Rotate:$JssorEasing$.$EaseInCubic},$Opacity:2,$Round:{$Rotate:0.8}},
+		{$Duration:1200,x:0.8,y:-0.5,$Zoom:11,$Rotate:0.2,$Easing:{$Left:$JssorEasing$.$EaseLinear,$Top:$JssorEasing$.$EaseOutCubic,$Zoom:$JssorEasing$.$EaseInCubic},$Opacity:2,$During:{$Top:[0,0.5]}},
+		{$Duration:1200,x:0.6,y:-0.6,$Zoom:11,$Rotate:-1,$Easing:{$Left:$JssorEasing$.$EaseOutJump,$Top:$JssorEasing$.$EaseInSine,$Zoom:$JssorEasing$.$EaseInCubic},$Opacity:2,$Round:{$Left:0.5,$Rotate:0.5}},
+		{$Duration:900,x:0.2,y:-0.1,$Easing:{$Left:$JssorEasing$.$EaseLinear,$Top:$JssorEasing$.$EaseInWave},$Opacity:2,$Round:{$Top:1.3}},
+		{$Duration:1800,x:0.6,y:0.3,$Easing:{$Left:$JssorEasing$.$EaseLinear,$Top:$JssorEasing$.$EaseInWave},$Opacity:2,$Round:{$Top:2.5}},
+		{$Duration:1500,y:0.5,$Rotate:6.25,$Easing:$JssorEasing$.$EaseLinear,$Opacity:2,$During:{$Top:[0,0.33],$Rotate:[0,0.33]},$Round:{$Rotate:0.25}}
+		];
+        var options = {
+			$FillMode: 1,
+			$AutoPlayInterval : 200, //time
+            $AutoPlay: true,
+            $SlideshowOptions: {
+                    $Class: $JssorSlideshowRunner$,
+                    $Transitions: _SlideshowTransitions,
+                    $TransitionsOrder: 0, //random slideshow
+                    $ShowLink: true
+            },
+			$ArrowNavigatorOptions: {
+                $Class: $JssorArrowNavigator$,
+                $ChanceToShow: 1,
+				$AutoCenter: 2,
+				$Scale: false,
+            },
+			$BulletNavigatorOptions: {
+                    $Class: $JssorBulletNavigator$,
+                    $AutoCenter: 1,
+                    $SpacingX: 10,
+                    $SpacingY: 10,
+            },
+			$ThumbnailNavigatorOptions: {
+                    $Class: $JssorThumbnailNavigator$,
+                    $ChanceToShow: 1,
+                    $SpacingX: 8,
+                    $DisplayPieces: 6,
+            },
+			$CaptionSliderOptions: {
+                $Class: $JssorCaptionSlider$,
+                $CaptionTransitions: _CaptionTransitions,
+                $PlayInMode: 1,
+                $PlayOutMode: 3
+            }
+        };
+        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+		
+		function ScaleSlider() {
+            var parentWidth = $('#slider1_container').parent().width();
+            if (parentWidth) {
+                jssor_slider1.$ScaleWidth(parentWidth);
+            }
+            else
+                window.setTimeout(ScaleSlider, 30);
+        }
+        //Scale slider after document ready
+        ScaleSlider();
+                                        
+        //Scale slider while window load/resize/orientationchange.
+        $(window).bind("load", ScaleSlider);
+        $(window).bind("resize", ScaleSlider);
+        $(window).bind("orientationchange", ScaleSlider);
+        //responsive code end
+    });
+</script>
+</body>
+</html>
