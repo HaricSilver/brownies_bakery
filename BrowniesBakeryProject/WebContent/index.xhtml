@@ -90,7 +90,7 @@ a:hover {
 	background: rgba(3, 57, 108, .5);
 }
 
-.div-mn-left, .div-mn-mid, .div-mn-right {
+.div-mn-left,.div-mn-mid,.div-mn-right {
 	/*position: absolute;*/ /*abs*/
 	float: left;
 	height: 42px;
@@ -254,7 +254,7 @@ a:hover {
 		<div id='div-menu'>
 			<div class='div-mn-left'>
 				<a href='#'><h:graphicImage value="images/icon.png"
-					style="height: 40px; cursor: pointer" /></a>
+						style="height: 40px; cursor: pointer" /></a>
 				<ul class='ul-mn'>
 					<!--<li><a href="#">Home</a></li>-->
 					<li><a href="#">Order</a></li>
@@ -352,8 +352,9 @@ a:hover {
 								<td>22.550.000 VND</td>
 							</tr>
 							<tr>
-								<td colspan="2"><h:button class='btn money' value="View Cart"></h:button>
-									<h:button class='btn money' value="Checkout"></h:button></td>
+								<td colspan="2"><h:button class='btn money'
+										value="View Cart"></h:button> <h:button class='btn money'
+										value="Checkout"></h:button></td>
 							</tr>
 						</table>
 					</div>
@@ -577,7 +578,7 @@ a:hover {
 	margin: auto;
 }
 
-.wrapper-left, .wrapper-right {
+.wrapper-left,.wrapper-right {
 	float: left;
 	min-height: 500px;
 	padding: 5px;
@@ -824,294 +825,514 @@ a:hover {
 }
 </style>
 
-<div class='wrapper'>
-  <div class='wrapper-left'>
-    <div class='wpl-content'> <span class='box-top-right'>Sale</span>
-      <div class='wpl-item' title="Banh kem sinh nhat cua thang quang teo"> <h:graphicImage value="images/1.jpg" />
-        <div class='wpl-item-content'>
-          <p>Banh kem sinh nhat cua thang quang teo</p>
-          <span class='p-price'>350.000 VND</span> </div>
-      </div>
-      <div class='wpl-item'> <h:graphicImage value="images/2.jpg" />
-        <div class='wpl-item-content'>
-          <p>Banh kem sinh nhat</p>
-          <span class='p-price'>350.000 VND</span> </div>
-      </div>
-      <div class='wpl-item'> <h:graphicImage value="images/bi-mat-yeu-thuong-tu-banh-kem-lanh-baskin-robbins.jpg" />
-        <div class='wpl-item-content'>
-          <p>Banh kem sinh nhat</p>
-          <span class='p-price'>350.000 VND</span> </div>
-      </div>
-    </div>
-    <div class='wpl-content'> <span class='box-top-right'>Offer</span>
-      <div class='wpl-item'> <h:graphicImage value="images/1.jpg" />
-        <div class='wpl-item-content'>
-          <p>Banh kem sinh nhat</p>
-          <span class='p-price'>350.000 VND</span> </div>
-      </div>
-      <div class='wpl-item'> <h:graphicImage value="images/2.jpg" />
-        <div class='wpl-item-content'>
-          <p>Banh kem sinh nhat</p>
-          <span class='p-price'>350.000 VND</span> </div>
-      </div>
-      <div class='wpl-item'> <h:graphicImage value="images/bi-mat-yeu-thuong-tu-banh-kem-lanh-baskin-robbins.jpg" />
-        <div class='wpl-item-content'>
-          <p>Banh kem sinh nhat</p>
-          <span class='p-price'>350.000 VND</span> </div>
-      </div>
-    </div>
-    <div class='wpl-content'> <span class='box-top-right'>New</span>
-      <div class='wpl-item'> <h:graphicImage value="images/1.jpg" />
-        <div class='wpl-item-content'>
-          <p>Banh kem sinh nhat</p>
-          <span class='p-price'>350.000 VND</span> </div>
-      </div>
-      <div class='wpl-item'> <h:graphicImage value="images/2.jpg" />
-        <div class='wpl-item-content'>
-          <p>Banh kem sinh nhat</p>
-          <span class='p-price'>350.000 VND</span> </div>
-      </div>
-      <div class='wpl-item'> <h:graphicImage value="images/bi-mat-yeu-thuong-tu-banh-kem-lanh-baskin-robbins.jpg" />
-        <div class='wpl-item-content'>
-          <p>Banh kem sinh nhat</p>
-          <span class='p-price'>350.000 VND</span> </div>
-      </div>
-      <div class='wpl-item'> <h:graphicImage value="images/2.jpg" />
-        <div class='wpl-item-content'>
-          <p>Banh kem sinh nhat</p>
-          <span class='p-price'>350.000 VND</span> </div>
-      </div>
-    </div>
-  </div>  
-  
-    <!--scrip show detail images of produce-->
-  <script type='text/javascript'>
-  $(document).ready(function(e) {
-    $('.detail-icon').openDialog({
-			title: 'Produce name and price',
-			width: '1170px',
-			height: '90%',
-			popup:true,
-		});
-  });
-  </script>
-  
-  <div class='wrapper-right'> 
-    <!--wpr content-->
-    <div class='wpr-content'>
-      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <span class='sale'></span><h:graphicImage value="images/1.jpg" />
-        <div class='wpr-item-content'>
-          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
-          <div class='box-price'><span class='sale-price'>499.000<span class="currency"> VND</span></span> <span class='price'>350.000</span> <span class='currency'> VND</span> <a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a><a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
-        </div>
-      </div>
-      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/2.jpg" />
-        <div class='wpr-item-content'>
-          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
-          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span> <a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
-        </div>
-      </div>
-      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/3.jpg" />
-        <div class='wpr-item-content'>
-          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
-          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span> <a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
-        </div>
-      </div>
-      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <span class='sale'></span><h:graphicImage value="images/4.jpg" />
-        <div class='wpr-item-content'>
-          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
-          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span> <a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
-        </div>
-      </div>
-      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/banh kem bcake (5).jpg" />
-        <div class='wpr-item-content'>
-          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
-          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span> <a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
-        </div>
-      </div>
-      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/banh-kem-ngon-ngay-8-3 (2).jpg" />
-        <div class='wpr-item-content'>
-          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
-          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span><a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a> </div>
-        </div>
-      </div>
-      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/bi-mat-yeu-thuong-tu-banh-kem-lanh-baskin-robbins.jpg" />
-        <div class='wpr-item-content'>
-          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
-          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span><a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
-        </div>
-      </div>
-      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <span class='sale'></span><h:graphicImage value="images/full_banh_kem_huongviet_08.jpg" />
-        <div class='wpr-item-content'>
-          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
-          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span><a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a> </div>
-        </div>
-      </div>
-      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/index.jpg" />
-        <div class='wpr-item-content'>
-          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
-          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span> <a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
-        </div>
-      </div>
-      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/1.jpg" />
-        <div class='wpr-item-content'>
-          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
-          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span> <a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
-        </div>
-      </div>
-      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/2.jpg" />
-        <div class='wpr-item-content'>
-          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
-          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span> <a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
-        </div>
-      </div>
-      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/3.jpg" />
-        <div class='wpr-item-content'>
-          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
-          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span><a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a> </div>
-        </div>
-      </div>
-      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/4.jpg" />
-        <div class='wpr-item-content'>
-          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
-          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span><a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a> </div>
-        </div>
-      </div>
-      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/1.jpg" />
-        <div class='wpr-item-content'>
-          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
-          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span><a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a> </div>
-        </div>
-      </div>
-      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/2.jpg" />
-        <div class='wpr-item-content'>
-          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
-          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span> <a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
-        </div>
-      </div>
-      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/3.jpg" />
-        <div class='wpr-item-content'>
-          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
-          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span><a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a> </div>
-        </div>
-      </div>
-      <div class='wpr-item' title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay"> <h:graphicImage value="images/4.jpg" />
-        <div class='wpr-item-content'>
-          <p class='title'>Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay</p>
-          <div class='box-price'> <span class='price'>350.000</span> <span class='currency'> VND</span> <a class='cart-icon' title="Add to cart"></a> <a class='detail-icon' title="View detail"></a> <a class='share-icon' title="Share..."></a></div>
-        </div>
-      </div>
-      <!--end content--> 
-    </div>
-  </div>
-</div>
-  <!--bottom-->
-<style type='text/css'>
+		<div class='wrapper'>
+			<div class='wrapper-left'>
+				<div class='wpl-content'>
+					<span class='box-top-right'>Sale</span>
+					<div class='wpl-item'
+						title="Banh kem sinh nhat cua thang quang teo">
+						<h:graphicImage value="images/1.jpg" />
+						<div class='wpl-item-content'>
+							<p>Banh kem sinh nhat cua thang quang teo</p>
+							<span class='p-price'>350.000 VND</span>
+						</div>
+					</div>
+					<div class='wpl-item'>
+						<h:graphicImage value="images/2.jpg" />
+						<div class='wpl-item-content'>
+							<p>Banh kem sinh nhat</p>
+							<span class='p-price'>350.000 VND</span>
+						</div>
+					</div>
+					<div class='wpl-item'>
+						<h:graphicImage
+							value="images/bi-mat-yeu-thuong-tu-banh-kem-lanh-baskin-robbins.jpg" />
+						<div class='wpl-item-content'>
+							<p>Banh kem sinh nhat</p>
+							<span class='p-price'>350.000 VND</span>
+						</div>
+					</div>
+				</div>
+				<div class='wpl-content'>
+					<span class='box-top-right'>Offer</span>
+					<div class='wpl-item'>
+						<h:graphicImage value="images/1.jpg" />
+						<div class='wpl-item-content'>
+							<p>Banh kem sinh nhat</p>
+							<span class='p-price'>350.000 VND</span>
+						</div>
+					</div>
+					<div class='wpl-item'>
+						<h:graphicImage value="images/2.jpg" />
+						<div class='wpl-item-content'>
+							<p>Banh kem sinh nhat</p>
+							<span class='p-price'>350.000 VND</span>
+						</div>
+					</div>
+					<div class='wpl-item'>
+						<h:graphicImage
+							value="images/bi-mat-yeu-thuong-tu-banh-kem-lanh-baskin-robbins.jpg" />
+						<div class='wpl-item-content'>
+							<p>Banh kem sinh nhat</p>
+							<span class='p-price'>350.000 VND</span>
+						</div>
+					</div>
+				</div>
+				<div class='wpl-content'>
+					<span class='box-top-right'>New</span>
+					<div class='wpl-item'>
+						<h:graphicImage value="images/1.jpg" />
+						<div class='wpl-item-content'>
+							<p>Banh kem sinh nhat</p>
+							<span class='p-price'>350.000 VND</span>
+						</div>
+					</div>
+					<div class='wpl-item'>
+						<h:graphicImage value="images/2.jpg" />
+						<div class='wpl-item-content'>
+							<p>Banh kem sinh nhat</p>
+							<span class='p-price'>350.000 VND</span>
+						</div>
+					</div>
+					<div class='wpl-item'>
+						<h:graphicImage
+							value="images/bi-mat-yeu-thuong-tu-banh-kem-lanh-baskin-robbins.jpg" />
+						<div class='wpl-item-content'>
+							<p>Banh kem sinh nhat</p>
+							<span class='p-price'>350.000 VND</span>
+						</div>
+					</div>
+					<div class='wpl-item'>
+						<h:graphicImage value="images/2.jpg" />
+						<div class='wpl-item-content'>
+							<p>Banh kem sinh nhat</p>
+							<span class='p-price'>350.000 VND</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--scrip show detail images of produce-->
+			<script type='text/javascript'>
+				$(document).ready(function(e) {
+					$('.detail-icon').openDialog({
+						title : 'Produce name and price',
+						width : '1170px',
+						height : '90%',
+						popup : true,
+					});
+				});
+			</script>
+
+			<div class='wrapper-right'>
+				<!--wpr content-->
+				<div class='wpr-content'>
+					<div class='wpr-item'
+						title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay">
+						<span class='sale'></span>
+						<h:graphicImage value="images/1.jpg" />
+						<div class='wpr-item-content'>
+							<p class='title'>Banh kem day tay Banh kem day tayBanh kem
+								day tayBanh kem day tayBanh kem day tay</p>
+							<div class='box-price'>
+								<span class='sale-price'>499.000<span class="currency">
+										VND</span></span> <span class='price'>350.000</span> <span class='currency'>
+									VND</span> <a class='cart-icon' title="Add to cart"></a> <a
+									class='detail-icon' title="View detail"></a> <a
+									class='share-icon' title="Share..."></a><a class='detail-icon'
+									title="View detail"></a> <a class='share-icon' title="Share..."></a>
+							</div>
+						</div>
+					</div>
+					<div class='wpr-item'
+						title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay">
+						<h:graphicImage value="images/2.jpg" />
+						<div class='wpr-item-content'>
+							<p class='title'>Banh kem day tay Banh kem day tayBanh kem
+								day tayBanh kem day tayBanh kem day tay</p>
+							<div class='box-price'>
+								<span class='price'>350.000</span> <span class='currency'>
+									VND</span> <a class='cart-icon' title="Add to cart"></a> <a
+									class='detail-icon' title="View detail"></a> <a
+									class='share-icon' title="Share..."></a>
+							</div>
+						</div>
+					</div>
+					<div class='wpr-item'
+						title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay">
+						<h:graphicImage value="images/3.jpg" />
+						<div class='wpr-item-content'>
+							<p class='title'>Banh kem day tay Banh kem day tayBanh kem
+								day tayBanh kem day tayBanh kem day tay</p>
+							<div class='box-price'>
+								<span class='price'>350.000</span> <span class='currency'>
+									VND</span> <a class='cart-icon' title="Add to cart"></a> <a
+									class='detail-icon' title="View detail"></a> <a
+									class='share-icon' title="Share..."></a>
+							</div>
+						</div>
+					</div>
+					<div class='wpr-item'
+						title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay">
+						<span class='sale'></span>
+						<h:graphicImage value="images/4.jpg" />
+						<div class='wpr-item-content'>
+							<p class='title'>Banh kem day tay Banh kem day tayBanh kem
+								day tayBanh kem day tayBanh kem day tay</p>
+							<div class='box-price'>
+								<span class='price'>350.000</span> <span class='currency'>
+									VND</span> <a class='cart-icon' title="Add to cart"></a> <a
+									class='detail-icon' title="View detail"></a> <a
+									class='share-icon' title="Share..."></a>
+							</div>
+						</div>
+					</div>
+					<div class='wpr-item'
+						title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay">
+						<h:graphicImage value="images/banh kem bcake (5).jpg" />
+						<div class='wpr-item-content'>
+							<p class='title'>Banh kem day tay Banh kem day tayBanh kem
+								day tayBanh kem day tayBanh kem day tay</p>
+							<div class='box-price'>
+								<span class='price'>350.000</span> <span class='currency'>
+									VND</span> <a class='cart-icon' title="Add to cart"></a> <a
+									class='detail-icon' title="View detail"></a> <a
+									class='share-icon' title="Share..."></a>
+							</div>
+						</div>
+					</div>
+					<div class='wpr-item'
+						title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay">
+						<h:graphicImage value="images/banh-kem-ngon-ngay-8-3 (2).jpg" />
+						<div class='wpr-item-content'>
+							<p class='title'>Banh kem day tay Banh kem day tayBanh kem
+								day tayBanh kem day tayBanh kem day tay</p>
+							<div class='box-price'>
+								<span class='price'>350.000</span> <span class='currency'>
+									VND</span><a class='cart-icon' title="Add to cart"></a> <a
+									class='detail-icon' title="View detail"></a> <a
+									class='share-icon' title="Share..."></a>
+							</div>
+						</div>
+					</div>
+					<div class='wpr-item'
+						title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay">
+						<h:graphicImage
+							value="images/bi-mat-yeu-thuong-tu-banh-kem-lanh-baskin-robbins.jpg" />
+						<div class='wpr-item-content'>
+							<p class='title'>Banh kem day tay Banh kem day tayBanh kem
+								day tayBanh kem day tayBanh kem day tay</p>
+							<div class='box-price'>
+								<span class='price'>350.000</span> <span class='currency'>
+									VND</span><a class='cart-icon' title="Add to cart"></a> <a
+									class='detail-icon' title="View detail"></a> <a
+									class='share-icon' title="Share..."></a>
+							</div>
+						</div>
+					</div>
+					<div class='wpr-item'
+						title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay">
+						<span class='sale'></span>
+						<h:graphicImage value="images/full_banh_kem_huongviet_08.jpg" />
+						<div class='wpr-item-content'>
+							<p class='title'>Banh kem day tay Banh kem day tayBanh kem
+								day tayBanh kem day tayBanh kem day tay</p>
+							<div class='box-price'>
+								<span class='price'>350.000</span> <span class='currency'>
+									VND</span><a class='cart-icon' title="Add to cart"></a> <a
+									class='detail-icon' title="View detail"></a> <a
+									class='share-icon' title="Share..."></a>
+							</div>
+						</div>
+					</div>
+					<div class='wpr-item'
+						title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay">
+						<h:graphicImage value="images/index.jpg" />
+						<div class='wpr-item-content'>
+							<p class='title'>Banh kem day tay Banh kem day tayBanh kem
+								day tayBanh kem day tayBanh kem day tay</p>
+							<div class='box-price'>
+								<span class='price'>350.000</span> <span class='currency'>
+									VND</span> <a class='cart-icon' title="Add to cart"></a> <a
+									class='detail-icon' title="View detail"></a> <a
+									class='share-icon' title="Share..."></a>
+							</div>
+						</div>
+					</div>
+					<div class='wpr-item'
+						title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay">
+						<h:graphicImage value="images/1.jpg" />
+						<div class='wpr-item-content'>
+							<p class='title'>Banh kem day tay Banh kem day tayBanh kem
+								day tayBanh kem day tayBanh kem day tay</p>
+							<div class='box-price'>
+								<span class='price'>350.000</span> <span class='currency'>
+									VND</span> <a class='cart-icon' title="Add to cart"></a> <a
+									class='detail-icon' title="View detail"></a> <a
+									class='share-icon' title="Share..."></a>
+							</div>
+						</div>
+					</div>
+					<div class='wpr-item'
+						title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay">
+						<h:graphicImage value="images/2.jpg" />
+						<div class='wpr-item-content'>
+							<p class='title'>Banh kem day tay Banh kem day tayBanh kem
+								day tayBanh kem day tayBanh kem day tay</p>
+							<div class='box-price'>
+								<span class='price'>350.000</span> <span class='currency'>
+									VND</span> <a class='cart-icon' title="Add to cart"></a> <a
+									class='detail-icon' title="View detail"></a> <a
+									class='share-icon' title="Share..."></a>
+							</div>
+						</div>
+					</div>
+					<div class='wpr-item'
+						title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay">
+						<h:graphicImage value="images/3.jpg" />
+						<div class='wpr-item-content'>
+							<p class='title'>Banh kem day tay Banh kem day tayBanh kem
+								day tayBanh kem day tayBanh kem day tay</p>
+							<div class='box-price'>
+								<span class='price'>350.000</span> <span class='currency'>
+									VND</span><a class='cart-icon' title="Add to cart"></a> <a
+									class='detail-icon' title="View detail"></a> <a
+									class='share-icon' title="Share..."></a>
+							</div>
+						</div>
+					</div>
+					<div class='wpr-item'
+						title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay">
+						<h:graphicImage value="images/4.jpg" />
+						<div class='wpr-item-content'>
+							<p class='title'>Banh kem day tay Banh kem day tayBanh kem
+								day tayBanh kem day tayBanh kem day tay</p>
+							<div class='box-price'>
+								<span class='price'>350.000</span> <span class='currency'>
+									VND</span><a class='cart-icon' title="Add to cart"></a> <a
+									class='detail-icon' title="View detail"></a> <a
+									class='share-icon' title="Share..."></a>
+							</div>
+						</div>
+					</div>
+					<div class='wpr-item'
+						title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay">
+						<h:graphicImage value="images/1.jpg" />
+						<div class='wpr-item-content'>
+							<p class='title'>Banh kem day tay Banh kem day tayBanh kem
+								day tayBanh kem day tayBanh kem day tay</p>
+							<div class='box-price'>
+								<span class='price'>350.000</span> <span class='currency'>
+									VND</span><a class='cart-icon' title="Add to cart"></a> <a
+									class='detail-icon' title="View detail"></a> <a
+									class='share-icon' title="Share..."></a>
+							</div>
+						</div>
+					</div>
+					<div class='wpr-item'
+						title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay">
+						<h:graphicImage value="images/2.jpg" />
+						<div class='wpr-item-content'>
+							<p class='title'>Banh kem day tay Banh kem day tayBanh kem
+								day tayBanh kem day tayBanh kem day tay</p>
+							<div class='box-price'>
+								<span class='price'>350.000</span> <span class='currency'>
+									VND</span> <a class='cart-icon' title="Add to cart"></a> <a
+									class='detail-icon' title="View detail"></a> <a
+									class='share-icon' title="Share..."></a>
+							</div>
+						</div>
+					</div>
+					<div class='wpr-item'
+						title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay">
+						<h:graphicImage value="images/3.jpg" />
+						<div class='wpr-item-content'>
+							<p class='title'>Banh kem day tay Banh kem day tayBanh kem
+								day tayBanh kem day tayBanh kem day tay</p>
+							<div class='box-price'>
+								<span class='price'>350.000</span> <span class='currency'>
+									VND</span><a class='cart-icon' title="Add to cart"></a> <a
+									class='detail-icon' title="View detail"></a> <a
+									class='share-icon' title="Share..."></a>
+							</div>
+						</div>
+					</div>
+					<div class='wpr-item'
+						title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay">
+						<h:graphicImage value="images/4.jpg" />
+						<div class='wpr-item-content'>
+							<p class='title'>Banh kem day tay Banh kem day tayBanh kem
+								day tayBanh kem day tayBanh kem day tay</p>
+							<div class='box-price'>
+								<span class='price'>350.000</span> <span class='currency'>
+									VND</span> <a class='cart-icon' title="Add to cart"></a> <a
+									class='detail-icon' title="View detail"></a> <a
+									class='share-icon' title="Share..."></a>
+							</div>
+						</div>
+					</div>
+					<!--end content-->
+				</div>
+			</div>
+		</div>
+		<!--bottom-->
+		<style type='text/css'>
 /*format bottom*/
 #bottom {
 	clear: both;
 	width: 100%;
-	background: rgba(51,51,51,.5);
+	background: rgba(51, 51, 51, .5);
 	font-size: 13px;
 	color: #fff;
 	padding: 5px 0;
 }
+
 #bottom p {
 	line-height: 20px;
 	margin-left: 15px;
 }
+
 #info {
 	width: 100%;
 	background: rgba(204, 204, 204, 0.5);
 	font-family: cursive;
 }
-@keyframes hvr-wobble-vertical {
-  16.65% {
-    -webkit-transform: translateY(8px);
-    transform: translateY(8px);
-  }
 
-  33.3% {
-    -webkit-transform: translateY(-6px);
-    transform: translateY(-6px);
-  }
-
-  49.95% {
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px);
-  }
-
-  66.6% {
-    -webkit-transform: translateY(-2px);
-    transform: translateY(-2px);
-  }
-
-  83.25% {
-    -webkit-transform: translateY(1px);
-    transform: translateY(1px);
-  }
-
-  100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
+@
+keyframes hvr-wobble-vertical { 16.65% {
+	-webkit-transform: translateY(8px);
+	transform: translateY(8px);
 }
 
+33
+.3 % {
+	-webkit-transform: translateY(-6px);
+	transform: translateY(-6px);
+}
+
+49
+.95 % {
+	-webkit-transform: translateY(4px);
+	transform: translateY(4px);
+}
+
+66
+.6 % {
+	-webkit-transform: translateY(-2px);
+	transform: translateY(-2px);
+}
+
+83
+.25 % {
+	-webkit-transform: translateY(1px);
+	transform: translateY(1px);
+}
+
+100%
+{
+-webkit-transform
+:
+ 
+translateY
+(0);
+
+    
+transform
+:
+ 
+translateY
+(0);
+
+  
+}
+}
 .hvr-wobble-vertical {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -moz-osx-font-smoothing: grayscale;
+	display: inline-block;
+	vertical-align: middle;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-moz-osx-font-smoothing: grayscale;
 }
-.hvr-wobble-vertical:hover, .hvr-wobble-vertical:focus, .hvr-wobble-vertical:active {
-  -webkit-animation-name: hvr-wobble-vertical;
-  animation-name: hvr-wobble-vertical;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-timing-function: ease-in-out;
-  animation-timing-function: ease-in-out;
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
+
+.hvr-wobble-vertical:hover,.hvr-wobble-vertical:focus,.hvr-wobble-vertical:active
+	{
+	-webkit-animation-name: hvr-wobble-vertical;
+	animation-name: hvr-wobble-vertical;
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-timing-function: ease-in-out;
+	animation-timing-function: ease-in-out;
+	-webkit-animation-iteration-count: 1;
+	animation-iteration-count: 1;
 }
-.ileft, .iright {
+
+.ileft,.iright {
 	padding: 5px 15px;
 }
-.ileft:after, .iright:after {
+
+.ileft:after,.iright:after {
 	clear: both;
-    content: ".";
-    display: block;
-    height: 0;
-    line-height: 0;
-    visibility: hidden;
+	content: ".";
+	display: block;
+	height: 0;
+	line-height: 0;
+	visibility: hidden;
 }
+
 .ileft {
-	float:left;
+	float: left;
 }
+
 .iright {
-	float:right;
+	float: right;
 }
 </style>
-<div class='clr'></div>
-<div id='info'>
-  <div class='ileft'> Liên hệ:
-    <p><a href="#" class="hvr-wobble-vertical"><h:graphicImage alt="phone" value="images/social-icons/Phone.png" width="22px" height="22px" /></a> 0989899999 (Mr.Cường) - 06513456898 <a href="#" class="hvr-wobble-vertical"><h:graphicImage alt="email" value="images/social-icons/email1.png" width="24px" height="24px" /></a> Haric.Silver@gmail.com </p>
-    <a href="#" class="hvr-wobble-vertical"><h:graphicImage alt="" value="images/social-icons/thacmac.png" width="22px" height="22px" /></a> 258 Đỗ Xuân Hợp - Phước Long A - Quận 9 - Tp.HCM</div>
-  <div class='iright'>
-    <p>Follow us:</p>
-    <a href="http://facebook.com" class="hvr-wobble-vertical"><h:graphicImage alt="email" value="images/social-icons/fb.png" width="24px" height="24px" /></a> <a href="#" class="hvr-wobble-vertical"><h:graphicImage alt="email" value="images/social-icons/tw1.png" width="24px" height="24px" /></a> <a href="#" class="hvr-wobble-vertical"><h:graphicImage alt="email" value="images/social-icons/g.png" width="24px" height="24px" /></a> <a href="#" class="hvr-wobble-vertical"><h:graphicImage alt="bing" value="images/social-icons/bing.png" width="24px" height="24px" /></a> <a href="#" class="hvr-wobble-vertical"><h:graphicImage alt="youtube" value="images/social-icons/y.png" width="24px" height="24px" /></a> </div>
-  <div id='bottom'>
-    <p> Copy right © 2014-2015 by 2school.vn - XHTML Valid </p>
-  </div>
-</div>
-<div class="fb-page" data-href="https://www.facebook.com/TeaMobi" data-hide-cover="true" data-show-facepile="true" data-show-posts="false">
-  <div class="fb-xfbml-parse-ignore">
-    <blockquote cite="https://www.facebook.com/TeaMobi"><a href="https://www.facebook.com/TeaMobi">TeaMobi</a></blockquote>
-  </div>
-</div>
+		<div class='clr'></div>
+		<div id='info'>
+			<div class='ileft'>
+				Liên hệ:
+				<p>
+					<a href="#" class="hvr-wobble-vertical"><h:graphicImage
+							alt="phone" value="images/social-icons/Phone.png" width="22px"
+							height="22px" /></a> 0989899999 (Mr.Cường) - 06513456898 <a href="#"
+						class="hvr-wobble-vertical"><h:graphicImage alt="email"
+							value="images/social-icons/email1.png" width="24px" height="24px" /></a>
+					Haric.Silver@gmail.com
+				</p>
+				<a href="#" class="hvr-wobble-vertical"><h:graphicImage alt=""
+						value="images/social-icons/thacmac.png" width="22px" height="22px" /></a>
+				258 Đỗ Xuân Hợp - Phước Long A - Quận 9 - Tp.HCM
+			</div>
+			<div class='iright'>
+				<p>Follow us:</p>
+				<a href="http://facebook.com" class="hvr-wobble-vertical"><h:graphicImage
+						alt="email" value="images/social-icons/fb.png" width="24px"
+						height="24px" /></a> <a href="#" class="hvr-wobble-vertical"><h:graphicImage
+						alt="email" value="images/social-icons/tw1.png" width="24px"
+						height="24px" /></a> <a href="#" class="hvr-wobble-vertical"><h:graphicImage
+						alt="email" value="images/social-icons/g.png" width="24px"
+						height="24px" /></a> <a href="#" class="hvr-wobble-vertical"><h:graphicImage
+						alt="bing" value="images/social-icons/bing.png" width="24px"
+						height="24px" /></a> <a href="#" class="hvr-wobble-vertical"><h:graphicImage
+						alt="youtube" value="images/social-icons/y.png" width="24px"
+						height="24px" /></a>
+			</div>
+			<div id='bottom'>
+				<p>Copy right © 2014-2015 by 2school.vn - XHTML Valid</p>
+			</div>
+		</div>
+		<div class="fb-page" data-href="https://www.facebook.com/TeaMobi"
+			data-hide-cover="true" data-show-facepile="true"
+			data-show-posts="false">
+			<div class="fb-xfbml-parse-ignore">
+				<blockquote cite="https://www.facebook.com/TeaMobi">
+					<a href="https://www.facebook.com/TeaMobi">TeaMobi</a>
+				</blockquote>
+			</div>
+		</div>
 	</f:view>
 </h:body>
 </html>
