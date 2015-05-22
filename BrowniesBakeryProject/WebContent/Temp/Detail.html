@@ -93,7 +93,8 @@ $(document).ready(function(e) {
 		var htmlThumb = "<div class='imgs-right'><span class='arrow-top'></span><span class='arrow-bottom'></span><table>";
 		var count = 0;
 		$.each($('limg').length, function(key, value) {
-			if (count++<3) {// in row
+			if (count++ < 3) {
+				// in row
 				htmlThumb += "<img class='rimg' src='"+value.attr('src')+"' />";
 			} else {// end row
 				htmlThumb += "</td></tr>"

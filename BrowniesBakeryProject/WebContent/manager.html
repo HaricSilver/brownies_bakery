@@ -5,24 +5,28 @@
 <title>Manger</title>
 <script src="js/jquery-2.1.3.js" type="text/javascript"></script>
 <script src="plugins/confirm/jquery.hs_confirm.js"></script>
-<link rel='stylesheet' type='text/css' href='plugins/confirm/hs_confirm.css' />
+<link rel='stylesheet' type='text/css'
+	href='plugins/confirm/hs_confirm.css' />
 <!--style menu-->
 <style type="text/css">
 @font-face {
 	font-family: Eutemia;
 	src: url(fonts/Eutemia.ttf);
 }
+
 * {
 	margin: 0;
 	padding: 0;
 }
 /*start tag test*/
 body {
-	background: rgba(245,245,245,.5);
+	background: rgba(245, 245, 245, .5);
 }
+
 a {
 	text-decoration: none;
 }
+
 a:hover {
 	cursor: pointer;
 }
@@ -34,28 +38,33 @@ a:hover {
 	/*#3a5795;*/
 	position: fixed;
 	z-index: 99999;
-	border-bottom: 1px solid rgba(0,0,90,.5);
+	border-bottom: 1px solid rgba(0, 0, 90, .5);
 	font-family: cursive;
 }
+
 #div-menu {
 	top: -32px;
 	opacity: 0;
 	-moz-transition: all 0.36s ease-in-out;
 }
+
 #div-menu:hover {
 	top: 0;
 	opacity: 1;
 }
+
 .ul-mn {
 	display: inline-block;
 }
-.ul-mn > li {
+
+.ul-mn>li {
 	position: relative;
 	list-style-type: none;
 	float: left;
 	text-align: center;
 }
-.ul-mn > li > a {
+
+.ul-mn>li>a {
 	text-decoration: none;
 	color: white;
 	font-size: 17px;
@@ -64,22 +73,27 @@ a:hover {
 	padding: 6px 16px;
 	border-radius: 1px;
 }
-.ul-mn > li > a:hover {
-	background: rgba(3,57,108,.5);
+
+.ul-mn>li>a:hover {
+	background: rgba(3, 57, 108, .5);
 }
-.div-mn-left, .div-mn-mid, .div-mn-right {
-	/*position: absolute;*//*abs*/
+
+.div-mn-left,.div-mn-mid,.div-mn-right {
+	/*position: absolute;*/ /*abs*/
 	float: left;
 	height: 42px;
 }
+
 .div-mn-left {
 	/*left: 45px;*/
 	padding-left: 33px;
 }
+
 .div-mn-mid {
 	/*left:180px;*/
 	padding-left: 180px;
 }
+
 .div-mn-right {
 	/*right: 9px;*/
 	float: right;
@@ -104,7 +118,7 @@ a:hover {
 /*submenu 1*/
 .div-submenu {
 	position: absolute;
-	border: 1px solid rgba(204,204,204,.8);
+	border: 1px solid rgba(204, 204, 204, .8);
 	padding: 6px 9px;
 	background: #fff;
 	border-radius: 2px;
@@ -112,6 +126,7 @@ a:hover {
 	opacity: 0;
 	visibility: hidden;
 }
+
 .submenu-1 {
 	max-height: 0;
 	overflow: hidden;
@@ -120,13 +135,15 @@ a:hover {
 	-moz-transition: all .1s ease;
 	transition: all .1s ease;
 }
-.submenu-1 > li {
+
+.submenu-1>li {
 	list-style-type: none;
 	z-index: 99;
 	background: #fff;
 	text-align: left;
 }
-.ul-mn > li:hover > .div-submenu > .submenu-1 {
+
+.ul-mn>li:hover>.div-submenu>.submenu-1 {
 	display: block;
 	max-height: 300px;
 	-o-transition: all 1.2s ease;
@@ -134,11 +151,13 @@ a:hover {
 	-moz-transition: all 1.2s ease;
 	transition: all 1.2s ease;
 }
-.ul-mn > li:hover > .div-submenu {
+
+.ul-mn>li:hover>.div-submenu {
 	opacity: 1;
 	visibility: visible;
 }
-.submenu-1 > li > a {
+
+.submenu-1>li>a {
 	display: block;
 	width: 180px;
 	padding: 5px 9px;
@@ -149,10 +168,12 @@ a:hover {
 	font-weight: bold;
 	color: #666;
 }
-.submenu-1 > li > a:hover {
+
+.submenu-1>li>a:hover {
 	background: #e7e7e7;
 	color: #333;
 }
+
 .caret {
 	border-bottom: 8px solid #fff;
 	border-left: 9px solid transparent;
@@ -160,6 +181,7 @@ a:hover {
 	content: "";
 	position: absolute;
 }
+
 .div-submenu .caret {
 	top: -8px;
 	left: 19px;
@@ -170,6 +192,7 @@ a:hover {
 	margin-top: 8px;
 	width: 270px;
 }
+
 .div-search input {
 	position: absolute;
 	width: 100%;
@@ -179,6 +202,7 @@ a:hover {
 	font-size: 14px;
 	padding-right: 25px;
 }
+
 .div-search .btn-search {
 	background-image: url(images/search_icon2.png);
 	background-repeat: no-repeat;
@@ -187,11 +211,12 @@ a:hover {
 	width: 25px;
 	height: 18px;
 	border: none;
-	border-left: 1px solid rgba(6,6,6,0.1);
+	border-left: 1px solid rgba(6, 6, 6, 0.1);
 	position: absolute;
 	top: 5px;
 	right: -30px;
 }
+
 .div-search .btn-search:hover {
 	background-image: url(images/search_icon_hover.png);
 	cursor: pointer;
@@ -203,21 +228,25 @@ a:hover {
 	margin: 0;
 	padding: 0;
 }
+
 .container {
+	
 }
+
 ul.tabs {
 	float: left;
 	list-style: none;
 	height: 36px;
 	/*border-bottom: 1px solid #999;*/
 	width: 100%;
-	background: rgba(202,228,255,.7);
+	background: rgba(202, 228, 255, .7);
 }
+
 ul.tabs li {
 	float: left;
 	height: 35px;
 	line-height: 30px;
-	border-right: 1px solid rgba(0,64,128,.05);
+	border-right: 1px solid rgba(0, 64, 128, .05);
 	/*border: 1px solid #999;
 	border-left: none;
 	background: #F0F0F0;
@@ -227,9 +256,10 @@ ul.tabs li {
 	width: 234px;
 	text-align: center;
 }
+
 ul.tabs li a {
 	text-decoration: none;
-	color: rgba(0,64,128,1);
+	color: rgba(0, 64, 128, 1);
 	font-weight: bold;
 	display: block;
 	/*border: 1px solid #fff;
@@ -237,12 +267,16 @@ ul.tabs li a {
 	font-size: 1.2em;*/
 	outline: none;
 }
+
 ul.tabs li:hover {
-	background: rgba(202,228,255,1);
+	background: rgba(202, 228, 255, 1);
 }
-html ul.tabs li.active, html ul.tabs li.active:hover {
-	background: rgba(0,97,193,.1);/*border-bottom: 1px solid rgba(230,242,255,1);*/
+
+html ul.tabs li.active,html ul.tabs li.active:hover {
+	background: rgba(0, 97, 193, .1);
+	/*border-bottom: 1px solid rgba(230,242,255,1);*/
 }
+
 .tab_container {
 	/*border: 1px solid #999;
 	border-top: none;*/
@@ -256,29 +290,34 @@ html ul.tabs li.active, html ul.tabs li.active:hover {
 	-khtml-border-radius-bottomleft: 5px;
 	-webkit-border-bottom-left-radius: 5px;
 }
+
 .tab_content {
 	padding: 1px;
-	padding-top: 3px;/*font-size: 1.2em;*/
+	padding-top: 3px; /*font-size: 1.2em;*/
 }
+
 .tab_content h2 {
 	font-weight: normal;
 	padding-bottom: 10px;
 	border-bottom: 1px dashed #ddd;
 	font-size: 1.8em;
 }
+
 .tab_content h3 a {
 	color: #254588;
 }
+
 .tab_content img {
 	float: left;
 	margin: 0 20px 20px 0;
 	border: 1px solid #ddd;
 	padding: 5px;
 }
+
 .arrow-top {
 	content: "";
 	width: 0;
-	border-bottom: 7px solid rgba(230,242,255,1);
+	border-bottom: 7px solid rgba(230, 242, 255, 1);
 	border-left: 11px solid transparent;
 	border-right: 11px solid transparent;
 	position: absolute;
@@ -299,17 +338,20 @@ html ul.tabs li.active, html ul.tabs li.active:hover {
 .arrow-active {
 	visibility: visible;
 }
-html, body {
+
+html,body {
 	height: 100%;
 }
+
 body {
-	background: -moz-linear-gradient(top, rgba(230,242,255,1), rgba(230,242,255,0)) no-repeat fixed;
+	background: -moz-linear-gradient(top, rgba(230, 242, 255, 1),
+		rgba(230, 242, 255, 0)) no-repeat fixed;
 }
 </style>
 </head>
 
 <body>
-<script type="text/javascript">
+	<script type="text/javascript">
  
 $(document).ready(function() {
     //Default Action
@@ -331,154 +373,178 @@ $(document).ready(function() {
     });
  
 });
-</script> 
+</script>
 
-<!--menu-->
-<div id='div-menu'>
-  <div class='div-mn-left'> <a href='#'><img src="images/icon.png" style="height:40px;cursor:pointer"/></a>
-    <ul class='ul-mn'>
-      <!--<li><a href="#">Home</a></li>-->
-      <li><a href='#'>Manager</a>
-        <div class='div-submenu'><span class='caret'></span>
-          <ul class='submenu-1'>
-            <li><a href='#'>Đơn đặt hàng</a></li>
-            <li><a href='#'>Quản lý sản phẩm</a></li>
-            <li><a href='#'>Danh sách bài viết</a></li>
-            <li><a href='#'>Slider quảng cáo</a></li>
-          </ul>
-        </div>
-      </li>
-      <li><a href="#">Order</a></li>
-      <li><a href="#">News</a>
-        <div class='div-submenu' > <span class='caret'></span>
-          <ul class='submenu-1'>
-            <li><a href="#">Sale</a></li>
-            <li><a href="#">Promotions</a></li>
-          </ul>
-        </div>
-      </li>
-      <li><a href="#">About</a></li>
-      <li ><a href="#">Contact</a></li>
-    </ul>
-  </div>
-  <div class='div-mn-mid'> </div>
-  <div class='div-mn-right'>
-    <ul class="ul-mn">
-      <li><a href="#">Hello, Admin</a>
-        <div class='div-submenu admin-mn' > <span class='caret'></span>
-          <ul class='submenu-1'>
-            <li><a href="#" id='change-pass'>Change password</a></li>
-            <li><a href="#" id='config'>Configure</a></li>
-            <li><a href="#" id='logout'>Logout</a></li>
-          </ul>
-        </div>
-      </li>
-    </ul>
-    <style type='text/css'>
-	.admin-mn {
-		right:0;
-		left:auto;
-	}
-	.admin-mn .caret {
-		left:auto;
-		right: 18px;
-	}
-	a#change-pass, a#config, a#logout {
-		background-repeat:no-repeat;
-		background-position:left 9px center;
-		padding-left: 27px;
-	}
-	a#change-pass {
-		background-image:url(images/key.png);
-	}
-	a#config {
-		background-image:url(images/settings.png);
-	}
-	a#logout {
-		background-image:url(images/logout.png);
-	}
-	</style>
-  </div>
-</div>
-<!--end html menu-->
-<div class="container">
-  <ul class="tabs">
-    <li><a href="#tab1">Đơn đặt hàng</a><span class='arrow-top'></span></li>
-    <li><a href="#tab2">Quản lý sản phẩm</a><span class='arrow-top'></span></li>
-    <li><a href="#tab3">Danh sách bài viết</a><span class='arrow-top'></span></li>
-    <li><a href="#tab4">Slider quảng cáo</a><span class='arrow-top'></span></li>
-  </ul>
-  <!--style table-->
-  <style type='text/css'>
-  table#oder {
-	  width:100%;
-	  border-collapse: collapse;
-  }
-  table#oder, table#oder th, table#oder td {
-    border: 1px solid rgba(255,255,255,.3);
-  }
-  table#oder th {
-	  background:rgba(191,223,255,1) /*rgba(196,225,255,1)*/;
-	  font-weight:bold;
-	  color: rgba(0,0,0,.7);
-	  padding: 2px 0;
-  }
-  table#oder tr td {
-	  text-align:left;
-	  padding: 5px;
-	  white-space:nowrap;
-	  overflow:hidden;
-	  text-overflow: ellipsis;
-	  max-width:108px;
-  }
-  table#oder tr:nth-child(even) {
-	  /*#eee*/
-    background-color: rgba(117,186,255,.08);
-  }
-  table#oder tr:nth-child(odd) {
-	  /*#fff*/
-   background-color: transparent;
-  }
-  table#oder tr:hover {
-   background-color: rgba(221,221,255,1);
-  }
-  table#oder tr td:nth-child(1),table#oder tr td:nth-child(2),table#oder tr td:last-child {
-	  text-align:center;
-  }
-  span.waiting {
-	  color:red;
-  }
-  span.approve {
-	  color: green;
-  }
-  .view {
-	  background:url(images/detail_icon.png) no-repeat center;
-  }
-  .edit {
-	  background:url(images/edit_icon.png) no-repeat center;
-  }
-  .delete {
-	  background:url(images/delete.png) no-repeat center;
-  }
-  .btn {
-	  border:none;
-	  border-radius:3px;
-	  color:#fff;
-	  padding:3px 12px;
-	  margin:0 1px;
-	  background-color:rgba(0,64,128,.2);
-  }
-  .btn:hover {
-	  background-color:rgba(0,64,128,.6);
-  }
-  .more {
-	  font-size:large;
-	  font-weight:bold;
-  }
-  </style>
-  <div class="tab_container">
-    <div id="tab1" class="tab_content"> 
-      <script type='text/javascript'>
+	<!--menu-->
+	<div id='div-menu'>
+		<div class='div-mn-left'>
+			<a href='#'><img src="images/icon.png"
+				style="height: 40px; cursor: pointer" /></a>
+			<ul class='ul-mn'>
+				<!--<li><a href="#">Home</a></li>-->
+				<li><a href='#'>Manager</a>
+					<div class='div-submenu'>
+						<span class='caret'></span>
+						<ul class='submenu-1'>
+							<li><a href='#'>Đơn đặt hàng</a></li>
+							<li><a href='#'>Quản lý sản phẩm</a></li>
+							<li><a href='#'>Danh sách bài viết</a></li>
+							<li><a href='#'>Slider quảng cáo</a></li>
+						</ul>
+					</div></li>
+				<li><a href="#">Order</a></li>
+				<li><a href="#">News</a>
+					<div class='div-submenu'>
+						<span class='caret'></span>
+						<ul class='submenu-1'>
+							<li><a href="#">Sale</a></li>
+							<li><a href="#">Promotions</a></li>
+						</ul>
+					</div></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</div>
+		<div class='div-mn-mid'></div>
+		<div class='div-mn-right'>
+			<ul class="ul-mn">
+				<li><a href="#">Hello, Admin</a>
+					<div class='div-submenu admin-mn'>
+						<span class='caret'></span>
+						<ul class='submenu-1'>
+							<li><a href="#" id='change-pass'>Change password</a></li>
+							<li><a href="#" id='config'>Configure</a></li>
+							<li><a href="#" id='logout'>Logout</a></li>
+						</ul>
+					</div></li>
+			</ul>
+			<style type='text/css'>
+.admin-mn {
+	right: 0;
+	left: auto;
+}
+
+.admin-mn .caret {
+	left: auto;
+	right: 18px;
+}
+
+a#change-pass,a#config,a#logout {
+	background-repeat: no-repeat;
+	background-position: left 9px center;
+	padding-left: 27px;
+}
+
+a#change-pass {
+	background-image: url(images/key.png);
+}
+
+a#config {
+	background-image: url(images/settings.png);
+}
+
+a#logout {
+	background-image: url(images/logout.png);
+}
+</style>
+		</div>
+	</div>
+	<!--end html menu-->
+	<div class="container">
+		<ul class="tabs">
+			<li><a href="#tab1">Đơn đặt hàng</a><span class='arrow-top'></span></li>
+			<li><a href="#tab2">Quản lý sản phẩm</a><span class='arrow-top'></span></li>
+			<li><a href="#tab3">Danh sách bài viết</a><span
+				class='arrow-top'></span></li>
+			<li><a href="#tab4">Slider quảng cáo</a><span class='arrow-top'></span></li>
+		</ul>
+		<!--style table-->
+		<style type='text/css'>
+table#oder {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table#oder,table#oder th,table#oder td {
+	border: 1px solid rgba(255, 255, 255, .3);
+}
+
+table#oder th {
+	background: rgba(191, 223, 255, 1) /*rgba(196,225,255,1)*/;
+	font-weight: bold;
+	color: rgba(0, 0, 0, .7);
+	padding: 2px 0;
+}
+
+table#oder tr td {
+	text-align: left;
+	padding: 5px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 108px;
+}
+
+table#oder tr:nth-child(even) {
+	/*#eee*/
+	background-color: rgba(117, 186, 255, .08);
+}
+
+table#oder tr:nth-child(odd) {
+	/*#fff*/
+	background-color: transparent;
+}
+
+table#oder tr:hover {
+	background-color: rgba(221, 221, 255, 1);
+}
+
+table#oder tr td:nth-child(1),table#oder tr td:nth-child(2),table#oder tr td:last-child
+	{
+	text-align: center;
+}
+
+span.waiting {
+	color: red;
+}
+
+span.approve {
+	color: green;
+}
+
+.view {
+	background: url(images/detail_icon.png) no-repeat center;
+}
+
+.edit {
+	background: url(images/edit_icon.png) no-repeat center;
+}
+
+.delete {
+	background: url(images/delete.png) no-repeat center;
+}
+
+.btn {
+	border: none;
+	border-radius: 3px;
+	color: #fff;
+	padding: 3px 12px;
+	margin: 0 1px;
+	background-color: rgba(0, 64, 128, .2);
+}
+
+.btn:hover {
+	background-color: rgba(0, 64, 128, .6);
+}
+
+.more {
+	font-size: large;
+	font-weight: bold;
+}
+</style>
+		<div class="tab_container">
+			<div id="tab1" class="tab_content">
+				<script type='text/javascript'>
 	$(document).ready(function(e) {
         $('.view, .edit').openDialog({
 			title:'Test',
@@ -488,401 +554,442 @@ $(document).ready(function() {
 			popup:true,
 		});
     });
-	</script> 
-    
-    <script type='text/javascript'>
+	</script>
+
+				<script type='text/javascript'>
 	$(document).ready(function(e) {
 		var header = $('table#oder thead th');
 		var cols = $('table#oder tbody tr:first td');
-		/*var array = new Array();
-		$('table#oder thead th').each(function(index, element) {
-            array[index] = $('table#oder thead th').eq(index).width();
-        });
-		console.log(array);
-		
-		$('table#oder thead').css('position', 'fixed');
-		$('table#oder thead th').each(function(index, element) {
-            $(this).width(array[index]);
-        });
-		$('table#oder thead th').each(function(index, element) {
-            console.log($('table#oder thead th').eq(index).width());
-        });*/
-		
-		/*var cols = 0; // 12 col
-		var width = 0;
-		$('table#oder thead tr:first th').each(function(index, value) { // 9 col
-			if (typeof $(this).attr('colspan') !== 'undefined') {
-				for (var n = 0; n < $(this).attr('colspan'); n++) {
-   					width += parseInt($('table#oder tbody tr:first td').eq(cols++).width(),10);
-				}
-				$(this).css('width',width+"px");
-				width=0;
-			} else {
-				$(this).css('width',$('table#oder tbody tr:first td').eq(cols++).css('width'));
-			}
-		});
-		console.log($('table#oder thead tr:first th').eq(3).css('width'));
-		console.log($('table#oder tbody tr:first td').eq(3).width()+$('table#oder tbody tr:first td').eq(4).width()+$('table#oder tbody tr:first td').eq(5).width()+$('table#oder tbody tr:first td').eq(6).width());*/
     });
 	</script>
-      <table id='oder'>
-        <thead>
-          <tr>
-            <th rowspan="2">Mã hóa đơn</th>
-            <th rowspan="2">Ngày giao</th>
-            <th rowspan="2">Trạng thái</th>
-            <th colspan="4">Thành phần đơn hàng</th>
-            <th rowspan="2">Người nhận</th>
-            <th rowspan="2">Số điện thoại</th>
-            <th rowspan="2">Địa chỉ</th>
-            <th rowspan="2">Email</th>
-            <th rowspan="2"></th>
-          </tr>
-          <tr>
-            <th>Mã số</th>
-            <th>Tên sản phẩm</th>
-            <th>Số lượng</th>
-            <th>Tổng tiền</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1002</td>
-            <td>20/04/2015 10:20</td>
-            <td><span class='waiting'>Chờ xử lý</span></td>
-            <td>235</td>
-            <td>Bánh kem banana</td>
-            <td>1</td>
-            <td>345000đ</td>
-            <td>Haric Silver</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>2234</td>
-            <td>04/01/2015 10:20</td>
-            <td><span class='approve'>Đã xác nhận</span></td>
-            <td colspan="3" class="more">...</td>
-            <td>345000đ</td>
-            <td>Keycode</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>2343</td>
-            <td>30/04/2015 10:20</td>
-            <td><span class='waiting'>Chờ xử lý</span></td>
-            <td>232</td>
-            <td>Bánh kem chuối Bánh kem chuối</td>
-            <td>9</td>
-            <td>345000đ</td>
-            <td>Heo rừng</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>1234</td>
-            <td>19/02/2015 10:20</td>
-            <td><span class='approve'>Đã xác nhận</span></td>
-            <td colspan="3" class="more">...</td>
-            <td>345000đ</td>
-            <td>Không xác định được là không xác đinh được oh là la la lá làKhông xác định được là không xác đinh được oh là la la lá là</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>1234</td>
-            <td>19/02/2015 10:20</td>
-            <td><span class='approve'>Đã xác nhận</span></td>
-            <td colspan="3" class="more">...</td>
-            <td>345000đ</td>
-            <td>Không xác định được là không xác đinh được oh là la la lá làKhông xác định được là không xác đinh được oh là la la lá là</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <!--double test-->
-          <tr>
-            <td>1002</td>
-            <td>20/04/2015 10:20</td>
-            <td><span class='waiting'>Chờ xử lý</span></td>
-            <td>235</td>
-            <td>Bánh kem banana</td>
-            <td>1</td>
-            <td>345000đ</td>
-            <td>Haric Silver</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>2234</td>
-            <td>04/01/2015 10:20</td>
-            <td><span class='approve'>Đã xác nhận</span></td>
-            <td colspan="3" class="more">...</td>
-            <td>345000đ</td>
-            <td>Keycode</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>2343</td>
-            <td>30/04/2015 10:20</td>
-            <td><span class='waiting'>Chờ xử lý</span></td>
-            <td>232</td>
-            <td>Bánh kem chuối Bánh kem chuối</td>
-            <td>9</td>
-            <td>345000đ</td>
-            <td>Heo rừng</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>1234</td>
-            <td>19/02/2015 10:20</td>
-            <td><span class='approve'>Đã xác nhận</span></td>
-            <td colspan="3" class="more">...</td>
-            <td>345000đ</td>
-            <td>Không xác định được là không xác đinh được oh là la la lá làKhông xác định được là không xác đinh được oh là la la lá là</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>1234</td>
-            <td>19/02/2015 10:20</td>
-            <td><span class='approve'>Đã xác nhận</span></td>
-            <td colspan="3" class="more">...</td>
-            <td>345000đ</td>
-            <td>Không xác định được là không xác đinh được oh là la la lá làKhông xác định được là không xác đinh được oh là la la lá là</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>1002</td>
-            <td>20/04/2015 10:20</td>
-            <td><span class='waiting'>Chờ xử lý</span></td>
-            <td>235</td>
-            <td>Bánh kem banana</td>
-            <td>1</td>
-            <td>345000đ</td>
-            <td>Haric Silver</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>2234</td>
-            <td>04/01/2015 10:20</td>
-            <td><span class='approve'>Đã xác nhận</span></td>
-            <td colspan="3" class="more">...</td>
-            <td>345000đ</td>
-            <td>Keycode</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>2343</td>
-            <td>30/04/2015 10:20</td>
-            <td><span class='waiting'>Chờ xử lý</span></td>
-            <td>232</td>
-            <td>Bánh kem chuối Bánh kem chuối</td>
-            <td>9</td>
-            <td>345000đ</td>
-            <td>Heo rừng</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>1234</td>
-            <td>19/02/2015 10:20</td>
-            <td><span class='approve'>Đã xác nhận</span></td>
-            <td colspan="3" class="more">...</td>
-            <td>345000đ</td>
-            <td>Không xác định được là không xác đinh được oh là la la lá làKhông xác định được là không xác đinh được oh là la la lá là</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>1234</td>
-            <td>19/02/2015 10:20</td>
-            <td><span class='approve'>Đã xác nhận</span></td>
-            <td colspan="3" class="more">...</td>
-            <td>345000đ</td>
-            <td>Không xác định được là không xác đinh được oh là la la lá làKhông xác định được là không xác đinh được oh là la la lá là</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>1002</td>
-            <td>20/04/2015 10:20</td>
-            <td><span class='waiting'>Chờ xử lý</span></td>
-            <td>235</td>
-            <td>Bánh kem banana</td>
-            <td>1</td>
-            <td>345000đ</td>
-            <td>Haric Silver</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>2234</td>
-            <td>04/01/2015 10:20</td>
-            <td><span class='approve'>Đã xác nhận</span></td>
-            <td colspan="3" class="more">...</td>
-            <td>345000đ</td>
-            <td>Keycode</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>2343</td>
-            <td>30/04/2015 10:20</td>
-            <td><span class='waiting'>Chờ xử lý</span></td>
-            <td>232</td>
-            <td>Bánh kem chuối Bánh kem chuối</td>
-            <td>9</td>
-            <td>345000đ</td>
-            <td>Heo rừng</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>1234</td>
-            <td>19/02/2015 10:20</td>
-            <td><span class='approve'>Đã xác nhận</span></td>
-            <td colspan="3" class="more">...</td>
-            <td>345000đ</td>
-            <td>Không xác định được là không xác đinh được oh là la la lá làKhông xác định được là không xác đinh được oh là la la lá là</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>1234</td>
-            <td>19/02/2015 10:20</td>
-            <td><span class='approve'>Đã xác nhận</span></td>
-            <td colspan="3" class="more">...</td>
-            <td>345000đ</td>
-            <td>Không xác định được là không xác đinh được oh là la la lá làKhông xác định được là không xác đinh được oh là la la lá là</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>1002</td>
-            <td>20/04/2015 10:20</td>
-            <td><span class='waiting'>Chờ xử lý</span></td>
-            <td>235</td>
-            <td>Bánh kem banana</td>
-            <td>1</td>
-            <td>345000đ</td>
-            <td>Haric Silver</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>2234</td>
-            <td>04/01/2015 10:20</td>
-            <td><span class='approve'>Đã xác nhận</span></td>
-            <td colspan="3" class="more">...</td>
-            <td>345000đ</td>
-            <td>Keycode</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>2343</td>
-            <td>30/04/2015 10:20</td>
-            <td><span class='waiting'>Chờ xử lý</span></td>
-            <td>232</td>
-            <td>Bánh kem chuối Bánh kem chuối</td>
-            <td>9</td>
-            <td>345000đ</td>
-            <td>Heo rừng</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>1234</td>
-            <td>19/02/2015 10:20</td>
-            <td><span class='approve'>Đã xác nhận</span></td>
-            <td colspan="3" class="more">...</td>
-            <td>345000đ</td>
-            <td>Không xác định được là không xác đinh được oh là la la lá làKhông xác định được là không xác đinh được oh là la la lá là</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-          <tr>
-            <td>1234</td>
-            <td>19/02/2015 10:20</td>
-            <td><span class='approve'>Đã xác nhận</span></td>
-            <td colspan="3" class="more">...</td>
-            <td>345000đ</td>
-            <td>Không xác định được là không xác đinh được oh là la la lá làKhông xác định được là không xác đinh được oh là la la lá là</td>
-            <td>09000900909</td>
-            <td>Không có</td>
-            <td>Không có</td>
-            <td><a class='btn view' href='#' title="View detail"></a><a class='btn edit' href='#' title="Edit"></a><a class='btn delete' href='#' title="Delete"></a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div id="tab2" class="tab_content">
-      <h2>Heading 2</h2>
-      <p> Content 2</p>
-    </div>
-    <div id="tab3" class="tab_content">
-      <h2>Heading 3</h2>
-      <p> Content 3</p>
-    </div>
-    <div id="tab4" class="tab_content">
-      <h2>Heading 4</h2>
-      <p> Content 4</p>
-    </div>
-  </div>
-</div>
+				<table id='oder'>
+					<thead>
+						<tr>
+							<th rowspan="2">Mã hóa đơn</th>
+							<th rowspan="2">Ngày giao</th>
+							<th rowspan="2">Trạng thái</th>
+							<th colspan="4">Thành phần đơn hàng</th>
+							<th rowspan="2">Người nhận</th>
+							<th rowspan="2">Số điện thoại</th>
+							<th rowspan="2">Địa chỉ</th>
+							<th rowspan="2">Email</th>
+							<th rowspan="2"></th>
+						</tr>
+						<tr>
+							<th>Mã số</th>
+							<th>Tên sản phẩm</th>
+							<th>Số lượng</th>
+							<th>Tổng tiền</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1002</td>
+							<td>20/04/2015 10:20</td>
+							<td><span class='waiting'>Chờ xử lý</span></td>
+							<td>235</td>
+							<td>Bánh kem banana</td>
+							<td>1</td>
+							<td>345000đ</td>
+							<td>Haric Silver</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>2234</td>
+							<td>04/01/2015 10:20</td>
+							<td><span class='approve'>Đã xác nhận</span></td>
+							<td colspan="3" class="more">...</td>
+							<td>345000đ</td>
+							<td>Keycode</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>2343</td>
+							<td>30/04/2015 10:20</td>
+							<td><span class='waiting'>Chờ xử lý</span></td>
+							<td>232</td>
+							<td>Bánh kem chuối Bánh kem chuối</td>
+							<td>9</td>
+							<td>345000đ</td>
+							<td>Heo rừng</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>1234</td>
+							<td>19/02/2015 10:20</td>
+							<td><span class='approve'>Đã xác nhận</span></td>
+							<td colspan="3" class="more">...</td>
+							<td>345000đ</td>
+							<td>Không xác định được là không xác đinh được oh là la la
+								lá làKhông xác định được là không xác đinh được oh là la la lá
+								là</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>1234</td>
+							<td>19/02/2015 10:20</td>
+							<td><span class='approve'>Đã xác nhận</span></td>
+							<td colspan="3" class="more">...</td>
+							<td>345000đ</td>
+							<td>Không xác định được là không xác đinh được oh là la la
+								lá làKhông xác định được là không xác đinh được oh là la la lá
+								là</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<!--double test-->
+						<tr>
+							<td>1002</td>
+							<td>20/04/2015 10:20</td>
+							<td><span class='waiting'>Chờ xử lý</span></td>
+							<td>235</td>
+							<td>Bánh kem banana</td>
+							<td>1</td>
+							<td>345000đ</td>
+							<td>Haric Silver</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>2234</td>
+							<td>04/01/2015 10:20</td>
+							<td><span class='approve'>Đã xác nhận</span></td>
+							<td colspan="3" class="more">...</td>
+							<td>345000đ</td>
+							<td>Keycode</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>2343</td>
+							<td>30/04/2015 10:20</td>
+							<td><span class='waiting'>Chờ xử lý</span></td>
+							<td>232</td>
+							<td>Bánh kem chuối Bánh kem chuối</td>
+							<td>9</td>
+							<td>345000đ</td>
+							<td>Heo rừng</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>1234</td>
+							<td>19/02/2015 10:20</td>
+							<td><span class='approve'>Đã xác nhận</span></td>
+							<td colspan="3" class="more">...</td>
+							<td>345000đ</td>
+							<td>Không xác định được là không xác đinh được oh là la la
+								lá làKhông xác định được là không xác đinh được oh là la la lá
+								là</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>1234</td>
+							<td>19/02/2015 10:20</td>
+							<td><span class='approve'>Đã xác nhận</span></td>
+							<td colspan="3" class="more">...</td>
+							<td>345000đ</td>
+							<td>Không xác định được là không xác đinh được oh là la la
+								lá làKhông xác định được là không xác đinh được oh là la la lá
+								là</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>1002</td>
+							<td>20/04/2015 10:20</td>
+							<td><span class='waiting'>Chờ xử lý</span></td>
+							<td>235</td>
+							<td>Bánh kem banana</td>
+							<td>1</td>
+							<td>345000đ</td>
+							<td>Haric Silver</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>2234</td>
+							<td>04/01/2015 10:20</td>
+							<td><span class='approve'>Đã xác nhận</span></td>
+							<td colspan="3" class="more">...</td>
+							<td>345000đ</td>
+							<td>Keycode</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>2343</td>
+							<td>30/04/2015 10:20</td>
+							<td><span class='waiting'>Chờ xử lý</span></td>
+							<td>232</td>
+							<td>Bánh kem chuối Bánh kem chuối</td>
+							<td>9</td>
+							<td>345000đ</td>
+							<td>Heo rừng</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>1234</td>
+							<td>19/02/2015 10:20</td>
+							<td><span class='approve'>Đã xác nhận</span></td>
+							<td colspan="3" class="more">...</td>
+							<td>345000đ</td>
+							<td>Không xác định được là không xác đinh được oh là la la
+								lá làKhông xác định được là không xác đinh được oh là la la lá
+								là</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>1234</td>
+							<td>19/02/2015 10:20</td>
+							<td><span class='approve'>Đã xác nhận</span></td>
+							<td colspan="3" class="more">...</td>
+							<td>345000đ</td>
+							<td>Không xác định được là không xác đinh được oh là la la
+								lá làKhông xác định được là không xác đinh được oh là la la lá
+								là</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>1002</td>
+							<td>20/04/2015 10:20</td>
+							<td><span class='waiting'>Chờ xử lý</span></td>
+							<td>235</td>
+							<td>Bánh kem banana</td>
+							<td>1</td>
+							<td>345000đ</td>
+							<td>Haric Silver</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>2234</td>
+							<td>04/01/2015 10:20</td>
+							<td><span class='approve'>Đã xác nhận</span></td>
+							<td colspan="3" class="more">...</td>
+							<td>345000đ</td>
+							<td>Keycode</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>2343</td>
+							<td>30/04/2015 10:20</td>
+							<td><span class='waiting'>Chờ xử lý</span></td>
+							<td>232</td>
+							<td>Bánh kem chuối Bánh kem chuối</td>
+							<td>9</td>
+							<td>345000đ</td>
+							<td>Heo rừng</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>1234</td>
+							<td>19/02/2015 10:20</td>
+							<td><span class='approve'>Đã xác nhận</span></td>
+							<td colspan="3" class="more">...</td>
+							<td>345000đ</td>
+							<td>Không xác định được là không xác đinh được oh là la la
+								lá làKhông xác định được là không xác đinh được oh là la la lá
+								là</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>1234</td>
+							<td>19/02/2015 10:20</td>
+							<td><span class='approve'>Đã xác nhận</span></td>
+							<td colspan="3" class="more">...</td>
+							<td>345000đ</td>
+							<td>Không xác định được là không xác đinh được oh là la la
+								lá làKhông xác định được là không xác đinh được oh là la la lá
+								là</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>1002</td>
+							<td>20/04/2015 10:20</td>
+							<td><span class='waiting'>Chờ xử lý</span></td>
+							<td>235</td>
+							<td>Bánh kem banana</td>
+							<td>1</td>
+							<td>345000đ</td>
+							<td>Haric Silver</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>2234</td>
+							<td>04/01/2015 10:20</td>
+							<td><span class='approve'>Đã xác nhận</span></td>
+							<td colspan="3" class="more">...</td>
+							<td>345000đ</td>
+							<td>Keycode</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>2343</td>
+							<td>30/04/2015 10:20</td>
+							<td><span class='waiting'>Chờ xử lý</span></td>
+							<td>232</td>
+							<td>Bánh kem chuối Bánh kem chuối</td>
+							<td>9</td>
+							<td>345000đ</td>
+							<td>Heo rừng</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>1234</td>
+							<td>19/02/2015 10:20</td>
+							<td><span class='approve'>Đã xác nhận</span></td>
+							<td colspan="3" class="more">...</td>
+							<td>345000đ</td>
+							<td>Không xác định được là không xác đinh được oh là la la
+								lá làKhông xác định được là không xác đinh được oh là la la lá
+								là</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+						<tr>
+							<td>1234</td>
+							<td>19/02/2015 10:20</td>
+							<td><span class='approve'>Đã xác nhận</span></td>
+							<td colspan="3" class="more">...</td>
+							<td>345000đ</td>
+							<td>Không xác định được là không xác đinh được oh là la la
+								lá làKhông xác định được là không xác đinh được oh là la la lá
+								là</td>
+							<td>09000900909</td>
+							<td>Không có</td>
+							<td>Không có</td>
+							<td><a class='btn view' href='#' title="View detail"></a><a
+								class='btn edit' href='#' title="Edit"></a><a class='btn delete'
+								href='#' title="Delete"></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div id="tab2" class="tab_content">
+				<h2>Heading 2</h2>
+				<p>Content 2</p>
+			</div>
+			<div id="tab3" class="tab_content">
+				<h2>Heading 3</h2>
+				<p>Content 3</p>
+			</div>
+			<div id="tab4" class="tab_content">
+				<h2>Heading 4</h2>
+				<p>Content 4</p>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
