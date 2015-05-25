@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Brownies Bakery</title>
@@ -241,8 +242,8 @@ a:hover {
 </h:head>
 <h:body>
 	<f:view>
-
-		<!-- <div id="fb-root"></div>
+		<h:form>
+			<!-- <div id="fb-root"></div>
 	<script>(function(d, s, id) {
  	 var js, fjs = d.getElementsByTagName(s)[0];
  	 if (d.getElementById(id)) return;
@@ -251,35 +252,35 @@ a:hover {
  	 fjs.parentNode.insertBefore(js, fjs);
 }	(document, 'script', 'facebook-jssdk'));</script>  -->
 
-		<div id='div-menu'>
-			<div class='div-mn-left'>
-				<a href='#'><h:graphicImage value="images/icon.png"
-						style="height: 40px; cursor: pointer" /></a>
-				<ul class='ul-mn'>
-					<!--<li><a href="#">Home</a></li>-->
-					<li><a href="#">Order</a></li>
-					<li><a href="#">News</a>
-						<div class='div-submenu'>
-							<span class='caret'></span>
-							<ul class='submenu-1'>
-								<li><a href="#">Sale</a></li>
-								<li><a href="#">Promotions</a></li>
-							</ul>
-						</div></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Contact</a></li>
-				</ul>
-			</div>
-			<div class='div-mn-mid'>
-				<div class='div-search'>
-					<h:inputText type="text" placeholder="Search here..." />
-					<button class='btn-search'></button>
-					<div class='div-search-adv'>
-						<span class='caret'></span>
-					</div>
+			<div id='div-menu'>
+				<div class='div-mn-left'>
+					<a href='#'><h:graphicImage value="images/icon.png"
+							style="height: 40px; cursor: pointer" /></a>
+					<ul class='ul-mn'>
+						<!--<li><a href="#">Home</a></li>-->
+						<li><a href="#">Order</a></li>
+						<li><a href="#">News</a>
+							<div class='div-submenu'>
+								<span class='caret'></span>
+								<ul class='submenu-1'>
+									<li><a href="#">Sale</a></li>
+									<li><a href="#">Promotions</a></li>
+								</ul>
+							</div></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
 				</div>
-				<!--style search textbox-->
-				<style type='text/css'>
+				<div class='div-mn-mid'>
+					<div class='div-search'>
+						<h:inputText type="text" placeholder="Search here..." />
+						<button class='btn-search'></button>
+						<div class='div-search-adv'>
+							<span class='caret'></span>
+						</div>
+					</div>
+					<!--style search textbox-->
+					<style type='text/css'>
 .div-search-adv {
 	min-height: 180px;
 	min-width: 360px;
@@ -297,72 +298,73 @@ a:hover {
 	top: -7px;
 }
 </style>
-				<script type='text/javascript'>
+					<script type='text/javascript'>
 					$(document).ready(function(e) {
 						$('.btn-search').click(function(e) {
 							$('.div-search-adv').stop().slideToggle(50);
 						});
 					});
 				</script>
-			</div>
-			<div class='div-mn-right'>
-				<!--<ul>
+				</div>
+				<div class='div-mn-right'>
+					<!--<ul>
       <li><a href="#" id="login">Login</a></li>
       <li><a href="#">Register</a></li>
     </ul>-->
-				<div class="shopping-cart">
-					<span class='c-price'>22.550.000 VND</span> <span class='amount'>3</span>
-					<span class="arrow-bottom"></span> <span class='caret'></span>
-					<div class='cart-detail'>
-						<table class='items'>
-							<tr>
-								<td><h:graphicImage value="images/1.jpg" /></td>
-								<td><a href='#'>Banh kem sieu ngon</a></td>
-								<td>x1</td>
-								<td>500.000 VND</td>
-								<td><h:button class='btn del' value="x"></h:button></td>
-							</tr>
-							<tr>
-								<td><h:graphicImage value="images/2.jpg" /></td>
-								<td title="Banh kem sieu ngon, khong ngon khong lay tien luon"><a
-									href='#'>Banh kem sieu ngon, khong ngon khong lay tien luon</a></td>
-								<td>x1000</td>
-								<td>19.500.000 VND</td>
-								<td><h:button class='btn del' value="x"></h:button></td>
-							</tr>
-							<tr>
-								<td><h:graphicImage value="images/3.jpg" /></td>
-								<td><a href='#'>Banh kem sieu ngon</a></td>
-								<td>x1</td>
-								<td>500.000 VND</td>
-								<td><h:button class='btn del' value="x"></h:button></td>
-							</tr>
-						</table>
-						<table class='payment'>
-							<tr>
-								<td>Total:</td>
-								<td>20.500.000 VND</td>
-							</tr>
-							<tr>
-								<td>VAT(10%):</td>
-								<td>2.050.000 VND</td>
-							</tr>
-							<tr>
-								<td>Payment:</td>
-								<td>22.550.000 VND</td>
-							</tr>
-							<tr>
-								<td colspan="2"><h:button class='btn money'
-										value="View Cart"></h:button> <h:button class='btn money'
-										value="Checkout"></h:button></td>
-							</tr>
-						</table>
+					<div class="shopping-cart">
+						<span class='c-price'>22.550.000 VND</span> <span class='amount'>3</span>
+						<span class="arrow-bottom"></span> <span class='caret'></span>
+						<div class='cart-detail'>
+							<table class='items'>
+								<tr>
+									<td><h:graphicImage value="images/1.jpg" /></td>
+									<td><a href='#'>Banh kem sieu ngon</a></td>
+									<td>x1</td>
+									<td>500.000 VND</td>
+									<td><h:button class='btn del' value="x"></h:button></td>
+								</tr>
+								<tr>
+									<td><h:graphicImage value="images/2.jpg" /></td>
+									<td title="Banh kem sieu ngon, khong ngon khong lay tien luon"><a
+										href='#'>Banh kem sieu ngon, khong ngon khong lay tien
+											luon</a></td>
+									<td>x1000</td>
+									<td>19.500.000 VND</td>
+									<td><h:button class='btn del' value="x"></h:button></td>
+								</tr>
+								<tr>
+									<td><h:graphicImage value="images/3.jpg" /></td>
+									<td><a href='#'>Banh kem sieu ngon</a></td>
+									<td>x1</td>
+									<td>500.000 VND</td>
+									<td><h:button class='btn del' value="x"></h:button></td>
+								</tr>
+							</table>
+							<table class='payment'>
+								<tr>
+									<td>Total:</td>
+									<td>20.500.000 VND</td>
+								</tr>
+								<tr>
+									<td>VAT(10%):</td>
+									<td>2.050.000 VND</td>
+								</tr>
+								<tr>
+									<td>Payment:</td>
+									<td>22.550.000 VND</td>
+								</tr>
+								<tr>
+									<td colspan="2"><h:button class='btn money'
+											value="View Cart"></h:button> <h:button class='btn money'
+											value="Checkout"></h:button></td>
+								</tr>
+							</table>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<!--style shopping cart-->
-			<style type='text/css'>
+				<!--style shopping cart-->
+				<style type='text/css'>
 .shopping-cart {
 	line-height: 42px;
 	position: relative;
@@ -543,7 +545,7 @@ a:hover {
 	font-weight: bold;
 }
 </style>
-			<!--<script type='text/javascript'>
+				<!--<script type='text/javascript'>
   $(document).ready(function(e) {
     $('#login').openDialog({
 			title: 'Đăng nhập',
@@ -554,23 +556,23 @@ a:hover {
 		});
   });
   </script>-->
-		</div>
-		<!--ads slider-->
-		<div class='ads-slider'>
-			<div class="flexslider">
-				<ul class="slides">
-					<li><h:graphicImage value="images/1.jpg" /></li>
-					<li><h:graphicImage value="images/2.jpg" /></li>
-					<li><h:graphicImage value="images/3.jpg" /></li>
-					<li><h:graphicImage value="images/4.jpg" /></li>
-					<li><h:graphicImage value="images/index.jpg" /></li>
-				</ul>
 			</div>
-		</div>
-		<!--end slider-->
+			<!--ads slider-->
+			<div class='ads-slider'>
+				<div class="flexslider">
+					<ul class="slides">
+						<li><h:graphicImage value="images/1.jpg" /></li>
+						<li><h:graphicImage value="images/2.jpg" /></li>
+						<li><h:graphicImage value="images/3.jpg" /></li>
+						<li><h:graphicImage value="images/4.jpg" /></li>
+						<li><h:graphicImage value="images/index.jpg" /></li>
+					</ul>
+				</div>
+			</div>
+			<!--end slider-->
 
-		<!--wrapper-->
-		<style type='text/css'>
+			<!--wrapper-->
+			<style type='text/css'>
 /*format wrapper*/
 .wrapper {
 	padding-top: 18px;
@@ -825,95 +827,95 @@ a:hover {
 }
 </style>
 
-		<div class='wrapper'>
-			<div class='wrapper-left'>
-				<div class='wpl-content'>
-					<span class='box-top-right'>Sale</span>
-					<div class='wpl-item'
-						title="Banh kem sinh nhat cua thang quang teo">
-						<h:graphicImage value="images/1.jpg" />
-						<div class='wpl-item-content'>
-							<p>Banh kem sinh nhat cua thang quang teo</p>
-							<span class='p-price'>350.000 VND</span>
+			<div class='wrapper'>
+				<div class='wrapper-left'>
+					<div class='wpl-content'>
+						<span class='box-top-right'>Sale</span>
+						<div class='wpl-item'
+							title="Banh kem sinh nhat cua thang quang teo">
+							<h:graphicImage value="images/1.jpg" />
+							<div class='wpl-item-content'>
+								<p>Banh kem sinh nhat cua thang quang teo</p>
+								<span class='p-price'>350.000 VND</span>
+							</div>
+						</div>
+						<div class='wpl-item'>
+							<h:graphicImage value="images/2.jpg" />
+							<div class='wpl-item-content'>
+								<p>Banh kem sinh nhat</p>
+								<span class='p-price'>350.000 VND</span>
+							</div>
+						</div>
+						<div class='wpl-item'>
+							<h:graphicImage
+								value="images/bi-mat-yeu-thuong-tu-banh-kem-lanh-baskin-robbins.jpg" />
+							<div class='wpl-item-content'>
+								<p>Banh kem sinh nhat</p>
+								<span class='p-price'>350.000 VND</span>
+							</div>
 						</div>
 					</div>
-					<div class='wpl-item'>
-						<h:graphicImage value="images/2.jpg" />
-						<div class='wpl-item-content'>
-							<p>Banh kem sinh nhat</p>
-							<span class='p-price'>350.000 VND</span>
+					<div class='wpl-content'>
+						<span class='box-top-right'>Offer</span>
+						<div class='wpl-item'>
+							<h:graphicImage value="images/1.jpg" />
+							<div class='wpl-item-content'>
+								<p>Banh kem sinh nhat</p>
+								<span class='p-price'>350.000 VND</span>
+							</div>
+						</div>
+						<div class='wpl-item'>
+							<h:graphicImage value="images/2.jpg" />
+							<div class='wpl-item-content'>
+								<p>Banh kem sinh nhat</p>
+								<span class='p-price'>350.000 VND</span>
+							</div>
+						</div>
+						<div class='wpl-item'>
+							<h:graphicImage
+								value="images/bi-mat-yeu-thuong-tu-banh-kem-lanh-baskin-robbins.jpg" />
+							<div class='wpl-item-content'>
+								<p>Banh kem sinh nhat</p>
+								<span class='p-price'>350.000 VND</span>
+							</div>
 						</div>
 					</div>
-					<div class='wpl-item'>
-						<h:graphicImage
-							value="images/bi-mat-yeu-thuong-tu-banh-kem-lanh-baskin-robbins.jpg" />
-						<div class='wpl-item-content'>
-							<p>Banh kem sinh nhat</p>
-							<span class='p-price'>350.000 VND</span>
+					<div class='wpl-content'>
+						<span class='box-top-right'>New</span>
+						<div class='wpl-item'>
+							<h:graphicImage value="images/1.jpg" />
+							<div class='wpl-item-content'>
+								<p>Banh kem sinh nhat</p>
+								<span class='p-price'>350.000 VND</span>
+							</div>
+						</div>
+						<div class='wpl-item'>
+							<h:graphicImage value="images/2.jpg" />
+							<div class='wpl-item-content'>
+								<p>Banh kem sinh nhat</p>
+								<span class='p-price'>350.000 VND</span>
+							</div>
+						</div>
+						<div class='wpl-item'>
+							<h:graphicImage
+								value="images/bi-mat-yeu-thuong-tu-banh-kem-lanh-baskin-robbins.jpg" />
+							<div class='wpl-item-content'>
+								<p>Banh kem sinh nhat</p>
+								<span class='p-price'>350.000 VND</span>
+							</div>
+						</div>
+						<div class='wpl-item'>
+							<h:graphicImage value="images/2.jpg" />
+							<div class='wpl-item-content'>
+								<p>Banh kem sinh nhat</p>
+								<span class='p-price'>350.000 VND</span>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div class='wpl-content'>
-					<span class='box-top-right'>Offer</span>
-					<div class='wpl-item'>
-						<h:graphicImage value="images/1.jpg" />
-						<div class='wpl-item-content'>
-							<p>Banh kem sinh nhat</p>
-							<span class='p-price'>350.000 VND</span>
-						</div>
-					</div>
-					<div class='wpl-item'>
-						<h:graphicImage value="images/2.jpg" />
-						<div class='wpl-item-content'>
-							<p>Banh kem sinh nhat</p>
-							<span class='p-price'>350.000 VND</span>
-						</div>
-					</div>
-					<div class='wpl-item'>
-						<h:graphicImage
-							value="images/bi-mat-yeu-thuong-tu-banh-kem-lanh-baskin-robbins.jpg" />
-						<div class='wpl-item-content'>
-							<p>Banh kem sinh nhat</p>
-							<span class='p-price'>350.000 VND</span>
-						</div>
-					</div>
-				</div>
-				<div class='wpl-content'>
-					<span class='box-top-right'>New</span>
-					<div class='wpl-item'>
-						<h:graphicImage value="images/1.jpg" />
-						<div class='wpl-item-content'>
-							<p>Banh kem sinh nhat</p>
-							<span class='p-price'>350.000 VND</span>
-						</div>
-					</div>
-					<div class='wpl-item'>
-						<h:graphicImage value="images/2.jpg" />
-						<div class='wpl-item-content'>
-							<p>Banh kem sinh nhat</p>
-							<span class='p-price'>350.000 VND</span>
-						</div>
-					</div>
-					<div class='wpl-item'>
-						<h:graphicImage
-							value="images/bi-mat-yeu-thuong-tu-banh-kem-lanh-baskin-robbins.jpg" />
-						<div class='wpl-item-content'>
-							<p>Banh kem sinh nhat</p>
-							<span class='p-price'>350.000 VND</span>
-						</div>
-					</div>
-					<div class='wpl-item'>
-						<h:graphicImage value="images/2.jpg" />
-						<div class='wpl-item-content'>
-							<p>Banh kem sinh nhat</p>
-							<span class='p-price'>350.000 VND</span>
-						</div>
-					</div>
-				</div>
-			</div>
 
-			<!--scrip show detail images of produce-->
-			<script type='text/javascript'>
+				<!--scrip show detail images of produce-->
+				<script type='text/javascript'>
 				$(document).ready(function(e) {
 					$('.detail-icon').openDialog({
 						title : 'Produce name and price',
@@ -924,10 +926,37 @@ a:hover {
 				});
 			</script>
 
-			<div class='wrapper-right'>
-				<!--wpr content-->
-				<div class='wpr-content'>
-					<div class='wpr-item'
+				<div class='wrapper-right'>
+					<!--wpr content-->
+					<div class='wpr-content'>
+						<c:forEach items="${productDAO.listProducts}" var="item">
+							<div class='wpr-item' title="${item.name}">
+								<c:if test="#{item.sale}">
+									<span class='sale'></span>
+								</c:if>
+								<h:graphicImage value="images/${item.mainImage}" />
+								<div class='wpr-item-content'>
+									<p class='title'>${item.name}</p>
+									<div class='box-price'>
+										<c:if test="#{item.sale}">
+											<span class='sale-price'><h:outputText
+													value="#{item.oldPrice}">
+													<f:convertNumber pattern="#,##0" locale="vi" />
+												</h:outputText><span class="currency"> VND</span></span>
+										</c:if>
+										<span class='price'><h:outputText value="#{item.price}">
+												<f:convertNumber pattern="#,##0" locale="vi" />
+											</h:outputText> </span> <span class='currency'> VND</span> <a class='cart-icon'
+											title="Add to cart"></a> <a class='detail-icon'
+											title="View detail"></a> <a class='share-icon'
+											title="Share..."></a><a class='detail-icon'
+											title="View detail"></a> <a class='share-icon'
+											title="Share..."></a>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+						<!-- <div class='wpr-item'
 						title="Banh kem day tay Banh kem day tayBanh kem day tayBanh kem day tayBanh kem day tay">
 						<span class='sale'></span>
 						<h:graphicImage value="images/1.jpg" />
@@ -1170,13 +1199,13 @@ a:hover {
 									class='share-icon' title="Share..."></a>
 							</div>
 						</div>
+					</div> -->
+						<!--end content-->
 					</div>
-					<!--end content-->
 				</div>
 			</div>
-		</div>
-		<!--bottom-->
-		<style type='text/css'>
+			<!--bottom-->
+			<style type='text/css'>
 /*format bottom*/
 #bottom {
 	clear: both;
@@ -1290,49 +1319,51 @@ translateY
 	float: right;
 }
 </style>
-		<div class='clr'></div>
-		<div id='info'>
-			<div class='ileft'>
-				Liên hệ:
-				<p>
-					<a href="#" class="hvr-wobble-vertical"><h:graphicImage
-							alt="phone" value="images/social-icons/Phone.png" width="22px"
-							height="22px" /></a> 0989899999 (Mr.Cường) - 06513456898 <a href="#"
-						class="hvr-wobble-vertical"><h:graphicImage alt="email"
-							value="images/social-icons/email1.png" width="24px" height="24px" /></a>
-					Haric.Silver@gmail.com
-				</p>
-				<a href="#" class="hvr-wobble-vertical"><h:graphicImage alt=""
-						value="images/social-icons/thacmac.png" width="22px" height="22px" /></a>
-				258 Đỗ Xuân Hợp - Phước Long A - Quận 9 - Tp.HCM
+			<div class='clr'></div>
+			<div id='info'>
+				<div class='ileft'>
+					Liên hệ:
+					<p>
+						<a href="#" class="hvr-wobble-vertical"><h:graphicImage
+								alt="phone" value="images/social-icons/Phone.png" width="22px"
+								height="22px" /></a> 0989899999 (Mr.Cường) - 06513456898 <a
+							href="#" class="hvr-wobble-vertical"><h:graphicImage
+								alt="email" value="images/social-icons/email1.png" width="24px"
+								height="24px" /></a> Haric.Silver@gmail.com
+					</p>
+					<a href="#" class="hvr-wobble-vertical"><h:graphicImage alt=""
+							value="images/social-icons/thacmac.png" width="22px"
+							height="22px" /></a> 258 Đỗ Xuân Hợp - Phước Long A - Quận 9 -
+					Tp.HCM
+				</div>
+				<div class='iright'>
+					<p>Follow us:</p>
+					<a href="http://facebook.com" class="hvr-wobble-vertical"><h:graphicImage
+							alt="email" value="images/social-icons/fb.png" width="24px"
+							height="24px" /></a> <a href="#" class="hvr-wobble-vertical"><h:graphicImage
+							alt="email" value="images/social-icons/tw1.png" width="24px"
+							height="24px" /></a> <a href="#" class="hvr-wobble-vertical"><h:graphicImage
+							alt="email" value="images/social-icons/g.png" width="24px"
+							height="24px" /></a> <a href="#" class="hvr-wobble-vertical"><h:graphicImage
+							alt="bing" value="images/social-icons/bing.png" width="24px"
+							height="24px" /></a> <a href="#" class="hvr-wobble-vertical"><h:graphicImage
+							alt="youtube" value="images/social-icons/y.png" width="24px"
+							height="24px" /></a>
+				</div>
+				<div id='bottom'>
+					<p>Copy right © 2014-2015 by 2school.vn - XHTML Valid</p>
+				</div>
 			</div>
-			<div class='iright'>
-				<p>Follow us:</p>
-				<a href="http://facebook.com" class="hvr-wobble-vertical"><h:graphicImage
-						alt="email" value="images/social-icons/fb.png" width="24px"
-						height="24px" /></a> <a href="#" class="hvr-wobble-vertical"><h:graphicImage
-						alt="email" value="images/social-icons/tw1.png" width="24px"
-						height="24px" /></a> <a href="#" class="hvr-wobble-vertical"><h:graphicImage
-						alt="email" value="images/social-icons/g.png" width="24px"
-						height="24px" /></a> <a href="#" class="hvr-wobble-vertical"><h:graphicImage
-						alt="bing" value="images/social-icons/bing.png" width="24px"
-						height="24px" /></a> <a href="#" class="hvr-wobble-vertical"><h:graphicImage
-						alt="youtube" value="images/social-icons/y.png" width="24px"
-						height="24px" /></a>
+			<div class="fb-page" data-href="https://www.facebook.com/TeaMobi"
+				data-hide-cover="true" data-show-facepile="true"
+				data-show-posts="false">
+				<div class="fb-xfbml-parse-ignore">
+					<blockquote cite="https://www.facebook.com/TeaMobi">
+						<a href="https://www.facebook.com/TeaMobi">TeaMobi</a>
+					</blockquote>
+				</div>
 			</div>
-			<div id='bottom'>
-				<p>Copy right © 2014-2015 by 2school.vn - XHTML Valid</p>
-			</div>
-		</div>
-		<div class="fb-page" data-href="https://www.facebook.com/TeaMobi"
-			data-hide-cover="true" data-show-facepile="true"
-			data-show-posts="false">
-			<div class="fb-xfbml-parse-ignore">
-				<blockquote cite="https://www.facebook.com/TeaMobi">
-					<a href="https://www.facebook.com/TeaMobi">TeaMobi</a>
-				</blockquote>
-			</div>
-		</div>
+		</h:form>
 	</f:view>
 </h:body>
 </html>
