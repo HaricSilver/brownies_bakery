@@ -1,0 +1,253 @@
+@CHARSET "UTF-8";
+/*format wrapper*/
+.wrapper {
+	padding-top: 18px;
+	width: 1257px;
+	margin: auto;
+}
+
+.wrapper-left,.wrapper-right {
+	float: left;
+	min-height: 500px;
+	padding: 5px;
+}
+
+.wrapper-left {
+	width: 300px;
+}
+
+.box-top-right {
+	background: none repeat scroll 0 0 #00ccff;
+	height: 18px;
+	line-height: 18px;
+	position: absolute;
+	left: -1px;
+	top: -1px;
+	width: 80px;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 3px 0;
+}
+
+.wpl-content {
+	position: relative;
+	border: 1px dashed #00ccff;
+	margin-bottom: 5px;
+	/*min-height: 300px;*/
+	padding: 2px;
+	padding-top: 27px;
+	padding-bottom: 18px;
+}
+
+.wpl-item {
+	position: relative;
+	width: 288px;
+	height: 102px;
+	margin: auto;
+	padding: 3px;
+	border-radius: 2px;
+}
+
+.wpl-item:hover {
+	background: rgba(226, 226, 226, .5);
+}
+
+.wpl-item img {
+	width: 100px;
+	height: 100px;
+	border: 1px solid;
+	float: left;
+}
+
+.wpl-item-content {
+	width: 176px;
+	padding: 5px;
+	float: left;
+}
+
+.wpl-item-content p {
+	max-width: 182px;
+	max-height: 50px;
+	overflow: hidden;
+	font-size: 20px;
+	position: absolute;
+	bottom: 55px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.p-price {
+	position: absolute;
+	bottom: 18px;
+	padding: 5px;
+	border-radius: 3px;
+	border: 1px solid rgba(0, 102, 0, .6);
+	background: rgba(0, 128, 0, 0.6);;
+	font-weight: bold;
+}
+
+.p-price:hover {
+	background: rgba(0, 128, 0, 1);
+	border: 1px solid rgba(0, 102, 0, 1);
+}
+
+.clr {
+	clear: both;
+}
+/*format wrapper right*/
+.wrapper-right {
+	max-width: 942px;
+	padding-left: 0;
+}
+
+*.wpr-content {
+	
+}
+
+.wpr-item {
+	display: inline-block;
+	width: 300px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	padding: 2px;
+	padding-bottom: 52px;
+	border: 1px solid #E6E6E6;
+	border-radius: 1px;
+	position: relative;
+	background: rgba(192, 192, 192, 0.1);
+}
+
+.wpr-item:hover {
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.36);
+}
+
+.sale {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 68px;
+	height: 67px;
+	background: url(../images/sale.png);
+}
+
+.wpr-item img {
+	width: 300px;
+	height: 300px;
+}
+
+.title {
+	font-size: 18px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 200px;
+	/*margin: auto;*/
+}
+
+.box-price {
+	color: rgba(255, 0, 0, 1);
+	text-align: left;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.sale-price {
+	color: rgba(153, 153, 153, 1);
+	font-weight: normal;
+	text-decoration: line-through;
+}
+
+.wpr-item-content {
+	position: absolute;
+	padding: 5px;
+	padding-bottom: 0;
+	bottom: 0;
+	left: 0;
+	width: 295px;
+	height: 45px;
+	margin: 0 auto;
+	background-color: rgba(230, 230, 230, .3);
+	transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	border-top: 0 solid rgba(0, 0, 255, 0);
+	overflow: hidden;
+}
+
+.wpr-item-content:hover {
+	height: 270px;
+	background-color: rgba(255, 255, 255, 0.8);
+	border-top: 2px solid rgba(0, 0, 255, 0.5);
+}
+/*cart icon*/
+.cart-icon {
+	background: url("../images/cart_icon1.png") repeat-x scroll 45px 0
+		rgba(0, 0, 0, 0);
+	width: 45px;
+	height: 45px;
+	position: absolute;
+	right: 2px;
+	bottom: 2px;
+}
+
+.cart-icon:hover {
+	background-position: left 0;
+}
+
+.detail-icon {
+	background: url("../images/detail.png") repeat-x scroll 0 0
+		rgba(0, 0, 0, 0);
+	width: 45px;
+	height: 45px;
+	position: absolute;
+	left: -45px;
+	bottom: 2px;
+	opacity: 0;
+	transition: left 0.7s ease;
+	-moz-transition: left 0.7s ease;
+	-webkit-transition: left 0.7s ease;
+	-o-transition: left 0.7s ease;
+}
+
+.detail-icon:hover {
+	background-position: right 0;
+}
+
+.wpr-item-content:hover .detail-icon {
+	left: 207px;
+	opacity: 1;
+	transition: left 1.2s ease, opacity 1.5s ease;
+	-moz-transition: left 1.2s ease, opacity 1.5s ease;
+	-webkit-transition: left 1.2s ease, opacity 1.5s ease;
+	-o-transition: left 1.2s ease, opacity 1.5s ease;
+}
+
+.share-icon {
+	background: url("../images/share.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+	width: 45px;
+	height: 45px;
+	position: absolute;
+	left: -90px;
+	bottom: 2px;
+	opacity: 0;
+	transition: left 0.7s ease;
+	-moz-transition: left 0.7s ease;
+	-webkit-transition: left 0.7s ease;
+	-o-transition: left 0.7s ease;
+}
+
+.share-icon:hover {
+	background-position: right 0;
+}
+
+.wpr-item-content:hover .share-icon {
+	left: 156px;
+	opacity: 1;
+	transition: left 1.8s ease, opacity 1.5s ease;
+	-moz-transition: left 1.8s ease, opacity 1.5s ease;
+	-webkit-transition: left 1.8s ease, opacity 1.5s ease;
+	-o-transition: left 1.8s ease, opacity 1.5s ease;
+}

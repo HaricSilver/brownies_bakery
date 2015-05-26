@@ -1,27 +1,50 @@
 package dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import model.Product;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import util.HibernateUtil;
-import model.Product;
 
 @ManagedBean
 @SessionScoped
-public class ProductDAO {
+public class ProductDAO implements Serializable {
+	private static final long serialVersionUID = -1522920608554312313L;
 
 	public ProductDAO() {
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Product> getListProducts() {
 		Session session = beginTransaction();
-		@SuppressWarnings("unchecked")
 		List<Product> list = session.createCriteria(Product.class).list();
+		commitTransaction(session);
+		return list;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Product> listSale(int amount) {
+		Session session = beginTransaction();
+		Query query = session.createQuery("from Product p where p.sale=1");
+		query.setMaxResults(amount);
+		List<Product> list = query.list();
+		commitTransaction(session);
+		return list;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Product> listNew(int amount) {
+		Session session = beginTransaction();
+		Query query = session.createQuery("from Product p order by p.id desc");
+		List<Product> list = query.list();
 		commitTransaction(session);
 		return list;
 	}

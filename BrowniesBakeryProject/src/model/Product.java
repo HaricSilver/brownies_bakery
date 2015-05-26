@@ -1,12 +1,16 @@
 package model;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Product {
+public class Product implements Serializable {
+	private static final long serialVersionUID = -6639788924915793414L;
 	private long id;
 	private String name;
 	private String mainImage;
@@ -28,6 +32,7 @@ public class Product {
 		this.id = id;
 	}
 
+	@Column(nullable = false)
 	public String getName() {
 		return name;
 	}
@@ -36,6 +41,7 @@ public class Product {
 		this.name = name;
 	}
 
+	@Column(nullable = false)
 	public String getMainImage() {
 		return mainImage;
 	}
