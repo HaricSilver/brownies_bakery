@@ -44,9 +44,24 @@ public class ProductDAO implements Serializable {
 	public List<Product> listNew(int amount) {
 		Session session = beginTransaction();
 		Query query = session.createQuery("from Product p order by p.id desc");
+		query.setMaxResults(amount);
 		List<Product> list = query.list();
 		commitTransaction(session);
 		return list;
+	}
+
+	@SuppressWarnings("unchecked")
+	public double getOldPrice(long id) {
+		Session session = beginTransaction();
+		Query query = session
+				.createQuery("select p.price from HisProduct p where p.product.id = :pid order by p.dateChange desc");
+		query.setParameter("pid", id);
+		query.setMaxResults(1);
+
+		List<Double> list = query.list();
+
+		commitTransaction(session);
+		return (list.isEmpty()) ? -1 : list.get(0).doubleValue();
 	}
 
 	private Session beginTransaction() {

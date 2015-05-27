@@ -2,12 +2,13 @@ package model;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 @ManagedBean
@@ -28,10 +28,11 @@ public class Bill implements Serializable {
 	private String recipient;
 	private Calendar createDate;
 	private Calendar deliveryDate;
-	private List<Product> products;
+	private double totalCost;
+	private Map<Product, Integer> products;
 
 	public Bill() {
-		this.products = new LinkedList<Product>();
+		this.products = new HashMap<Product, Integer>();
 	}
 
 	@Id
@@ -89,18 +90,70 @@ public class Bill implements Serializable {
 		this.deliveryDate = deliveryDate;
 	}
 
-	@OneToMany
+	public double getTotalCost() {
+		return totalCost;
+	}
+
+	public void setTotalCost(double totalCost) {
+		this.totalCost = totalCost;
+	}
+
+	@ElementCollection
 	@JoinTable(name = "bill_detail")
-	public List<Product> getProducts() {
+	@Column(nullable = false)
+	public Map<Product, Integer> getProducts() {
 		return products;
 	}
 
-	public void setProducts(List<Product> products) {
+	public void setProducts(Map<Product, Integer> products) {
 		this.products = products;
 	}
 
-	public boolean emptyCart() {
+	public boolean checkEmptyCart() {
 		return (this.products.isEmpty());
+	}
+
+	public String addProduct(Product p) {
+		try {
+			for (Product product : this.products.keySet()) {
+				if (product.equals(p)) {
+					System.out.println("replace");
+					int previousValue = this.products.get(product).intValue();
+					this.products
+							.replace(product, new Integer(++previousValue));
+					return "";
+				}
+			}
+
+			System.out.println("put");
+			this.products.put(p, new Integer(1));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+
+	public String removeProduct(Product p) {
+		this.products.remove(p);
+		return "";
+	}
+
+	public int computeAmount() {
+		int amount = 0;
+		for (Integer ite : this.products.values())
+			amount += ite.intValue();
+
+		return amount;
+	}
+
+	public double updateCost() {
+		this.totalCost = 0;
+		for (Product product : this.products.keySet()) {
+			this.totalCost += (this.products.get(product).intValue() * product
+					.getPrice());
+		}
+		return this.totalCost;
 	}
 
 }

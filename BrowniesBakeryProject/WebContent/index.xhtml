@@ -83,64 +83,64 @@
 					</div>
 				</div>
 				<div class='div-mn-right'>
-					<a href="#" id="login">Login</a><font color="white">/</font><a
-						href="#">Register</a>
-					<div class="shopping-cart">
+					<c:choose>
+						<c:when test="${account.id>0}"></c:when>
+						<c:otherwise>
+							<a href="#" id="login">Login</a>
+							<font color="white">/</font>
+							<a href="#">Register</a>
+						</c:otherwise>
+					</c:choose>
+					<h:panelGroup id="shopping-cart" styleClass="shopping-cart"
+						layout="block">
 						<c:choose>
-							<c:when test="${!bill.emptyCart()}">
-								<span class='c-price'> <h:outputText value="#{bill.}">
+							<c:when test="${!bill.checkEmptyCart()}">
+								<span class='c-price'> <h:outputText
+										value="#{bill.updateCost()}">
 										<f:convertNumber pattern="#,##0đ" />
 									</h:outputText>
 								</span>
-								<span class='amount'>${bill.products.size()}</span>
+								<span class='amount'>${bill.computeAmount()}</span>
 							</c:when>
 							<c:otherwise>
 								<span class='c-price'>Empty cart</span>
 							</c:otherwise>
 						</c:choose>
-						<span class="arrow-bottom"></span> <span class='caret'></span>
+						<span class="arrow-bottom"></span>
+						<span class='caret'></span>
 						<div class='cart-detail'>
 							<c:choose>
-								<c:when test="${!bill.emptyCart()}">
+								<c:when test="${!bill.checkEmptyCart()}">
 									<table class='items'>
+										<c:forEach items="${bill.products.keySet()}" var="item">
+											<tr>
+												<td><h:graphicImage value="images/${item.mainImage}" /></td>
+												<td><a href='#'>${item.name}</a></td>
+												<td><h:outputText value="#{item.price}">
+														<f:convertNumber pattern="#,##0đ" />
+													</h:outputText></td>
+												<td>x${bill.products.get(item)}</td>
+												<td><h:outputText
+														value="#{bill.products.get(item).intValue() * item.price}">
+														<f:convertNumber pattern="#,##0đ" />
+													</h:outputText></td>
+												<td><h:commandButton class='btn del' value="x"
+														action="#{bill.removeProduct(item)}">
+														<f:ajax render="shopping-cart"></f:ajax>
+													</h:commandButton></td>
+											</tr>
+										</c:forEach>
 										<tr>
-											<td><h:graphicImage value="images/1.jpg" /></td>
-											<td><a href='#'>Banh kem sieu ngon</a></td>
-											<td>x1</td>
-											<td>500.000 VND</td>
-											<td><h:button class='btn del' value="x"></h:button></td>
-										</tr>
-										<tr>
-											<td><h:graphicImage value="images/2.jpg" /></td>
-											<td
-												title="Banh kem sieu ngon, khong ngon khong lay tien luon"><a
-												href='#'>Banh kem sieu ngon, khong ngon khong lay tien
-													luon</a></td>
-											<td>x1000</td>
-											<td>19.500.000 VND</td>
-											<td><h:button class='btn del' value="x"></h:button></td>
-										</tr>
-										<tr>
-											<td><h:graphicImage value="images/3.jpg" /></td>
-											<td><a href='#'>Banh kem sieu ngon</a></td>
-											<td>x1</td>
-											<td>500.000 VND</td>
-											<td><h:button class='btn del' value="x"></h:button></td>
+											<td colspan="4"
+												style="text-align: right; font-weight: bold; color: rgba(51, 51, 51, 1)">Total:</td>
+											<td style="text-align: right; font-size: 127%"><h:outputText
+													value="#{bill.totalCost}">
+													<f:convertNumber pattern="#,##0đ" />
+												</h:outputText></td>
+											<td></td>
 										</tr>
 									</table>
 									<table class='payment'>
-										<tr>
-											<td>Total:</td>
-											<td>20.500.000 VND</td>
-										</tr>
-										<tr>
-											<td>VAT(10%):</td>
-											<td>2.050.000 VND</td>
-										</tr>
-										<tr>
-											<td>Payment:</td>
-											<td>22.550.000 VND</td>
-										</tr>
 										<tr>
 											<td colspan="2"><h:button class='btn money'
 													value="View Cart"></h:button> <h:button class='btn money'
@@ -151,10 +151,8 @@
 								<c:otherwise>Empty shopping cart ^_^ Please log in to shopping</c:otherwise>
 							</c:choose>
 						</div>
-					</div>
+					</h:panelGroup>
 				</div>
-
-
 			</div>
 			<!--ads slider-->
 			<div class='ads-slider'>
@@ -243,14 +241,19 @@
 									<div class='box-price'>
 										<c:if test="#{item.sale}">
 											<span class='sale-price'><h:outputText
-													value="#{item.oldPrice}">
+													value="#{productDAO.getOldPrice(item.id)}">
 													<f:convertNumber pattern="#,##0đ" />
 												</h:outputText></span>
 										</c:if>
 										<span class='price'><h:outputText value="#{item.price}">
 												<f:convertNumber pattern="#,##0đ" />
-											</h:outputText> </span><a class='cart-icon' title="Add to cart"></a> <a
-											class='detail-icon' title="View detail"></a> <a
+											</h:outputText> </span>
+										<h:commandLink styleClass="cart-icon" title="Add to cart"
+											action="#{bill.addProduct(item)}">
+											<f:ajax render="shopping-cart"></f:ajax>
+										</h:commandLink>
+										<!-- <a class='cart-icon' title="Add to cart"></a> -->
+										<a class='detail-icon' title="View detail"></a> <a
 											class='share-icon' title="Share..."></a><a
 											class='detail-icon' title="View detail"></a> <a
 											class='share-icon' title="Share..."></a>

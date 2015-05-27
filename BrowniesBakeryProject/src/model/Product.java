@@ -13,9 +13,8 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = -6639788924915793414L;
 	private long id;
 	private String name;
-	private String mainImage;
-	private double oldPrice;
 	private double price;
+	private String mainImage;
 	private String[] images;
 	private boolean sale;
 
@@ -41,6 +40,14 @@ public class Product implements Serializable {
 		this.name = name;
 	}
 
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
 	@Column(nullable = false)
 	public String getMainImage() {
 		return mainImage;
@@ -48,22 +55,6 @@ public class Product implements Serializable {
 
 	public void setMainImage(String mainImage) {
 		this.mainImage = mainImage;
-	}
-
-	public double getOldPrice() {
-		return oldPrice;
-	}
-
-	public void setOldPrice(double oldPrice) {
-		this.oldPrice = oldPrice;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
 	}
 
 	public String[] getImages() {
@@ -80,6 +71,12 @@ public class Product implements Serializable {
 
 	public void setSale(boolean sale) {
 		this.sale = sale;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return (obj instanceof Product && ((Product) obj).id == this.id) ? true
+				: false;
 	}
 
 }

@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 @ManagedBean
@@ -18,12 +19,11 @@ import javax.persistence.OneToMany;
 public class User implements Serializable {
 	private static final long serialVersionUID = -7351729135012380019L;
 	private long id;
-	private String name;
-	private String password;
+	private Account account;
+	private String fullName;
 	private String email;
 	private String address;
 	private String phone;
-	private int type;
 	private List<Bill> bills;
 
 	public User() {
@@ -39,22 +39,22 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
+	@OneToOne
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
 	@Column(nullable = false)
-	public String getName() {
-		return name;
+	public String getFullName() {
+		return fullName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@Column(nullable=false)
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 	public String getEmail() {
@@ -65,7 +65,7 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-	@Column(nullable=false)
+	@Column(nullable = false)
 	public String getAddress() {
 		return address;
 	}
@@ -74,21 +74,13 @@ public class User implements Serializable {
 		this.address = address;
 	}
 
-	@Column(nullable=false)
+	@Column(nullable = false)
 	public String getPhone() {
 		return phone;
 	}
 
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-
-	public int getType() {
-		return type;
-	}
-
-	public void setType(int type) {
-		this.type = type;
 	}
 
 	@OneToMany(mappedBy = "user")

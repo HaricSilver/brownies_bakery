@@ -259,7 +259,7 @@ a:hover {
 }
 
 .cart-detail {
-	position: absolute;
+	min-width: 450px; position : absolute;
 	right: 0;
 	max-height: 0;
 	background: #fff;
@@ -271,6 +271,7 @@ a:hover {
 	-moz-transition: all .2s ease;
 	transition: all .2s ease;
 	padding: 5px;
+	position: absolute;
 }
 
 .shopping-cart:hover>.cart-detail {
@@ -351,6 +352,11 @@ a:hover {
 	border-bottom: 1px dashed rgba(204, 204, 204, 1);
 }
 
+.items tr:last-child td {
+	border-bottom: none;
+	padding: 18px 5px 9px 0;
+}
+
 .items td:nth-child(2) {
 	text-align: left;
 	max-width: 180px;
@@ -358,11 +364,11 @@ a:hover {
 	text-overflow: ellipsis;
 }
 
-.items td:nth-child(3) {
+.items td:nth-child(4) {
 	color: rgba(103, 103, 103, 1);
 }
 
-.items td:nth-child(4) {
+.items td:nth-child(5) {
 	text-align: right;
 }
 
@@ -378,6 +384,7 @@ a:hover {
 	width: 100%;
 	text-align: right;
 	padding: 5px 0;
+	padding-right: 27px;
 }
 
 .payment tr td:first-child {
