@@ -10,13 +10,10 @@ import model.Product;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
-
-import util.HibernateUtil;
 
 @ManagedBean
 @SessionScoped
-public class ProductDAO implements Serializable {
+public class ProductDAO extends AbsDAO implements Serializable {
 	private static final long serialVersionUID = -1522920608554312313L;
 
 	public ProductDAO() {
@@ -62,21 +59,5 @@ public class ProductDAO implements Serializable {
 
 		commitTransaction(session);
 		return (list.isEmpty()) ? -1 : list.get(0).doubleValue();
-	}
-
-	private Session beginTransaction() {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		session.beginTransaction();
-		return session;
-	}
-
-	private void commitTransaction(Session session) {
-		Transaction transaction = session.getTransaction();
-		if (transaction != null && !transaction.wasCommitted()
-				&& !transaction.wasRolledBack() && transaction.isActive()) {
-			transaction.commit();
-		} else if (transaction.wasRolledBack()) {
-			transaction.rollback();
-		}
 	}
 }

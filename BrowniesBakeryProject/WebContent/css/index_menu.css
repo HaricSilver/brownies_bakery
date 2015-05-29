@@ -86,6 +86,10 @@ a:hover {
 	font-weight: bold;
 	padding: 0 2px;
 }
+
+.div-mn-right .ul-mn>li {
+	float: none;
+}
 /* .div-mn-right>ul {
 	display: inline-block;
 }
@@ -102,7 +106,7 @@ a:hover {
 	border-radius: 3px;
 	color: rgba(255,255,255,1);
 } */
-.div-mn-right a:hover {
+.div-mn-right>a:hover {
 	text-decoration: underline;
 }
 /*submenu 1*/
@@ -259,7 +263,8 @@ a:hover {
 }
 
 .cart-detail {
-	min-width: 450px; position : absolute;
+	min-width: 450px;
+	position: absolute;
 	right: 0;
 	max-height: 0;
 	background: #fff;
@@ -401,7 +406,7 @@ a:hover {
 }
 
 .btn:hover {
-	background: rgba(0, 64, 128, 1);
+	background-color: rgba(0, 64, 128, 1);
 }
 
 .del {

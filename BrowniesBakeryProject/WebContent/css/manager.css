@@ -1,0 +1,250 @@
+@CHARSET "UTF-8";
+/* tab layout */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	
+}
+
+ul.tabs {
+	float: left;
+	list-style: none;
+	height: 36px;
+	/*border-bottom: 1px solid #999;*/
+	width: 100%;
+	background: rgba(202, 228, 255, .7);
+}
+
+ul.tabs li {
+	float: left;
+	height: 35px;
+	line-height: 30px;
+	border-right: 1px solid rgba(0, 64, 128, .05);
+	/*border: 1px solid #999;
+	border-left: none;
+	background: #F0F0F0;
+	overflow: hidden;
+	margin-bottom: -1px;*/
+	position: relative;
+	width: 234px;
+	text-align: center;
+}
+
+ul.tabs li a {
+	text-decoration: none;
+	color: rgba(0, 64, 128, 1);
+	font-weight: bold;
+	display: block;
+	/*border: 1px solid #fff;
+	padding: 0 20px;
+	font-size: 1.2em;*/
+	outline: none;
+}
+
+ul.tabs li:hover {
+	background: rgba(202, 228, 255, 1);
+}
+
+html ul.tabs li.active,html ul.tabs li.active:hover {
+	background: rgba(0, 97, 193, .1);
+	/*border-bottom: 1px solid rgba(230,242,255,1);*/
+}
+
+.tab_container {
+	/*border: 1px solid #999;
+	border-top: none;*/
+	clear: both;
+	float: left;
+	width: 100%;
+	-moz-border-radius-bottomright: 5px;
+	-khtml-border-radius-bottomright: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	-khtml-border-radius-bottomleft: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+}
+
+.tab_content {
+	padding: 1px;
+	padding-top: 3px; /*font-size: 1.2em;*/
+}
+
+.tab_content h2 {
+	font-weight: normal;
+	padding-bottom: 10px;
+	border-bottom: 1px dashed #ddd;
+	font-size: 1.8em;
+}
+
+.tab_content h3 a {
+	color: #254588;
+}
+
+.tab_content img {
+	float: left;
+	margin: 0 20px 20px 0;
+	border: 1px solid #ddd;
+	padding: 5px;
+}
+
+.arrow-top {
+	content: "";
+	width: 0;
+	border-bottom: 7px solid rgba(230, 242, 255, 1);
+	border-left: 11px solid transparent;
+	border-right: 11px solid transparent;
+	position: absolute;
+	bottom: -1px;
+	left: 108px;
+	visibility: hidden;
+}
+/*.arrow-bottom {
+	content:"";
+	width:0;
+	border-top: 8px solid rgba(202,228,255,1);
+	border-left:8px solid transparent;
+	border-right:8px solid transparent;
+	position:absolute;
+	bottom:-8px;
+	left: 108px;
+}*/
+.arrow-active {
+	visibility: visible;
+}
+
+html,body {
+	height: 100%;
+}
+
+body {
+	background: -moz-linear-gradient(top, rgba(230, 242, 255, 1),
+		rgba(230, 242, 255, 0)) no-repeat fixed;
+}
+/* table oder */
+table#oder {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table#oder,table#oder th,table#oder td {
+	border: 1px solid rgba(255, 255, 255, .3);
+}
+
+table#oder th {
+	background: rgba(191, 223, 255, 1) /*rgba(196,225,255,1)*/;
+	font-weight: bold;
+	color: rgba(0, 0, 0, .7);
+	padding: 2px 0;
+}
+
+table#oder tr td {
+	text-align: left;
+	padding: 5px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 108px;
+}
+
+table#oder tr:nth-child(even) {
+	/*#eee*/
+	background-color: rgba(117, 186, 255, .08);
+}
+
+table#oder tr:nth-child(odd) {
+	/*#fff*/
+	background-color: transparent;
+}
+
+table#oder tr:hover {
+	background-color: rgba(221, 221, 255, 1);
+}
+
+table#oder tr td:nth-child(1),table#oder tr td:nth-child(2),table#oder tr td:last-child
+	{
+	text-align: center;
+}
+
+span.draf {
+	color: red;
+}
+
+span.waiting {
+	color: yellow;
+}
+
+span.approve {
+	color: green;
+}
+
+.view {
+	background: url(../images/detail_icon.png) no-repeat center;
+}
+
+.edit {
+	background: url(../images/edit_icon.png) no-repeat center;
+}
+
+.delete {
+	background: url(../images/delete.png) no-repeat center;
+}
+
+.btn {
+	border: none;
+	border-radius: 3px;
+	color: #fff;
+	padding: 3px 12px;
+	margin: 0 1px;
+	background-color: rgba(0, 64, 128, .2);
+}
+
+.btn:hover {
+	background-color: rgba(0, 64, 128, .6);
+}
+
+.more {
+	font-size: large;
+	font-weight: bold;
+}
+/* format dynamic menu */
+#div-menu {
+	top: -32px;
+	opacity: 0;
+	-moz-transition: all 0.36s ease-in-out;
+}
+
+#div-menu:hover {
+	top: 0;
+	opacity: 1;
+}
+
+.admin-mn {
+	right: 0;
+	left: auto;
+}
+
+.admin-mn .caret {
+	left: auto;
+	right: 18px;
+}
+
+a#change-pass,a#config,a#logout {
+	background-repeat: no-repeat;
+	background-position: left 9px center;
+	padding-left: 27px;
+}
+
+a#change-pass {
+	background-image: url(../images/key.png);
+}
+
+a#config {
+	background-image: url(../images/settings.png);
+}
+
+a#logout {
+	background-image: url(../images/logout.png);
+}

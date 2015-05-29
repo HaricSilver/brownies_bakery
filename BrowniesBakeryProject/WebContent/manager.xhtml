@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Manager</title>
+	<script src="js/jquery-2.1.3.js" type="text/javascript"></script>
+	<script src="plugins/confirm/jquery.hs_confirm.js"></script>
+	<link rel='stylesheet' type='text/css'
+		href='plugins/confirm/hs_confirm.css' />
+	<link rel='stylesheet' type='text/css' href="css/index_menu.css" />
+	<link rel='stylesheet' type='text/css' href="css/manager.css" />
+	<!-- script format tab layout -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			//Default Action
+			$(".tab_content").hide(); //Hide all content
+			$("ul.tabs li:first").addClass("active").show(); //Activate first tab
+			$("ul.tabs li:first span.arrow-top").addClass("arrow-active");
+			$(".tab_content:first").show(); //Show first tab content
+
+			//On Click Event
+			$("ul.tabs li").click(function() {
+				$("ul.tabs li").removeClass("active"); //Remove any "active" class
+				$("ul.tabs li span.arrow-top").removeClass("arrow-active");
+				$(this).addClass("active"); //Add "active" class to selected tab
+				$(this).find("span.arrow-top").addClass("arrow-active");
+				$(".tab_content").hide(); //Hide all tab content
+				var activeTab = $(this).find("a").attr("href"); //Find the rel attribute value to identify the active tab + content
+				$(activeTab).fadeIn(); //Fade in the active content
+				return false;
+			});
+			
+			/* custom format */
+			$('.view, .edit').openDialog({
+				title : 'Test',
+				text : '',
+				width : '90%',
+				modal : true,
+				popup : true,
+			});
+		});
+
+		function deleteProduct() {
+			$.openDialog({
+				title: 'Xác nhận',
+				text: 'Bạn có muốn xóa đơn hàng này?',
+				modal: true,
+				confirm: function() {
+					return 'true';
+				},
+				cancel: function() {
+					return 'false';
+				}
+			});
+		}
+	</script>
+</h:head>
+<h:body>
+	<f:view>
+		<h:form>
+			<div id='div-menu'>
+				<div class='div-mn-left'>
+					<a href='#'><img src="images/icon.png"
+						style="height: 40px; cursor: pointer" /></a>
+					<ul class='ul-mn'>
+						<li><a href="#">Home</a></li>
+						<li><a href='#'>Manager</a>
+							<div class='div-submenu'>
+								<span class='caret'></span>
+								<ul class='submenu-1'>
+									<li><a href='#'>Đơn đặt hàng</a></li>
+									<li><a href='#'>Quản lý sản phẩm</a></li>
+									<li><a href='#'>Danh sách bài viết</a></li>
+									<li><a href='#'>Slider quảng cáo</a></li>
+								</ul>
+							</div></li>
+						<li><a href="#">Order</a></li>
+						<li><a href="#">News</a>
+							<div class='div-submenu'>
+								<span class='caret'></span>
+								<ul class='submenu-1'>
+									<li><a href="#">Sale</a></li>
+									<li><a href="#">Promotions</a></li>
+								</ul>
+							</div></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				</div>
+				<div class='div-mn-mid'></div>
+				<div class='div-mn-right'>
+					<ul class="ul-mn">
+						<li><a href="#">Hello, Admin</a>
+							<div class='div-submenu admin-mn'>
+								<span class='caret'></span>
+								<ul class='submenu-1'>
+									<li><a href="#" id='change-pass'>Change password</a></li>
+									<li><a href="#" id='config'>Configure</a></li>
+									<li><a href="#" id='logout'>Logout</a></li>
+								</ul>
+							</div></li>
+					</ul>
+				</div>
+			</div>
+			<div class="container">
+				<ul class="tabs">
+					<li><a href="#tab1">Đơn đặt hàng</a><span class='arrow-top'></span></li>
+					<li><a href="#tab2">Quản lý sản phẩm</a><span
+						class='arrow-top'></span></li>
+					<li><a href="#tab3">Danh sách bài viết</a><span
+						class='arrow-top'></span></li>
+					<li><a href="#tab4">Slider quảng cáo</a><span
+						class='arrow-top'></span></li>
+				</ul>
+				<!--style table-->
+				<div class="tab_container">
+					<div id="tab1" class="tab_content">
+						<table id='oder'>
+							<thead>
+								<tr>
+									<th rowspan="2">Mã hóa đơn</th>
+									<th rowspan="2">Ngày giao</th>
+									<th rowspan="2">Trạng thái</th>
+									<th colspan="4">Thành phần đơn hàng</th>
+									<th rowspan="2">Người nhận</th>
+									<th rowspan="2">Số điện thoại</th>
+									<th rowspan="2">Địa chỉ</th>
+									<th rowspan="2">Email</th>
+									<th rowspan="2"></th>
+								</tr>
+								<tr>
+									<th>Mã số</th>
+									<th>Tên sản phẩm</th>
+									<th>Số lượng</th>
+									<th>Tổng tiền</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${billDAO.list()}" var="item">
+									<tr>
+										<td><h:outputText value="#{item.id}" /></td>
+										<td><h:outputText value="#{item.deliveryDate}">
+												<f:converter converterId="CalendarConverter" />
+											</h:outputText></td>
+										<td><c:choose>
+												<c:when test="#{item.state==0}">
+													<span class='draf'><h:outputText
+															value="Chờ kiểm duyệt" /> </span>
+												</c:when>
+												<c:when test="#{item.state==1}">
+													<span class='waiting'><h:outputText
+															value="Chờ giao hàng" /></span>
+												</c:when>
+												<c:otherwise>
+													<span class='approve'><h:outputText
+															value="Đã hoàn thành" /></span>
+												</c:otherwise>
+											</c:choose></td>
+										<c:choose>
+											<c:when test="#{item.products.size()>1}">
+												<td colspan="3" class="more">...</td>
+											</c:when>
+											<c:otherwise>
+												<c:set var="p"
+													value="#{item.products.keySet().iterator().next()}" />
+												<td><h:outputText value="#{p.id}" /></td>
+												<td><h:outputText value="#{p.name}" /></td>
+												<td><h:outputText
+														value="#{item.products.get(p).intValue()}" /></td>
+											</c:otherwise>
+										</c:choose>
+										<td><h:outputText value="#{item.totalCost}">
+												<f:convertNumber pattern="#,##0đ" />
+											</h:outputText></td>
+										<td><h:outputText value="#{item.recipient}" /></td>
+										<td><h:outputText value="#{item.user.phone}" /></td>
+										<td><h:outputText value="#{item.user.address}" /></td>
+										<td><h:outputText value="#{item.user.email}" /></td>
+										<td><a class='btn view' href='#' title="View detail"></a><a
+											class='btn edit' href='#' title="Edit"></a><a
+											class='btn delete' href='#' title="Delete"></a> <!--  <h:commandLink
+												title="Delete" styleClass="btn delete"
+												onclick="deleteProduct();return false"></h:commandLink> --></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+					<div id="tab2" class="tab_content">
+						<h2>Heading 2</h2>
+						<p>Content 2</p>
+					</div>
+					<div id="tab3" class="tab_content">
+						<h2>Heading 3</h2>
+						<p>Content 3</p>
+					</div>
+					<div id="tab4" class="tab_content">
+						<h2>Heading 4</h2>
+						<p>Content 4</p>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</f:view>
+</h:body>
+</html>

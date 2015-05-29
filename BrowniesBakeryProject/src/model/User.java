@@ -1,12 +1,14 @@
 package model;
 
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,6 +29,7 @@ public class User implements Serializable {
 	private List<Bill> bills;
 
 	public User() {
+		this.bills = new LinkedList<Bill>();
 	}
 
 	@Id
@@ -83,13 +86,20 @@ public class User implements Serializable {
 		this.phone = phone;
 	}
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	public List<Bill> getBills() {
 		return bills;
 	}
 
 	public void setBills(List<Bill> bills) {
 		this.bills = bills;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", account=" + account + ", fullName="
+				+ fullName + ", email=" + email + ", address=" + address
+				+ ", phone=" + phone + "]";
 	}
 
 }

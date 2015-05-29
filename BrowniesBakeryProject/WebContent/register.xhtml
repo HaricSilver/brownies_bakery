@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Register</title>
+</h:head>
+<h:body>
+	<f:view>
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="User name" />
+				<h:panelGroup>
+					<h:inputText value="#{account.name}" id="txtName" required="true"
+						requiredMessage="Nhap user name vao">
+						<f:validator validatorId="ValidatorUserName" />
+						<f:ajax render="msgsName" event="blur" execute="@this"></f:ajax>
+					</h:inputText>
+					<h:message for="txtName" id="msgsName"></h:message>
+				</h:panelGroup>
+				<h:outputText value="Password" />
+				<h:panelGroup>
+					<h:inputSecret value="#{account.password}" id="txtPass"
+						required="true" requiredMessage="Nhap password vao">
+						<f:ajax render="msgsPass" event="blur" execute="@this"></f:ajax>
+					</h:inputSecret>
+					<h:message for="txtPass" id="msgsPass"></h:message>
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:commandButton value="Login"
+						action="#{accountDAO.register(account)}" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+	</f:view>
+</h:body>
+</html>

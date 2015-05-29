@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Brownies Bakery</title>
@@ -48,8 +49,19 @@
 				height : '90%',
 				popup : true,
 			});
+			/* show dialog login */
+			/* $('#login').openDialog({
+				title: 'Đăng nhập',
+				text: '<h:form><table style="margin: 0 auto"><tr><td>Tài khoản:</td><td><h:inputText value="#{account.name}"></h:inputText></td></tr><tr><td>Mật khẩu:</td><td><h:inputSecret value="#{account.password}"></h:inputSecret></td></tr><tr><td colspan="2" style="text-align: right"><h:commandButton value="Login" action="#{accountDAO.verify}" /></td></tr></table></h:form>',
+				confirmText: 'Đăng nhập',
+				warning:true,
+				popup:true,
+				color: '#77F',
+				border: '5px solid #77F'
+			}); */
 		});
 	</script>
+	<h:outputScript name="jquery/jquery-plugins.js" library="primefaces" />
 </h:head>
 <h:body>
 	<f:view>
@@ -84,9 +96,53 @@
 				</div>
 				<div class='div-mn-right'>
 					<c:choose>
-						<c:when test="${account.id>0}"></c:when>
+						<c:when test="${account.id>0}">
+							<ul class="ul-mn">
+								<li><a href="#"><h:outputText value="#{account.name}" /></a>
+									<div class='div-submenu admin-mn'>
+										<span class='caret'></span>
+										<ul class='submenu-1'>
+											<li><a href="#" id='change-pass'>Change password</a></li>
+											<li><h:commandLink action="#{accountDAO.logout()}"
+													value="Logout" /></li>
+										</ul>
+									</div></li>
+							</ul>
+						</c:when>
 						<c:otherwise>
-							<a href="#" id="login">Login</a>
+							<p:commandLink type="button" value="Login"
+								onclick="loginDialog.show()" id="login"></p:commandLink>
+							<p:dialog header="Login" widgetVar="loginDialog">
+								<table>
+									<tr>
+										<td>Tài khoản:</td>
+										<td><h:inputText value="#{account.name}"></h:inputText></td>
+									</tr>
+									<tr>
+										<td>Mật khẩu:</td>
+										<td><h:inputSecret value="#{account.password}"></h:inputSecret></td>
+									</tr>
+									<tr>
+										<td colspan="2" style="text-align: right"><h:commandButton
+												value="Login" action="#{accountDAO.verify}" /></td>
+									</tr>
+								</table>
+							</p:dialog>
+							<a id="login">Login</a>
+							<!-- <table id="loginForm" style="display: none; margin: 0 auto">
+								<tr>
+									<td>Tài khoản:</td>
+									<td><h:inputText value="#{account.name}"></h:inputText></td>
+								</tr>
+								<tr>
+									<td>Mật khẩu:</td>
+									<td><h:inputSecret value="#{account.password}"></h:inputSecret></td>
+								</tr>
+								<tr>
+									<td colspan="2" style="text-align: right"><h:commandButton
+											value="Login" action="#{accountDAO.verify}" /></td>
+								</tr>
+							</table> -->
 							<font color="white">/</font>
 							<a href="#">Register</a>
 						</c:otherwise>
@@ -252,7 +308,6 @@
 											action="#{bill.addProduct(item)}">
 											<f:ajax render="shopping-cart"></f:ajax>
 										</h:commandLink>
-										<!-- <a class='cart-icon' title="Add to cart"></a> -->
 										<a class='detail-icon' title="View detail"></a> <a
 											class='share-icon' title="Share..."></a><a
 											class='detail-icon' title="View detail"></a> <a

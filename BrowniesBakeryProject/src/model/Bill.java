@@ -10,6 +10,7 @@ import javax.faces.bean.SessionScoped;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -98,7 +99,7 @@ public class Bill implements Serializable {
 		this.totalCost = totalCost;
 	}
 
-	@ElementCollection
+	@ElementCollection(fetch = FetchType.EAGER)
 	@JoinTable(name = "bill_detail")
 	@Column(nullable = false)
 	public Map<Product, Integer> getProducts() {
@@ -154,6 +155,14 @@ public class Bill implements Serializable {
 					.getPrice());
 		}
 		return this.totalCost;
+	}
+
+	@Override
+	public String toString() {
+		return "Bill [id=" + id + ", state=" + state + ", user=" + user
+				+ ", recipient=" + recipient + ", createDate=" + createDate
+				+ ", deliveryDate=" + deliveryDate + ", totalCost=" + totalCost
+				+ ", products=" + products + "]";
 	}
 
 }

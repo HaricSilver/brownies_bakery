@@ -1,7 +1,9 @@
 @charset "utf-8";
+
 * {
 	all: none
 }
+
 .over {
 	position: fixed;
 	top: 0;
@@ -13,6 +15,7 @@
 	z-index: 99999;
 	display: none;
 }
+
 .dialog {
 	position: fixed;
 	left: 50%;
@@ -22,14 +25,17 @@
 	z-index: 999999;
 	opacity: 0;
 }
+
 .dg_title {
 	padding: 9px 14px;
 	min-height: 18px;
 }
+
 .dg_title span {
 	font-size: 18px;
 	font-weight: 500;
 }
+
 .dg_title .dg_close {
 	float: right;
 	line-height: 1;
@@ -42,26 +48,27 @@
 	text-shadow: 0 1px 0 #fff;
 	background-color: transparent;
 }
+
 .dg_title .dg_close:hover {
 	color: #000;
 	opacity: 0.5;
 }
+
 .dg_content {
 	min-height: 36px;
 	border-top: 1px solid #e5e5e5;
 }
+
 .dg_content p {
 	padding: 18px 14px;
 }
+
 .dg_confirm {
 	border-top: 1px solid #e5e5e5;
-	bottom: 0;
-    padding: 9px;
-    position: absolute;
-	left:0;
-    right: 0;
-    text-align: right;
+	padding: 9px;
+	text-align: right;
 }
+
 .dg_confirm button {
 	margin-right: 5px;
 	padding: 7px 18px;
@@ -70,7 +77,7 @@
 	cursor: pointer;
 	border-radius: 1px;
 }
+
 .dg_confirm button:hover {
 	background: #D2D2D2;
 }
-
