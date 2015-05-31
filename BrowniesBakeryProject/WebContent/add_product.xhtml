@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Add product</title>
+</h:head>
+<h:body>
+	<f:view>
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="Tên sản phẩm"></h:outputText>
+				<h:panelGroup>
+					<h:inputText value="#{product.name}" required="true"
+						requiredMessage="Nhap ten san pham" id="txtName">
+						<f:ajax render="msgsName" event="blur"></f:ajax>
+					</h:inputText>
+					<h:message for="txtName" id="msgsName"></h:message>
+				</h:panelGroup>
+				<h:outputText value="Giá"></h:outputText>
+				<h:inputText value="#{product.price}">
+					<f:convertNumber minFractionDigits="2"></f:convertNumber>
+					<f:validateDoubleRange minimum="0"></f:validateDoubleRange>
+				</h:inputText>
+				<h:outputText value="Ảnh đại diện"></h:outputText>
+				<h:panelGroup>
+					<p:fileUpload mode="advanced"
+						fileUploadListener="#{uploader.handleFileUpload}"
+						allowTypes="/(\.|\/)(gif|jpg|jpeg|gif|png|PNG|GIF|JPG|JPEG)$/"
+						auto="true" />
+					<!-- <h:inputText value="#{product.mainImage}" id="txtImage"
+						required="true" requiredMessage="Nhap anh dai dien">
+						<f:ajax event="blur" render="msgsImage"></f:ajax>
+					</h:inputText>
+					<h:message for="txtImage" id="msgsImage"></h:message> -->
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:commandButton value="Submit"
+						action="#{productDAO.addProduct(product)}"></h:commandButton>
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+	</f:view>
+</h:body>
+</html>

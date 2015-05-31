@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Shopping Cart</title>
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<style type='text/css'>
+.product img {
+	border: 1px solid;
+	margin: 5px;
+	width: 100px;
+	height: 100px;
+}
+
+.product img:HOVER {
+	color: blue;
+}
+
+.product .info {
+	font-family: cursive;
+}
+
+.input {
+	margin-right: 35px;
+}
+
+.body {
+	width: 1024px;
+	height: auto;
+}
+
+.apply {
+	width: 160px;
+	margin-left: 25px;
+	background: SandyBrown;
+}
+
+.apply :HOVER {
+	cursor: crosshair;
+}
+
+.bill {
+	font-family: cursive;
+	color: blue;
+}
+</style>
+</h:head>
+<h:body>
+	<f:view>
+		<h:form>
+			<h3>Shopping Cart</h3>
+			<h:dataTable value="#{bill.products.keySet()}" var="itemProduct"
+				styleClass="product">
+				<h:column>
+					<f:facet name="header">Image</f:facet>
+					<h:graphicImage value="images/#{itemProduct.mainImage}"></h:graphicImage>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+					<h:outputText value="#{itemProduct.name}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Amount</f:facet>
+					<h:outputText value="#{bill.products.get(itemProduct).intValue()}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Unit price</f:facet>
+					<h:outputText value="#{itemProduct.price}">
+						<f:convertNumber pattern="#,##0đ"></f:convertNumber>
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Price</f:facet>
+					<h:outputText
+						value="#{itemProduct.price*bill.products.get(itemProduct).intValue()}">
+						<f:convertNumber pattern="#,##0đ"></f:convertNumber>
+					</h:outputText>
+				</h:column>
+			</h:dataTable>
+			<table width="100%">
+				<tr>
+					<td><h:link value="Continue shopping" outcome="index"></h:link>
+					</td>
+					<td align="right"><button class="btn">Checkout</button></td>
+				</tr>
+			</table>
+		</h:form>
+	</f:view>
+</h:body>
+</html>
