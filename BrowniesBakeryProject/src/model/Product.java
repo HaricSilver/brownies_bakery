@@ -2,6 +2,8 @@ package model;
 
 import java.io.Serializable;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+@ManagedBean
+@RequestScoped
 public class Product implements Serializable {
 	private static final long serialVersionUID = -6639788924915793414L;
 	private long id;

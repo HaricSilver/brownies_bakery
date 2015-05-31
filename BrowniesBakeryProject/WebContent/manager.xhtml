@@ -65,8 +65,9 @@
 		<h:form>
 			<div id='div-menu'>
 				<div class='div-mn-left'>
-					<a href='#'><img src="images/icon.png"
-						style="height: 40px; cursor: pointer" /></a>
+					<h:link outcome="index">
+						<img src="images/icon.png" style="height: 40px; cursor: pointer" />
+					</h:link>
 					<ul class='ul-mn'>
 						<li><a href="#">Home</a></li>
 						<li><a href='#'>Manager</a>
@@ -120,7 +121,7 @@
 				<!--style table-->
 				<div class="tab_container">
 					<div id="tab1" class="tab_content">
-						<table id='oder'>
+						<table class='oder'>
 							<thead>
 								<tr>
 									<th rowspan="2">Mã hóa đơn</th>
@@ -192,8 +193,36 @@
 						</table>
 					</div>
 					<div id="tab2" class="tab_content">
-						<h2>Heading 2</h2>
-						<p>Content 2</p>
+						<h:link value="Thêm sản phẩm mới" outcome="add_product"></h:link>
+						<h:dataTable value="#{productDAO.listProducts}" var="itemProduct"
+							styleClass="oder">
+							<h:column>
+								<f:facet name="header">Mã sản phẩm</f:facet>
+								#{itemProduct.id}
+							</h:column>
+							<h:column>
+								<f:facet name="header">Tên sản phẩm</f:facet>
+								#{itemProduct.name}
+							</h:column>
+							<h:column>
+								<f:facet name="header">Giá</f:facet>
+								<h:outputText value="#{itemProduct.price}">
+									<f:convertNumber pattern="#,##0đ" />
+								</h:outputText>
+							</h:column>
+							<h:column>
+								<f:facet name="header">Khuyến mãi</f:facet>
+								#{itemProduct.sale}
+							</h:column>
+							<h:column>
+								<f:facet name="header">Function</f:facet>
+								<h:panelGroup>
+									<a class='btn view' href='#' title="View detail"></a>
+									<a class='btn edit' href='#' title="Edit"></a>
+									<a class='btn delete' href='#' title="Delete"></a>
+								</h:panelGroup>
+							</h:column>
+						</h:dataTable>
 					</div>
 					<div id="tab3" class="tab_content">
 						<h2>Heading 3</h2>

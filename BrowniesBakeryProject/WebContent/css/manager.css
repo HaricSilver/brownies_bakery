@@ -124,23 +124,23 @@ body {
 		rgba(230, 242, 255, 0)) no-repeat fixed;
 }
 /* table oder */
-table#oder {
+table.oder {
 	width: 100%;
 	border-collapse: collapse;
 }
 
-table#oder,table#oder th,table#oder td {
+table.oder,table.oder th,table.oder td {
 	border: 1px solid rgba(255, 255, 255, .3);
 }
 
-table#oder th {
+table.oder th {
 	background: rgba(191, 223, 255, 1) /*rgba(196,225,255,1)*/;
 	font-weight: bold;
 	color: rgba(0, 0, 0, .7);
 	padding: 2px 0;
 }
 
-table#oder tr td {
+table.oder tr td {
 	text-align: left;
 	padding: 5px;
 	white-space: nowrap;
@@ -149,21 +149,21 @@ table#oder tr td {
 	max-width: 108px;
 }
 
-table#oder tr:nth-child(even) {
+table.oder tr:nth-child(even) {
 	/*#eee*/
 	background-color: rgba(117, 186, 255, .08);
 }
 
-table#oder tr:nth-child(odd) {
+table.oder tr:nth-child(odd) {
 	/*#fff*/
 	background-color: transparent;
 }
 
-table#oder tr:hover {
+table.oder tr:hover {
 	background-color: rgba(221, 221, 255, 1);
 }
 
-table#oder tr td:nth-child(1),table#oder tr td:nth-child(2),table#oder tr td:last-child
+table.oder tr td:nth-child(1),table.oder tr td:nth-child(2),table.oder tr td:last-child
 	{
 	text-align: center;
 }

@@ -68,8 +68,10 @@
 		<h:form>
 			<div id='div-menu'>
 				<div class='div-mn-left'>
-					<a href='#'><h:graphicImage value="images/icon.png"
-							style="height: 40px; cursor: pointer" /></a>
+					<h:link outcome="index">
+						<h:graphicImage value="images/icon.png"
+							style="height: 40px; cursor: pointer" />
+					</h:link>
 					<ul class='ul-mn'>
 						<!--<li><a href="#">Home</a></li>-->
 						<li><a href="#">Order</a></li>
@@ -94,7 +96,8 @@
 						</div>
 					</div>
 				</div>
-				<div class='div-mn-right'>
+				<h:panelGroup id="menu-right" styleClass="div-mn-right"
+					layout="block">
 					<c:choose>
 						<c:when test="${account.id>0}">
 							<ul class="ul-mn">
@@ -104,47 +107,17 @@
 										<ul class='submenu-1'>
 											<li><a href="#" id='change-pass'>Change password</a></li>
 											<li><h:commandLink action="#{accountDAO.logout()}"
-													value="Logout" /></li>
+													value="Logout">
+													<f:ajax render="menu-right"></f:ajax>
+												</h:commandLink></li>
 										</ul>
 									</div></li>
 							</ul>
 						</c:when>
 						<c:otherwise>
-							<p:commandLink type="button" value="Login"
-								onclick="loginDialog.show()" id="login"></p:commandLink>
-							<p:dialog header="Login" widgetVar="loginDialog">
-								<table>
-									<tr>
-										<td>Tài khoản:</td>
-										<td><h:inputText value="#{account.name}"></h:inputText></td>
-									</tr>
-									<tr>
-										<td>Mật khẩu:</td>
-										<td><h:inputSecret value="#{account.password}"></h:inputSecret></td>
-									</tr>
-									<tr>
-										<td colspan="2" style="text-align: right"><h:commandButton
-												value="Login" action="#{accountDAO.verify}" /></td>
-									</tr>
-								</table>
-							</p:dialog>
-							<a id="login">Login</a>
-							<!-- <table id="loginForm" style="display: none; margin: 0 auto">
-								<tr>
-									<td>Tài khoản:</td>
-									<td><h:inputText value="#{account.name}"></h:inputText></td>
-								</tr>
-								<tr>
-									<td>Mật khẩu:</td>
-									<td><h:inputSecret value="#{account.password}"></h:inputSecret></td>
-								</tr>
-								<tr>
-									<td colspan="2" style="text-align: right"><h:commandButton
-											value="Login" action="#{accountDAO.verify}" /></td>
-								</tr>
-							</table> -->
-							<font color="white">/</font>
-							<a href="#">Register</a>
+							<h:link outcome="login" value="Login"></h:link>
+							<h:outputText value="/" style="color: white"></h:outputText>
+							<h:link outcome="register" value="Register"></h:link>
 						</c:otherwise>
 					</c:choose>
 					<h:panelGroup id="shopping-cart" styleClass="shopping-cart"
@@ -199,8 +172,8 @@
 									<table class='payment'>
 										<tr>
 											<td colspan="2"><h:button class='btn money'
-													value="View Cart"></h:button> <h:button class='btn money'
-													value="Checkout"></h:button></td>
+													value="View Cart" outcome="view-cart"></h:button> <h:button
+													class='btn money' value="Checkout"></h:button></td>
 										</tr>
 									</table>
 								</c:when>
@@ -208,7 +181,7 @@
 							</c:choose>
 						</div>
 					</h:panelGroup>
-				</div>
+				</h:panelGroup>
 			</div>
 			<!--ads slider-->
 			<div class='ads-slider'>

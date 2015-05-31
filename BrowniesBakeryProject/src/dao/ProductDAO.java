@@ -60,4 +60,11 @@ public class ProductDAO extends AbsDAO implements Serializable {
 		commitTransaction(session);
 		return (list.isEmpty()) ? -1 : list.get(0).doubleValue();
 	}
+
+	public String addProduct(Product p) {
+		Session session = beginTransaction();
+		session.save(p);
+		commitTransaction(session);
+		return (p.getId() != 0) ? "manager?showTab=2&faces-redirect=true" : "";
+	}
 }

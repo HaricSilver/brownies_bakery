@@ -44,6 +44,7 @@ public class HisProduct implements Serializable {
 	}
 
 	@Id
+	@Column(nullable = false)
 	public Calendar getDateChange() {
 		return dateChange;
 	}

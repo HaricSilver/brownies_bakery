@@ -18,18 +18,21 @@ import org.hibernate.Session;
 @SessionScoped
 public class AccountDAO extends AbsDAO {
 
-	@SuppressWarnings("unchecked")
 	public String verify(Account acc) {
 		Session session = beginTransaction();
 
 		Query query = session
-				.createQuery("from Account a where a.name=:aname and a.password=:apass");
+				.createQuery("select a.id from Account a where a.name=:aname and a.password=:apass");
 		query.setParameter("aname", acc.getName());
 		query.setParameter("apass", encryptMD5(acc.getPassword()));
 
-		List<Account> list = query.list();
+		@SuppressWarnings("unchecked")
+		List<Long> list = query.list();
+		long userID = 0;
 		if (!list.isEmpty())
-			acc = list.get(0);
+			userID = list.get(0);
+
+		session.load(acc, userID);
 
 		commitTransaction(session);
 		return (acc.getId() != 0) ? "index?faces-redirect=true" : "";
@@ -60,8 +63,8 @@ public class AccountDAO extends AbsDAO {
 	}
 
 	public String logout() {
-		FacesContext.getCurrentInstance().getViewRoot().getViewMap()
-				.remove("account");
+		FacesContext.getCurrentInstance().getExternalContext()
+				.invalidateSession();
 		return "";
 	}
 
