@@ -13,9 +13,21 @@
 		<h:form>
 			<h:panelGrid columns="2">
 				<h:outputText value="User name" />
-				<h:inputText value="#{account.name}" />
+				<h:panelGroup>
+					<h:inputText value="#{account.name}" required="true"
+						requiredMessage="Nhập tên tài khoản" id="txtUsername">
+						<f:ajax render="msgsUsername" event="blur"></f:ajax>
+					</h:inputText>
+					<h:message for="txtUsername" id="msgsUsername"></h:message>
+				</h:panelGroup>
 				<h:outputText value="Password" />
-				<h:inputSecret value="#{account.password}" />
+				<h:panelGroup>
+					<h:inputSecret value="#{account.password}" required="true"
+						requiredMessage="Nhập mật khẩu" id="txtPass">
+						<f:ajax render="msgsPass"></f:ajax>
+					</h:inputSecret>
+					<h:message for="txtPass" id="msgsPass"></h:message>
+				</h:panelGroup>
 				<h:panelGroup>
 					<h:commandButton value="Login"
 						action="#{accountDAO.verify(account)}" />

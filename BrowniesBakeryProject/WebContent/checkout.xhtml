@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Checkout Cart</title>
+</h:head>
+<h:body>
+	<f:view>
+		<h:form>
+			<c:choose>
+				<c:when test="${account.id!=0 &amp;&amp; bill.computeAmount() > 0}">
+					<h:outputText value="Thông tin giao hàng"></h:outputText>
+					<h:panelGrid columns="2">
+						<h:outputText value="Tên người nhận"></h:outputText>
+						<h:panelGroup>
+							<h:inputText value="#{bill.recipient}" required="true"
+								requiredMessage="Nhập tên người nhận" id="txtRecipient">
+								<f:ajax render="msgsRecipient" event="blur"></f:ajax>
+							</h:inputText>
+							<h:message for="txtRecipient" id="msgsRecipient"></h:message>
+						</h:panelGroup>
+						<h:outputText value="Ngày giao hàng"></h:outputText>
+						<h:panelGroup>
+							<p:calendar value="#{bill.deliveryDate}" showOn="button"
+								required="true" requiredMessage="Chọn ngày giao hàng"
+								id="txtDeliveryDate">
+								<f:converter converterId="CalendarConverter"></f:converter>
+								<f:ajax render="msgsDeliveryDate" event="blur"></f:ajax>
+							</p:calendar>
+							<h:message for="txtDeliveryDate" id="msgsDeliveryDate"></h:message>
+						</h:panelGroup>
+						<h:outputText value="Địa chỉ giao hàng"></h:outputText>
+						<h:panelGroup>
+							<h:inputText value="#{user.address}" required="true"
+								requiredMessage="Nhập địa chỉ giao hàng" id="txtAddress">
+								<f:ajax render="msgsAddress" event="blur"></f:ajax>
+							</h:inputText>
+							<h:message for="txtAddress" id="msgsAddress"></h:message>
+						</h:panelGroup>
+						<h:outputText value="Số điện thoại"></h:outputText>
+						<h:panelGroup>
+							<h:inputText value="#{user.phone}" required="true"
+								requiredMessage="Nhập số điện thoại" id="txtPhone">
+								<f:ajax render="msgsPhone" event="blur"></f:ajax>
+							</h:inputText>
+							<h:message for="txtPhone" id="msgsPhone"></h:message>
+						</h:panelGroup>
+						<h:outputText value="Địa chỉ Email"></h:outputText>
+						<h:panelGroup>
+							<h:inputText value="#{user.email}"
+								validatorMessage="Địa chỉ email không hợp lệ" id="txtEmail">
+								<f:validateRegex
+									pattern="[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}"></f:validateRegex>
+								<f:ajax render="msgsEmail" event="blur" execute="@this"></f:ajax>
+							</h:inputText>
+							<h:message for="txtEmail" id="msgsEmail"></h:message>
+						</h:panelGroup>
+						<h:panelGroup>
+							<h:commandButton value="Xác nhận"
+								action="#{billDAO.confirm(bill, user, account)}"></h:commandButton>
+						</h:panelGroup>
+					</h:panelGrid>
+				</c:when>
+				<c:when test="${account.id == 0 }">
+					<h:outputText
+						value="Vui lòng đăng nhập hoặc đăng kí tài khoản để tiếp tục"></h:outputText>
+					<h:link value="đăng nhập" outcome="login"></h:link>
+					<h:link value="đăng kí" outcome="register"></h:link>
+				</c:when>
+				<c:otherwise>
+					<h:link
+						value="Giỏ hàng hiện tại chưa có sản phẩm nào, vui lòng chọn sản phẩm để tiếp tục"
+						outcome="index"></h:link>
+				</c:otherwise>
+			</c:choose>
+		</h:form>
+	</f:view>
+</h:body>
+</html>

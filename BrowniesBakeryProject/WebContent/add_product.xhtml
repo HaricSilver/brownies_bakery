@@ -3,7 +3,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -11,39 +12,37 @@
 </h:head>
 <h:body>
 	<f:view>
-		<h:form>
-			<h:panelGrid columns="2">
-				<h:outputText value="Tên sản phẩm"></h:outputText>
-				<h:panelGroup>
-					<h:inputText value="#{product.name}" required="true"
-						requiredMessage="Nhap ten san pham" id="txtName">
-						<f:ajax render="msgsName" event="blur"></f:ajax>
-					</h:inputText>
-					<h:message for="txtName" id="msgsName"></h:message>
-				</h:panelGroup>
-				<h:outputText value="Giá"></h:outputText>
-				<h:inputText value="#{product.price}">
-					<f:convertNumber minFractionDigits="2"></f:convertNumber>
-					<f:validateDoubleRange minimum="0"></f:validateDoubleRange>
-				</h:inputText>
-				<h:outputText value="Ảnh đại diện"></h:outputText>
-				<h:panelGroup>
-					<p:fileUpload mode="advanced"
-						fileUploadListener="#{uploader.handleFileUpload}"
-						allowTypes="/(\.|\/)(gif|jpg|jpeg|gif|png|PNG|GIF|JPG|JPEG)$/"
-						auto="true" />
-					<!-- <h:inputText value="#{product.mainImage}" id="txtImage"
-						required="true" requiredMessage="Nhap anh dai dien">
-						<f:ajax event="blur" render="msgsImage"></f:ajax>
-					</h:inputText>
-					<h:message for="txtImage" id="msgsImage"></h:message> -->
-				</h:panelGroup>
-				<h:panelGroup>
-					<h:commandButton value="Submit"
-						action="#{productDAO.addProduct(product)}"></h:commandButton>
-				</h:panelGroup>
-			</h:panelGrid>
-		</h:form>
+		<c:choose>
+			<c:when test="${account.id !=0 &amp;&amp; account.type ==1}">
+				<h:form enctype="multipart/form-data">
+					<h:panelGrid columns="2">
+						<h:outputText value="Tên sản phẩm"></h:outputText>
+						<h:panelGroup>
+							<h:inputText value="#{product.name}" required="true"
+								requiredMessage="Nhập tên sản phẩm" id="txtName">
+								<f:ajax render="msgsName" event="blur"></f:ajax>
+							</h:inputText>
+							<h:message for="txtName" id="msgsName"></h:message>
+						</h:panelGroup>
+						<h:outputText value="Giá"></h:outputText>
+						<h:inputText value="#{product.price}">
+							<f:validateDoubleRange minimum="0"></f:validateDoubleRange>
+						</h:inputText>
+						<h:outputText value="Ảnh đại diện"></h:outputText>
+						<h:panelGroup>
+							<p:fileUpload value="#{uploader.uploadedFile}" mode="simple"
+								allowTypes="/(\.|\/)(gif|jpg|jpeg|gif|png|PNG|GIF|JPG|JPEG)$/"
+								auto="true" />
+						</h:panelGroup>
+					</h:panelGrid>
+					<h:commandButton value="Thêm" type="submit"
+						action="#{productDAO.addProduct(product, uploader)}"></h:commandButton>
+				</h:form>
+			</c:when>
+			<c:otherwise>
+				<h:link value="Quay lại trang chủ" outcome="index"></h:link>
+			</c:otherwise>
+		</c:choose>
 	</f:view>
 </h:body>
 </html>

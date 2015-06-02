@@ -35,6 +35,7 @@ a:hover {
 
 .ul-mn {
 	display: inline-block;
+	margin-right: 9px;
 }
 
 .ul-mn>li {
@@ -71,7 +72,7 @@ a:hover {
 
 .div-mn-mid {
 	/*left:180px;*/
-	padding-left: 180px;
+	padding-left: 90px;
 }
 
 .div-mn-right {

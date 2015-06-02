@@ -10,6 +10,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import model.Account;
+import model.User;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -28,11 +29,22 @@ public class AccountDAO extends AbsDAO {
 
 		@SuppressWarnings("unchecked")
 		List<Long> list = query.list();
-		long userID = 0;
-		if (!list.isEmpty())
-			userID = list.get(0);
+		long accountID = 0;
+		if (!list.isEmpty()) {
+			accountID = list.get(0);
+			session.load(acc, accountID);
 
-		session.load(acc, userID);
+			Query query2 = session
+					.createQuery("select u.id from User u where u.account.id=:aid");
+			query2.setParameter("aid", acc.getId());
+			@SuppressWarnings("unchecked")
+			List<Long> list2 = query.list();
+			long userID = 0;
+			if (!list2.isEmpty()) {
+				userID = list.get(0);
+				session.load(User.class, userID);
+			}
+		}
 
 		commitTransaction(session);
 		return (acc.getId() != 0) ? "index?faces-redirect=true" : "";
@@ -81,5 +93,15 @@ public class AccountDAO extends AbsDAO {
 		} catch (NoSuchAlgorithmException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	public User getUserByAccount(Account acc) {
+		Session session = beginTransaction();
+		Query query = session
+				.createQuery("from User u where u.account.id=:aid");
+		query.setParameter("aid", acc.getId());
+		@SuppressWarnings("unchecked")
+		List<User> list = query.list();
+		return (!list.isEmpty()) ? list.get(0) : new User();
 	}
 }

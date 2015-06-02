@@ -7,7 +7,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Brownies Bakery</title>
+	<title>#{msgs['index.title']}</title>
 
 	<link type="text/css" rel="stylesheet" href="css/index_menu.css" />
 	<link type="text/css" rel="stylesheet" href="css/index_wrapper.css" />
@@ -67,119 +67,128 @@
 	<f:view>
 		<h:form>
 			<div id='div-menu'>
-				<div class='div-mn-left'>
-					<h:link outcome="index">
-						<h:graphicImage value="images/icon.png"
-							style="height: 40px; cursor: pointer" />
-					</h:link>
-					<ul class='ul-mn'>
-						<!--<li><a href="#">Home</a></li>-->
-						<li><a href="#">Order</a></li>
-						<li><a href="#">News</a>
-							<div class='div-submenu'>
+				<h:panelGroup id="menu" styleClass="div-menu">
+					<div class='div-mn-left'>
+						<h:link outcome="index">
+							<h:graphicImage value="images/icon.png"
+								style="height: 40px; cursor: pointer" />
+						</h:link>
+						<ul class='ul-mn'>
+							<!--<li><a href="#">Home</a></li>-->
+							<li><a href="#">#{msgs['index.order']}</a></li>
+							<li><a href="#">#{msgs['index.news']}</a>
+								<div class='div-submenu'>
+									<span class='caret'></span>
+									<ul class='submenu-1'>
+										<li><a href="#">#{msgs['index.sale']}</a></li>
+										<li><a href="#">#{msgs['index.promotions']}</a></li>
+									</ul>
+								</div></li>
+							<li><h:link value="#{msgs['index.about']}" outcome="about" /></li>
+							<li><a href="#">#{msgs['index.contact']}</a></li>
+							<c:if test="${account.type==1}">
+								<li><h:link value="#{msgs['manager.title']}"
+										outcome="manager"></h:link></li>
+							</c:if>
+						</ul>
+					</div>
+					<div class='div-mn-mid'>
+						<div class='div-search'>
+							<h:inputText type="text" placeholder="Search here..." />
+							<button class='btn-search'></button>
+							<div class='div-search-adv'>
 								<span class='caret'></span>
-								<ul class='submenu-1'>
-									<li><a href="#">Sale</a></li>
-									<li><a href="#">Promotions</a></li>
-								</ul>
-							</div></li>
-						<li><h:link value="About" outcome="about" /></li>
-						<li><a href="#">Contact</a></li>
-					</ul>
-				</div>
-				<div class='div-mn-mid'>
-					<div class='div-search'>
-						<h:inputText type="text" placeholder="Search here..." />
-						<button class='btn-search'></button>
-						<div class='div-search-adv'>
-							<span class='caret'></span>
+							</div>
 						</div>
 					</div>
-				</div>
-				<h:panelGroup id="menu-right" styleClass="div-mn-right"
-					layout="block">
-					<c:choose>
-						<c:when test="${account.id>0}">
-							<ul class="ul-mn">
-								<li><a href="#"><h:outputText value="#{account.name}" /></a>
-									<div class='div-submenu admin-mn'>
-										<span class='caret'></span>
-										<ul class='submenu-1'>
-											<li><a href="#" id='change-pass'>Change password</a></li>
-											<li><h:commandLink action="#{accountDAO.logout()}"
-													value="Logout">
-													<f:ajax render="menu-right"></f:ajax>
-												</h:commandLink></li>
-										</ul>
-									</div></li>
-							</ul>
-						</c:when>
-						<c:otherwise>
-							<h:link outcome="login" value="Login"></h:link>
-							<h:outputText value="/" style="color: white"></h:outputText>
-							<h:link outcome="register" value="Register"></h:link>
-						</c:otherwise>
-					</c:choose>
-					<h:panelGroup id="shopping-cart" styleClass="shopping-cart"
+					<h:panelGroup id="menu-right" styleClass="div-mn-right"
 						layout="block">
 						<c:choose>
-							<c:when test="${!bill.checkEmptyCart()}">
-								<span class='c-price'> <h:outputText
-										value="#{bill.updateCost()}">
-										<f:convertNumber pattern="#,##0đ" />
-									</h:outputText>
-								</span>
-								<span class='amount'>${bill.computeAmount()}</span>
+							<c:when test="${account.id>0}">
+								<ul class="ul-mn">
+									<li><a href="#"><h:outputText value="#{account.name}" /></a>
+										<div class='div-submenu admin-mn'>
+											<span class='caret'></span>
+											<ul class='submenu-1'>
+												<li><a href="#" id='change-pass'>#{msgs['index.changePass']}</a></li>
+												<li><h:commandLink action="#{accountDAO.logout()}"
+														value="#{msgs['index.logout']}">
+														<f:ajax render="menu"></f:ajax>
+													</h:commandLink></li>
+											</ul>
+										</div></li>
+								</ul>
 							</c:when>
 							<c:otherwise>
-								<span class='c-price'>Empty cart</span>
+								<h:link outcome="login" value="#{msgs['index.login']}"></h:link>
+								<h:outputText value="/" style="color: white"></h:outputText>
+								<h:link outcome="register" value="#{msgs['index.register']}"></h:link>
 							</c:otherwise>
 						</c:choose>
-						<span class="arrow-bottom"></span>
-						<span class='caret'></span>
-						<div class='cart-detail'>
-							<c:choose>
-								<c:when test="${!bill.checkEmptyCart()}">
-									<table class='items'>
-										<c:forEach items="${bill.products.keySet()}" var="item">
-											<tr>
-												<td><h:graphicImage value="images/${item.mainImage}" /></td>
-												<td><a href='#'>${item.name}</a></td>
-												<td><h:outputText value="#{item.price}">
-														<f:convertNumber pattern="#,##0đ" />
-													</h:outputText></td>
-												<td>x${bill.products.get(item)}</td>
-												<td><h:outputText
-														value="#{bill.products.get(item).intValue() * item.price}">
-														<f:convertNumber pattern="#,##0đ" />
-													</h:outputText></td>
-												<td><h:commandButton class='btn del' value="x"
-														action="#{bill.removeProduct(item)}">
-														<f:ajax render="shopping-cart"></f:ajax>
-													</h:commandButton></td>
-											</tr>
-										</c:forEach>
-										<tr>
-											<td colspan="4"
-												style="text-align: right; font-weight: bold; color: rgba(51, 51, 51, 1)">Total:</td>
-											<td style="text-align: right; font-size: 127%"><h:outputText
-													value="#{bill.totalCost}">
-													<f:convertNumber pattern="#,##0đ" />
-												</h:outputText></td>
-											<td></td>
-										</tr>
-									</table>
-									<table class='payment'>
-										<tr>
-											<td colspan="2"><h:button class='btn money'
-													value="View Cart" outcome="view-cart"></h:button> <h:button
-													class='btn money' value="Checkout"></h:button></td>
-										</tr>
-									</table>
-								</c:when>
-								<c:otherwise>Empty shopping cart ^_^ Please log in to shopping</c:otherwise>
-							</c:choose>
-						</div>
+						<c:if test="#{account.type!=1}">
+							<h:panelGroup id="shopping-cart" styleClass="shopping-cart"
+								layout="block">
+								<c:choose>
+									<c:when test="${!bill.checkEmptyCart()}">
+										<span class='c-price'> <h:outputText
+												value="#{bill.updateCost()}">
+												<f:convertNumber pattern="#,##0đ" />
+											</h:outputText>
+										</span>
+										<span class='amount'>${bill.computeAmount()}</span>
+									</c:when>
+									<c:otherwise>
+										<span class='c-price'>#{msgs['index.emptyCart']}</span>
+									</c:otherwise>
+								</c:choose>
+								<span class="arrow-bottom"></span>
+								<span class='caret'></span>
+								<div class='cart-detail'>
+									<c:choose>
+										<c:when test="${!bill.checkEmptyCart()}">
+											<table class='items'>
+												<c:forEach items="${bill.products.keySet()}" var="item">
+													<tr>
+														<td><h:graphicImage value="images/${item.mainImage}" /></td>
+														<td><a href='#'>${item.name}</a></td>
+														<td><h:outputText value="#{item.price}">
+																<f:convertNumber pattern="#,##0đ" />
+															</h:outputText></td>
+														<td>x${bill.products.get(item)}</td>
+														<td><h:outputText
+																value="#{bill.products.get(item).intValue() * item.price}">
+																<f:convertNumber pattern="#,##0đ" />
+															</h:outputText></td>
+														<td><h:commandButton class='btn del' value="x"
+																action="#{bill.removeProduct(item)}">
+																<f:ajax render="shopping-cart"></f:ajax>
+															</h:commandButton></td>
+													</tr>
+												</c:forEach>
+												<tr>
+													<td colspan="4"
+														style="text-align: right; font-weight: bold; color: rgba(51, 51, 51, 1)">#{msgs['index.total']}</td>
+													<td style="text-align: right; font-size: 127%"><h:outputText
+															value="#{bill.totalCost}">
+															<f:convertNumber pattern="#,##0đ" />
+														</h:outputText></td>
+													<td></td>
+												</tr>
+											</table>
+											<table class='payment'>
+												<tr>
+													<td colspan="2"><h:button class='btn money'
+															value="#{msgs['index.viewCart']}" outcome="view-cart"></h:button>
+														<h:button class='btn money'
+															value="#{msgs['index.checkout']}" outcome="checkout"></h:button></td>
+												</tr>
+											</table>
+										</c:when>
+										<c:otherwise>#{msgs['index.notifyCartEmpty']}</c:otherwise>
+									</c:choose>
+								</div>
+							</h:panelGroup>
+						</c:if>
 					</h:panelGroup>
 				</h:panelGroup>
 			</div>
@@ -200,7 +209,7 @@
 			<div class='wrapper'>
 				<div class='wrapper-left'>
 					<div class='wpl-content'>
-						<span class='box-top-right'>Sale</span>
+						<span class='box-top-right'>#{msgs['index.sale']}</span>
 						<c:forEach var="item" items="#{productDAO.listSale(4)}">
 							<div class='wpl-item' title="#{item.name}">
 								<h:graphicImage value="images/#{item.mainImage}" />
@@ -214,33 +223,9 @@
 							</div>
 						</c:forEach>
 					</div>
+
 					<div class='wpl-content'>
-						<span class='box-top-right'>Offer</span>
-						<div class='wpl-item'>
-							<h:graphicImage value="images/1.jpg" />
-							<div class='wpl-item-content'>
-								<p>Banh kem sinh nhat</p>
-								<span class='p-price'>350.000 VND</span>
-							</div>
-						</div>
-						<div class='wpl-item'>
-							<h:graphicImage value="images/2.jpg" />
-							<div class='wpl-item-content'>
-								<p>Banh kem sinh nhat</p>
-								<span class='p-price'>350.000 VND</span>
-							</div>
-						</div>
-						<div class='wpl-item'>
-							<h:graphicImage
-								value="images/bi-mat-yeu-thuong-tu-banh-kem-lanh-baskin-robbins.jpg" />
-							<div class='wpl-item-content'>
-								<p>Banh kem sinh nhat</p>
-								<span class='p-price'>350.000 VND</span>
-							</div>
-						</div>
-					</div>
-					<div class='wpl-content'>
-						<span class='box-top-right'>New</span>
+						<span class='box-top-right'>#{msgs['index.new']}</span>
 						<c:forEach var="item" items="#{productDAO.listNew(4)}">
 							<div class='wpl-item'>
 								<h:graphicImage value="images/#{item.mainImage}" />
@@ -277,14 +262,13 @@
 										<span class='price'><h:outputText value="#{item.price}">
 												<f:convertNumber pattern="#,##0đ" />
 											</h:outputText> </span>
-										<h:commandLink styleClass="cart-icon" title="Add to cart"
+										<h:commandLink styleClass="cart-icon"
+											title="#{msgs['index.addCart']}"
 											action="#{bill.addProduct(item)}">
 											<f:ajax render="shopping-cart"></f:ajax>
 										</h:commandLink>
-										<a class='detail-icon' title="View detail"></a> <a
-											class='share-icon' title="Share..."></a><a
-											class='detail-icon' title="View detail"></a> <a
-											class='share-icon' title="Share..."></a>
+										<a class='detail-icon' title="#{msgs['index.view']}"></a> <a
+											class='share-icon' title="#{msgs['index.share']}"></a>
 									</div>
 								</div>
 							</div>
@@ -297,7 +281,7 @@
 			<div class='clr'></div>
 			<div id='info'>
 				<div class='ileft'>
-					Liên hệ:
+					#{msgs['index.contact2']}
 					<p>
 						<a href="#" class="hvr-wobble-vertical"><h:graphicImage
 								alt="phone" value="images/social-icons/Phone.png" /></a> 0989899999
@@ -310,7 +294,7 @@
 					Đỗ Xuân Hợp - Phước Long A - Quận 9 - Tp.HCM
 				</div>
 				<div class='iright'>
-					<p>Follow us:</p>
+					<p>#{msgs['index.follow']}</p>
 					<a href="http://facebook.com" class="hvr-wobble-vertical"><h:graphicImage
 							alt="email" value="images/social-icons/fb.png" /></a> <a href="#"
 						class="hvr-wobble-vertical"><h:graphicImage alt="email"
@@ -323,7 +307,7 @@
 							value="images/social-icons/y.png" /></a>
 				</div>
 				<div id='bottom'>
-					<p>Copy right © 2014-2015 by titeo.vn - XHTML Valid</p>
+					<p>#{msgs['index.copyright']}</p>
 				</div>
 			</div>
 		</h:form>

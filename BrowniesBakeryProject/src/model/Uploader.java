@@ -10,12 +10,58 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
 
 @ManagedBean
 @SessionScoped
 public class Uploader {
+	private UploadedFile uploadedFile;
+	private String fileName;
+
+	public Uploader() {
+	}
+
+	public UploadedFile getUploadedFile() {
+		return uploadedFile;
+	}
+
+	public void setUploadedFile(UploadedFile uploadedFile) {
+		this.uploadedFile = uploadedFile;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public void handleFileUpload() {
+		System.out.println("upload file");
+		try {
+			File targetFolder = new File(
+					"D:\\Git Repository\\brownies_bakery\\BrowniesBakeryProject\\WebContent\\images");
+			InputStream inputStream = uploadedFile.getInputstream();
+			OutputStream out = new FileOutputStream(new File(targetFolder,
+					uploadedFile.getFileName()));
+			int read = 0;
+			byte[] bytes = new byte[1024];
+			while ((read = inputStream.read(bytes)) != -1) {
+				out.write(bytes, 0, read);
+			}
+			inputStream.close();
+			out.flush();
+			out.close();
+
+			this.fileName = uploadedFile.getFileName();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public void handleFileUpload(FileUploadEvent event) {
+		System.out.println("upload file");
 		try {
 			File targetFolder = new File(
 					"D:\\Git Repository\\brownies_bakery\\BrowniesBakeryProject\\WebContent\\images");
@@ -30,6 +76,8 @@ public class Uploader {
 			inputStream.close();
 			out.flush();
 			out.close();
+
+			this.fileName = event.getFile().getFileName();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

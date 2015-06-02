@@ -6,7 +6,7 @@
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Shopping Cart</title>
+	<title>View Cart</title>
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<style type='text/css'>
 .product img {
@@ -83,9 +83,10 @@
 			</h:dataTable>
 			<table width="100%">
 				<tr>
-					<td><h:link value="Continue shopping" outcome="index"></h:link>
+					<td><h:button value="Tiếp tục mua sắm" outcome="index"></h:button>
 					</td>
-					<td align="right"><button class="btn">Checkout</button></td>
+					<td align="right"><h:button value="Checkout"
+							outcome="checkout"></h:button></td>
 				</tr>
 			</table>
 		</h:form>

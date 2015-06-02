@@ -8,5 +8,9 @@
 			<default-locale>vi</default-locale>
 			<supported-locale>en</supported-locale>
 		</locale-config>
+		<resource-bundle>
+			<base-name>resources.messages</base-name>
+			<var>msgs</var>
+		</resource-bundle>
 	</application>
 </faces-config>

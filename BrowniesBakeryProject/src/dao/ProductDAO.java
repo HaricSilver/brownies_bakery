@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import model.Product;
+import model.Uploader;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -61,10 +62,14 @@ public class ProductDAO extends AbsDAO implements Serializable {
 		return (list.isEmpty()) ? -1 : list.get(0).doubleValue();
 	}
 
-	public String addProduct(Product p) {
+	public String addProduct(Product p, Uploader uploader) {
 		Session session = beginTransaction();
+
+		uploader.handleFileUpload();
+		p.setMainImage(uploader.getFileName());
+		System.out.println(uploader.getFileName());
 		session.save(p);
 		commitTransaction(session);
-		return (p.getId() != 0) ? "manager?showTab=2&faces-redirect=true" : "";
+		return (p.getId() != 0) ? "manager?faces-redirect=true" : "";
 	}
 }

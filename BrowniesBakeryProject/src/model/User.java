@@ -51,7 +51,6 @@ public class User implements Serializable {
 		this.account = account;
 	}
 
-	@Column(nullable = false)
 	public String getFullName() {
 		return fullName;
 	}

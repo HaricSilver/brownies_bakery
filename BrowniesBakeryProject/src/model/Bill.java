@@ -165,4 +165,8 @@ public class Bill implements Serializable {
 				+ ", products=" + products + "]";
 	}
 
+	public void resetProducts() {
+		this.products.clear();
+	}
+
 }
