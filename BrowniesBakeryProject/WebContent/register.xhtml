@@ -23,11 +23,23 @@
 				</h:panelGroup>
 				<h:outputText value="Password" />
 				<h:panelGroup>
-					<h:inputSecret value="#{account.password}" id="txtPass"
-						required="true" requiredMessage="Nhap password vao">
-						<f:ajax render="msgsPass" event="blur" execute="@this"></f:ajax>
+					<h:inputSecret id="password" value="#{account.password}"
+						required="true">
+						<f:validator validatorId="confirmPasswordValidator" />
+						<f:attribute name="confirm"
+							value="#{confirmPassword.submittedValue}" />
+						<f:ajax event="blur" execute="password confirm"
+							render="m_password" />
 					</h:inputSecret>
-					<h:message for="txtPass" id="msgsPass"></h:message>
+					<h:message id="m_password" for="password" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:inputSecret id="confirm" binding="#{confirmPassword}"
+						required="true">
+						<f:ajax event="blur" execute="password confirm"
+							render="m_password m_confirm" />
+					</h:inputSecret>
+					<h:message id="m_confirm" for="confirm" />
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:commandButton value="Register"

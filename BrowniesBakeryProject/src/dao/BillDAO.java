@@ -7,7 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import model.Account;
-import model.Bill;
+import model.Order;
 import model.User;
 
 import org.hibernate.Query;
@@ -18,15 +18,15 @@ import org.hibernate.Session;
 public class BillDAO extends AbsDAO {
 
 	@SuppressWarnings("unchecked")
-	public List<Bill> list() {
+	public List<Order> list() {
 		Session session = beginTransaction();
 		Query query = session.createQuery("from Bill b order by b.state");
-		List<Bill> list = query.list();
+		List<Order> list = query.list();
 		commitTransaction(session);
 		return list;
 	}
 
-	public String confirm(Bill bill, User user, Account acc) {
+	public String confirm(Order bill, User user, Account acc) {
 		Session session = beginTransaction();
 		if (user.getId() == 0) {
 			user.setFullName(acc.getName());

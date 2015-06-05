@@ -26,10 +26,10 @@ public class User implements Serializable {
 	private String email;
 	private String address;
 	private String phone;
-	private List<Bill> bills;
+	private List<Order> bills;
 
 	public User() {
-		this.bills = new LinkedList<Bill>();
+		this.bills = new LinkedList<Order>();
 	}
 
 	@Id
@@ -86,11 +86,11 @@ public class User implements Serializable {
 	}
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-	public List<Bill> getBills() {
+	public List<Order> getBills() {
 		return bills;
 	}
 
-	public void setBills(List<Bill> bills) {
+	public void setBills(List<Order> bills) {
 		this.bills = bills;
 	}
 

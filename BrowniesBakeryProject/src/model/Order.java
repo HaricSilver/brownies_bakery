@@ -2,26 +2,28 @@ package model;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "orders")
 @ManagedBean
 @SessionScoped
-public class Bill implements Serializable {
+public class Order implements Serializable {
 	private static final long serialVersionUID = -2960246219647228971L;
 	private long id;
 	private int state;
@@ -30,10 +32,10 @@ public class Bill implements Serializable {
 	private Calendar createDate;
 	private Calendar deliveryDate;
 	private double totalCost;
-	private Map<Product, Integer> products;
+	private List<OrderDetail> products;
 
-	public Bill() {
-		this.products = new HashMap<Product, Integer>();
+	public Order() {
+		this.products = new LinkedList<OrderDetail>();
 	}
 
 	@Id
@@ -99,14 +101,12 @@ public class Bill implements Serializable {
 		this.totalCost = totalCost;
 	}
 
-	@ElementCollection(fetch = FetchType.EAGER)
-	@JoinTable(name = "bill_detail")
-	@Column(nullable = false)
-	public Map<Product, Integer> getProducts() {
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	public List<OrderDetail> getProducts() {
 		return products;
 	}
 
-	public void setProducts(Map<Product, Integer> products) {
+	public void setProducts(List<OrderDetail> products) {
 		this.products = products;
 	}
 
@@ -115,22 +115,10 @@ public class Bill implements Serializable {
 	}
 
 	public String addProduct(Product p) {
-		try {
-			for (Product product : this.products.keySet()) {
-				if (product.equals(p)) {
-					System.out.println("replace");
-					int previousValue = this.products.get(product).intValue();
-					this.products
-							.replace(product, new Integer(++previousValue));
-					return "";
-				}
-			}
-
-			System.out.println("put");
-			this.products.put(p, new Integer(1));
-
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (products.contains(p)) {
+			products.get(products.indexOf(p)).increaseQuantity();
+		} else {
+			products.add(new OrderDetail(p, 1));
 		}
 		return "";
 	}
@@ -142,18 +130,15 @@ public class Bill implements Serializable {
 
 	public int computeAmount() {
 		int amount = 0;
-		for (Integer ite : this.products.values())
-			amount += ite.intValue();
-
+		for (OrderDetail billDetail : products)
+			amount += billDetail.getAmount();
 		return amount;
 	}
 
 	public double updateCost() {
 		this.totalCost = 0;
-		for (Product product : this.products.keySet()) {
-			this.totalCost += (this.products.get(product).intValue() * product
-					.getPrice());
-		}
+		for (OrderDetail billDetail : products)
+			this.totalCost += billDetail.getProduct().getPrice();
 		return this.totalCost;
 	}
 

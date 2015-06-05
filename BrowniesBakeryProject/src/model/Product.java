@@ -9,18 +9,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "products")
 @ManagedBean
 @RequestScoped
 public class Product implements Serializable {
 	private static final long serialVersionUID = -6639788924915793414L;
 	private long id;
+	private Category category;
+	private Manufacturer manufacturer;
 	private String name;
 	private double price;
 	private String mainImage;
 	private String[] images;
 	private boolean sale;
+	private int stock;
 
 	public Product() {
 	}
@@ -33,6 +39,24 @@ public class Product implements Serializable {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	@ManyToOne
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	@ManyToOne
+	public Manufacturer getManufacturer() {
+		return manufacturer;
+	}
+
+	public void setManufacturer(Manufacturer manufacturer) {
+		this.manufacturer = manufacturer;
 	}
 
 	@Column(nullable = false)
@@ -75,6 +99,14 @@ public class Product implements Serializable {
 
 	public void setSale(boolean sale) {
 		this.sale = sale;
+	}
+
+	public int getStock() {
+		return stock;
+	}
+
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
 
 	@Override

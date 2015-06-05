@@ -4,11 +4,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 import model.Account;
-import model.Bill;
+import model.Category;
+import model.Manufacturer;
+import model.Order;
 import model.HisProduct;
 import model.Product;
 import model.User;
@@ -17,7 +17,7 @@ import org.hibernate.Session;
 
 import util.HibernateUtil;
 
-public class MainTest {
+public class SampleDataTest {
 
 	public static void main(String[] args) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -34,54 +34,74 @@ public class MainTest {
 			e.printStackTrace();
 		}
 
+		// manufacturer
+		Manufacturer manufacturer = new Manufacturer();
+		manufacturer.setName("KMC");
+		manufacturer
+				.setAddress("Tổ 5, Khu phố 2, Phường Linh Xuân, Quận Thủ Đức");
+		session.save(manufacturer);
+
+		// sample catelory
+		Category category = new Category();
+		category.setName("Bánh kem sinh nhật");
+		category.setUnit("Cái");
+		session.save(category);
+
+		// sample account
 		Account account = new Account();
 		account.setName("Haric Silver");
 		account.setPassword("123456");
+		session.save(account);
 
+		// sample user
 		User user = new User();
 		user.setFullName("Haric Silver");
 		user.setAddress("Khong co");
 		user.setPhone("Khong biet");
+		session.save(user);
 
+		// sample product
 		Product p = new Product();
-		p.setName("Banh kem 1");
+		p.setCategory(category);
+		p.setManufacturer(manufacturer);
+		p.setName("Bánh kem 1");
 		p.setMainImage("1.jpg");
 		p.setPrice(350000);
+		session.save(p);
+
 		Product p2 = new Product();
-		p2.setName("Banh kem 2");
+		p2.setCategory(category);
+		p2.setManufacturer(manufacturer);
+		p2.setName("Bánh kem 2");
 		p2.setMainImage("2.jpg");
 		p2.setSale(true);
 		p2.setPrice(350000);
+		session.save(p2);
 
+		// sample history product
 		HisProduct hisProduct = new HisProduct();
 		hisProduct.setProduct(p);
 		hisProduct.setDateChange(Calendar.getInstance());
-		hisProduct.setName("his product");
+		hisProduct.setName("Banh kem 1");
 		hisProduct.setPrice(900000);
+		session.save(hisProduct);
+
 		HisProduct hisProduct1 = new HisProduct();
 		hisProduct1.setProduct(p);
 		hisProduct1.setDateChange(calendar);
-		hisProduct1.setName("his product");
+		hisProduct1.setName("Banh kem 2");
 		hisProduct1.setPrice(10000);
-
-		Map<Product, Integer> products = new HashMap<Product, Integer>();
-		products.put(p, new Integer(2));
-		products.put(p2, new Integer(1));
-
-		Bill bill = new Bill();
-		bill.setUser(user);
-		bill.setRecipient("Haric Silver");
-		bill.setCreateDate(Calendar.getInstance());
-		bill.setDeliveryDate(Calendar.getInstance());
-		bill.setProducts(products);
-
-		session.save(account);
-		session.save(user);
-		session.save(p);
-		session.save(p2);
-		session.save(hisProduct);
 		session.save(hisProduct1);
-		session.save(bill);
+
+		// sample order
+		Order order = new Order();
+		order.setUser(user);
+		order.setRecipient("Haric Silver");
+		order.setCreateDate(Calendar.getInstance());
+		order.setDeliveryDate(Calendar.getInstance());
+		order.addProduct(p);
+		order.addProduct(p2);
+		session.save(order);
 
 		session.getTransaction().commit();
 	}
