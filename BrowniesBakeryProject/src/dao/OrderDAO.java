@@ -15,7 +15,7 @@ import org.hibernate.Session;
 
 @ManagedBean
 @SessionScoped
-public class BillDAO extends AbsDAO {
+public class OrderDAO extends AbsDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<Order> list() {

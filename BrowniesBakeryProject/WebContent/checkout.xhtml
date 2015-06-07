@@ -14,12 +14,12 @@
 	<f:view>
 		<h:form>
 			<c:choose>
-				<c:when test="${account.id!=0 &amp;&amp; bill.computeAmount() > 0}">
+				<c:when test="${account.id!=0 &amp;&amp; order.computeAmount() > 0}">
 					<h:outputText value="Thông tin giao hàng"></h:outputText>
 					<h:panelGrid columns="2">
 						<h:outputText value="Tên người nhận"></h:outputText>
 						<h:panelGroup>
-							<h:inputText value="#{bill.recipient}" required="true"
+							<h:inputText value="#{order.recipient}" required="true"
 								requiredMessage="Nhập tên người nhận" id="txtRecipient">
 								<f:ajax render="msgsRecipient" event="blur"></f:ajax>
 							</h:inputText>
@@ -27,7 +27,7 @@
 						</h:panelGroup>
 						<h:outputText value="Ngày giao hàng"></h:outputText>
 						<h:panelGroup>
-							<p:calendar value="#{bill.deliveryDate}" showOn="button"
+							<p:calendar value="#{order.deliveryDate}" showOn="button"
 								required="true" requiredMessage="Chọn ngày giao hàng"
 								id="txtDeliveryDate">
 								<f:converter converterId="CalendarConverter"></f:converter>

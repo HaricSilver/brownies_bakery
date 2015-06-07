@@ -1,8 +1,8 @@
 package test;
 
-import dao.BillDAO;
+import dao.OrderDAO;
 
-public class BillTest {
+public class OrderTest {
 
 	public static void main(String[] args) {
 		// Account account = new Account();
@@ -33,7 +33,7 @@ public class BillTest {
 		//
 		// System.out.println(bill.getProducts().keySet());
 
-		BillDAO billdao = new BillDAO();
+		OrderDAO billdao = new OrderDAO();
 		System.out.println(billdao.list().get(0));
 	}
 

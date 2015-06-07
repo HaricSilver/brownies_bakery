@@ -115,16 +115,19 @@ public class Order implements Serializable {
 	}
 
 	public String addProduct(Product p) {
-		if (products.contains(p)) {
-			products.get(products.indexOf(p)).increaseQuantity();
-		} else {
-			products.add(new OrderDetail(p, 1));
+		for (OrderDetail orderDetail : products) {
+			if (orderDetail.getProduct().equals(p)) {
+				orderDetail.increaseQuantity();
+				return "";
+			}
 		}
+		// add new OrderDetail if product don't exists
+		products.add(new OrderDetail(p, 1));
 		return "";
 	}
 
-	public String removeProduct(Product p) {
-		this.products.remove(p);
+	public String removeProduct(OrderDetail orderDetail) {
+		this.products.remove(orderDetail);
 		return "";
 	}
 
@@ -138,7 +141,7 @@ public class Order implements Serializable {
 	public double updateCost() {
 		this.totalCost = 0;
 		for (OrderDetail billDetail : products)
-			this.totalCost += billDetail.getProduct().getPrice();
+			this.totalCost += billDetail.sumPrice();
 		return this.totalCost;
 	}
 

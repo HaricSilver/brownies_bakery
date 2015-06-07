@@ -54,4 +54,8 @@ public class OrderDetail implements Serializable {
 		this.amount++;
 	}
 
+	public double sumPrice() {
+		return (this.getProduct().getPrice() * this.getAmount());
+	}
+
 }

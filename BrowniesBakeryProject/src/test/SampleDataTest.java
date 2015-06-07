@@ -87,7 +87,7 @@ public class SampleDataTest {
 		session.save(hisProduct);
 
 		HisProduct hisProduct1 = new HisProduct();
-		hisProduct1.setProduct(p);
+		hisProduct1.setProduct(p2);
 		hisProduct1.setDateChange(calendar);
 		hisProduct1.setName("Banh kem 2");
 		hisProduct1.setPrice(10000);

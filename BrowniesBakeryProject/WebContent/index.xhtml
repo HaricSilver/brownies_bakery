@@ -111,7 +111,7 @@
 											<span class='caret'></span>
 											<ul class='submenu-1'>
 												<li><a href="#" id='change-pass'>#{msgs['index.changePass']}</a></li>
-												<li><h:commandLink action="#{accountDAO.logout()}"
+												<li><h:commandLink action="#{accountDAO.logout}"
 														value="#{msgs['index.logout']}">
 														<f:ajax render="menu"></f:ajax>
 													</h:commandLink></li>
@@ -129,13 +129,13 @@
 							<h:panelGroup id="shopping-cart" styleClass="shopping-cart"
 								layout="block">
 								<c:choose>
-									<c:when test="${!bill.checkEmptyCart()}">
+									<c:when test="${!order.checkEmptyCart()}">
 										<span class='c-price'> <h:outputText
-												value="#{bill.updateCost()}">
+												value="${order.updateCost()}">
 												<f:convertNumber pattern="#,##0đ" />
 											</h:outputText>
 										</span>
-										<span class='amount'>${bill.computeAmount()}</span>
+										<span class='amount'>${order.computeAmount()}</span>
 									</c:when>
 									<c:otherwise>
 										<span class='c-price'>#{msgs['index.emptyCart']}</span>
@@ -145,22 +145,23 @@
 								<span class='caret'></span>
 								<div class='cart-detail'>
 									<c:choose>
-										<c:when test="${!bill.checkEmptyCart()}">
+										<c:when test="${!order.checkEmptyCart()}">
 											<table class='items'>
-												<c:forEach items="${bill.products.keySet()}" var="item">
+												<c:forEach items="${order.products}" var="item">
 													<tr>
-														<td><h:graphicImage value="images/${item.mainImage}" /></td>
-														<td><a href='#'>${item.name}</a></td>
-														<td><h:outputText value="#{item.price}">
+														<td><h:graphicImage
+																value="images/${item.product.mainImage}" /></td>
+														<td><h:link value="#{item.product.name}"
+																title="#{item.product.name}" outcome="index" /></td>
+														<td><h:outputText value="#{item.product.price}">
 																<f:convertNumber pattern="#,##0đ" />
 															</h:outputText></td>
-														<td>x${bill.products.get(item)}</td>
-														<td><h:outputText
-																value="#{bill.products.get(item).intValue() * item.price}">
+														<td><h:outputText value="x#{item.amount}" /></td>
+														<td><h:outputText value="${item.sumPrice()}">
 																<f:convertNumber pattern="#,##0đ" />
 															</h:outputText></td>
 														<td><h:commandButton class='btn del' value="x"
-																action="#{bill.removeProduct(item)}">
+																action="${order.removeProduct(item)}">
 																<f:ajax render="shopping-cart"></f:ajax>
 															</h:commandButton></td>
 													</tr>
@@ -169,7 +170,7 @@
 													<td colspan="4"
 														style="text-align: right; font-weight: bold; color: rgba(51, 51, 51, 1)">#{msgs['index.total']}</td>
 													<td style="text-align: right; font-size: 127%"><h:outputText
-															value="#{bill.totalCost}">
+															value="#{order.totalCost}">
 															<f:convertNumber pattern="#,##0đ" />
 														</h:outputText></td>
 													<td></td>
@@ -210,7 +211,7 @@
 				<div class='wrapper-left'>
 					<div class='wpl-content'>
 						<span class='box-top-right'>#{msgs['index.sale']}</span>
-						<c:forEach var="item" items="#{productDAO.listSale(4)}">
+						<c:forEach var="item" items="${productDAO.listSale(4)}">
 							<div class='wpl-item' title="#{item.name}">
 								<h:graphicImage value="images/#{item.mainImage}" />
 								<div class='wpl-item-content'>
@@ -226,7 +227,7 @@
 
 					<div class='wpl-content'>
 						<span class='box-top-right'>#{msgs['index.new']}</span>
-						<c:forEach var="item" items="#{productDAO.listNew(4)}">
+						<c:forEach var="item" items="${productDAO.listNew(4)}">
 							<div class='wpl-item'>
 								<h:graphicImage value="images/#{item.mainImage}" />
 								<div class='wpl-item-content'>
@@ -255,7 +256,7 @@
 									<div class='box-price'>
 										<c:if test="#{item.sale}">
 											<span class='sale-price'><h:outputText
-													value="#{productDAO.getOldPrice(item.id)}">
+													value="${productDAO.getOldPrice(item.id)}">
 													<f:convertNumber pattern="#,##0đ" />
 												</h:outputText></span>
 										</c:if>
@@ -264,7 +265,7 @@
 											</h:outputText> </span>
 										<h:commandLink styleClass="cart-icon"
 											title="#{msgs['index.addCart']}"
-											action="#{bill.addProduct(item)}">
+											action="${order.addProduct(item)}">
 											<f:ajax render="shopping-cart"></f:ajax>
 										</h:commandLink>
 										<a class='detail-icon' title="#{msgs['index.view']}"></a> <a
