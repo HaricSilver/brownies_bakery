@@ -1,10 +1,12 @@
 package dao;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import model.Product;
 import model.Uploader;
@@ -62,7 +64,7 @@ public class ProductDAO extends AbsDAO implements Serializable {
 		return (list.isEmpty()) ? -1 : list.get(0).doubleValue();
 	}
 
-	public String addProduct(Product p, Uploader uploader) {
+	public void addProduct(Product p, Uploader uploader) {
 		Session session = beginTransaction();
 
 		uploader.handleFileUpload();
@@ -70,6 +72,13 @@ public class ProductDAO extends AbsDAO implements Serializable {
 		System.out.println(uploader.getFileName());
 		session.save(p);
 		commitTransaction(session);
-		return (p.getId() != 0) ? "manager?faces-redirect=true" : "";
+		if (p.getId() != 0)
+			try {
+				System.out.println("insert successfull");
+				FacesContext.getCurrentInstance().getExternalContext()
+						.redirect("index.faces");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 	}
 }

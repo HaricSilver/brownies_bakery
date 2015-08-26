@@ -24,18 +24,19 @@
 				<h:outputText value="Password" />
 				<h:panelGroup>
 					<h:inputSecret id="password" value="#{account.password}"
-						required="true">
-						<f:validator validatorId="confirmPasswordValidator" />
-						<f:attribute name="confirm"
-							value="#{confirmPassword.submittedValue}" />
+						required="true" binding="#{confirmPassword}">
 						<f:ajax event="blur" execute="password confirm"
 							render="m_password" />
 					</h:inputSecret>
 					<h:message id="m_password" for="password" />
 				</h:panelGroup>
+				<h:outputText value="Re-password" />
 				<h:panelGroup>
-					<h:inputSecret id="confirm" binding="#{confirmPassword}"
-						required="true">
+					<h:inputSecret id="confirm" required="true">
+
+						<f:validator validatorId="confirmPasswordValidator" />
+						<f:attribute name="pass" value="#{confirmPassword}" />
+
 						<f:ajax event="blur" execute="password confirm"
 							render="m_password m_confirm" />
 					</h:inputSecret>
@@ -43,7 +44,7 @@
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:commandButton value="Register"
-						action="#{accountDAO.register(account)}" />
+						action="${accountDAO.register(account)}" />
 				</h:panelGroup>
 			</h:panelGrid>
 		</h:form>

@@ -6,7 +6,7 @@
 	margin: auto;
 }
 
-.wrapper-left,.wrapper-right {
+.wrapper-left, .wrapper-right {
 	float: left;
 	min-height: 500px;
 	padding: 5px;
@@ -226,7 +226,8 @@
 }
 
 .share-icon {
-	background: url("../images/share.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+	background: url("../images/share.png") repeat-x scroll 0 0
+		rgba(0, 0, 0, 0);
 	width: 45px;
 	height: 45px;
 	position: absolute;

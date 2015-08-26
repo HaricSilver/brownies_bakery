@@ -48,7 +48,7 @@ ul.tabs li:hover {
 	background: rgba(202, 228, 255, 1);
 }
 
-html ul.tabs li.active,html ul.tabs li.active:hover {
+html ul.tabs li.active, html ul.tabs li.active:hover {
 	background: rgba(0, 97, 193, .1);
 	/*border-bottom: 1px solid rgba(230,242,255,1);*/
 }
@@ -115,7 +115,7 @@ html ul.tabs li.active,html ul.tabs li.active:hover {
 	visibility: visible;
 }
 
-html,body {
+html, body {
 	height: 100%;
 }
 
@@ -129,7 +129,7 @@ table.oder {
 	border-collapse: collapse;
 }
 
-table.oder,table.oder th,table.oder td {
+table.oder, table.oder th, table.oder td {
 	border: 1px solid rgba(255, 255, 255, .3);
 }
 
@@ -163,7 +163,7 @@ table.oder tr:hover {
 	background-color: rgba(221, 221, 255, 1);
 }
 
-table.oder tr td:nth-child(1),table.oder tr td:nth-child(2),table.oder tr td:last-child
+table.oder tr td:nth-child(1), table.oder tr td:nth-child(2), table.oder tr td:last-child
 	{
 	text-align: center;
 }
@@ -231,7 +231,7 @@ span.approve {
 	right: 18px;
 }
 
-a#change-pass,a#config,a#logout {
+a#change-pass, a#config, a#logout {
 	background-repeat: no-repeat;
 	background-position: left 9px center;
 	padding-left: 27px;

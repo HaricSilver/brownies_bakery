@@ -59,7 +59,7 @@ a:hover {
 	background: rgba(3, 57, 108, .5);
 }
 
-.div-mn-left,.div-mn-mid,.div-mn-right {
+.div-mn-left, .div-mn-mid, .div-mn-right {
 	/*position: absolute;*/ /*abs*/
 	float: left;
 	height: 42px;

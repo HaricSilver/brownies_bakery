@@ -15,6 +15,7 @@
 		<c:choose>
 			<c:when test="${account.id !=0 &amp;&amp; account.type ==1}">
 				<h:form enctype="multipart/form-data">
+					<h:message for="" id="msgsAddProduct">Thêm không thành công</h:message>
 					<h:panelGrid columns="2">
 						<h:outputText value="Tên sản phẩm"></h:outputText>
 						<h:panelGroup>
@@ -28,7 +29,7 @@
 						<h:inputText value="#{product.price}">
 							<f:validateDoubleRange minimum="0"></f:validateDoubleRange>
 						</h:inputText>
-						<h:outputText value="Ảnh đại diện"></h:outputText>
+						<h:outputText value="Hình ảnh"></h:outputText>
 						<h:panelGroup>
 							<p:fileUpload value="#{uploader.uploadedFile}" mode="simple"
 								allowTypes="/(\.|\/)(gif|jpg|jpeg|gif|png|PNG|GIF|JPG|JPEG)$/"
@@ -36,7 +37,8 @@
 						</h:panelGroup>
 					</h:panelGrid>
 					<h:commandButton value="Thêm" type="submit"
-						action="${productDAO.addProduct(product, uploader)}"></h:commandButton>
+						action="${productDAO.addProduct(product, uploader)}">
+					</h:commandButton>
 				</h:form>
 			</c:when>
 			<c:otherwise>

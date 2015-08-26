@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -11,7 +12,11 @@
 <h:body>
 	<f:view>
 		<h:form>
-			<h:panelGrid columns="2">
+			<h:panelGroup id="loginFaile">
+				<h:outputText value="Username or Password is incorrect"
+					rendered="#{not empty account.name}"></h:outputText>
+			</h:panelGroup>
+			<h:panelGrid columns="2" id="tets">
 				<h:outputText value="User name" />
 				<h:panelGroup>
 					<h:inputText value="#{account.name}" required="true"
@@ -30,7 +35,9 @@
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:commandButton value="Login"
-						action="#{accountDAO.verify(account)}" />
+						action="${accountDAO.verify(account)}">
+						<f:ajax render="loginFaile" execute="@form"></f:ajax>
+					</h:commandButton>
 				</h:panelGroup>
 			</h:panelGrid>
 		</h:form>

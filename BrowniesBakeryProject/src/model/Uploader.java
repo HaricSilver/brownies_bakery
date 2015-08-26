@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -14,7 +15,8 @@ import org.primefaces.model.UploadedFile;
 
 @ManagedBean
 @SessionScoped
-public class Uploader {
+public class Uploader implements Serializable {
+	private static final long serialVersionUID = -6309268989240506709L;
 	private UploadedFile uploadedFile;
 	private String fileName;
 
@@ -42,9 +44,13 @@ public class Uploader {
 		try {
 			File targetFolder = new File(
 					"D:\\Git Repository\\brownies_bakery\\BrowniesBakeryProject\\WebContent\\images");
+
+			this.fileName = System.currentTimeMillis() + "_"
+					+ uploadedFile.getFileName();
+
 			InputStream inputStream = uploadedFile.getInputstream();
 			OutputStream out = new FileOutputStream(new File(targetFolder,
-					uploadedFile.getFileName()));
+					this.fileName));
 			int read = 0;
 			byte[] bytes = new byte[1024];
 			while ((read = inputStream.read(bytes)) != -1) {
@@ -53,15 +59,13 @@ public class Uploader {
 			inputStream.close();
 			out.flush();
 			out.close();
-
-			this.fileName = uploadedFile.getFileName();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
+	// not use
 	public void handleFileUpload(FileUploadEvent event) {
-		System.out.println("upload file");
 		try {
 			File targetFolder = new File(
 					"D:\\Git Repository\\brownies_bakery\\BrowniesBakeryProject\\WebContent\\images");

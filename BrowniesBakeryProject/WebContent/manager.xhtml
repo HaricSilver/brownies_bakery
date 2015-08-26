@@ -21,7 +21,7 @@
 			$(".tab_content").hide(); //Hide all content
 			$("ul.tabs li:first").addClass("active").show(); //Activate first tab
 			$("ul.tabs li:first span.arrow-top").addClass("arrow-active");
-			$(".tab_content:first").show(); //Show first tab content
+			$(".tab_content:eq(1)").show(); //Show first tab content
 
 			//On Click Event
 			$("ul.tabs li").click(function() {
@@ -170,16 +170,16 @@
 														</c:otherwise>
 													</c:choose></td>
 												<c:choose>
-													<c:when test="#{item.products.size()>1}">
+													<c:when test="${item.products.size()>1}">
 														<td colspan="3" class="more">...</td>
 													</c:when>
 													<c:otherwise>
 														<c:set var="p"
-															value="#{item.products.keySet().iterator().next()}" />
+															value="${item.products.keySet().iterator().next()}" />
 														<td><h:outputText value="#{p.id}" /></td>
 														<td><h:outputText value="#{p.name}" /></td>
 														<td><h:outputText
-																value="#{item.products.get(p).intValue()}" /></td>
+																value="${item.products.get(p).intValue()}" /></td>
 													</c:otherwise>
 												</c:choose>
 												<td><h:outputText value="#{item.totalCost}">
@@ -201,6 +201,7 @@
 									</tbody>
 								</table>
 							</div>
+							<!-- product manager tab-->
 							<div id="tab2" class="tab_content">
 								<h:link value="#{msgs['manager.addNewProduct']}"
 									outcome="add_product"></h:link>
@@ -222,8 +223,12 @@
 									</h:column>
 									<h:column>
 										<f:facet name="header">#{msgs['index.promotions']}</f:facet>
-								#{itemProduct.sale}
-							</h:column>
+										<h:selectBooleanCheckbox value="#{itemProduct.sale}"></h:selectBooleanCheckbox>
+									</h:column>
+									<h:column>
+										<f:facet name="header">#{msgs['index.price_promotion']}</f:facet>
+										<h:outputText value=""></h:outputText>
+									</h:column>
 									<h:column>
 										<f:facet name="header"></f:facet>
 										<h:panelGroup>

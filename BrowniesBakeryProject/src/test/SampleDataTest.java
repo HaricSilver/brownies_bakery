@@ -7,14 +7,15 @@ import java.util.Date;
 
 import model.Account;
 import model.Category;
+import model.HisProduct;
 import model.Manufacturer;
 import model.Order;
-import model.HisProduct;
 import model.Product;
 import model.User;
 
 import org.hibernate.Session;
 
+import util.Encrypter;
 import util.HibernateUtil;
 
 public class SampleDataTest {
@@ -50,7 +51,8 @@ public class SampleDataTest {
 		// sample account
 		Account account = new Account();
 		account.setName("Haric Silver");
-		account.setPassword("123456");
+		account.setPassword(Encrypter.encryptMD5("123456"));
+		account.setType(1);
 		session.save(account);
 
 		// sample user
@@ -61,6 +63,18 @@ public class SampleDataTest {
 		session.save(user);
 
 		// sample product
+		Product p0;
+		int j = 0;
+		for (int i = 0; i < 27; i++) {
+			p0 = new Product();
+			p0.setCategory(category);
+			p0.setManufacturer(manufacturer);
+			p0.setName("Bánh kem " + (i + 1));
+			p0.setMainImage((j++ % 10) + ".jpg");
+			p0.setPrice(350000);
+			session.save(p0);
+		}
+
 		Product p = new Product();
 		p.setCategory(category);
 		p.setManufacturer(manufacturer);
@@ -90,7 +104,7 @@ public class SampleDataTest {
 		hisProduct1.setProduct(p2);
 		hisProduct1.setDateChange(calendar);
 		hisProduct1.setName("Banh kem 2");
-		hisProduct1.setPrice(10000);
+		hisProduct1.setPrice(400000);
 		session.save(hisProduct1);
 
 		// sample order
