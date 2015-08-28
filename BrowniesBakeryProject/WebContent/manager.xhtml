@@ -34,7 +34,7 @@
 				$(activeTab).fadeIn(); //Fade in the active content
 				return false;
 			});
-			
+
 			/* custom format */
 			$('.view, .edit').openDialog({
 				title : 'Test',
@@ -43,20 +43,57 @@
 				modal : true,
 				popup : true,
 			});
+
+			renderTable();
 		});
 
 		function deleteProduct() {
 			$.openDialog({
-				title: 'Xác nhận',
-				text: 'Bạn có muốn xóa đơn hàng này?',
-				modal: true,
-				confirm: function() {
-					return 'true';
+				title : 'Xác nhận',
+				text : 'Bạn có muốn xóa sản phẩm này?',
+				modal : true,
+				confirm : function() {
 				},
-				cancel: function() {
-					return 'false';
+				cancel : function() {
 				}
 			});
+
+			return false;
+		}
+
+		function selectAllTable() {
+			var checked = $("#tab2 .cbCheckAll").prop("checked");
+			$("#tab2 .cbSelect").prop("checked", checked);
+
+			/* highlight table */
+			if (checked)
+				$('#tab2 tr:not(:eq(0))').addClass('highlight');
+			else
+				$('#tab2 tr:not(:eq(0))').removeClass('highlight');
+		}
+
+		function renderTable() {
+			$('#tab2 tr:not(:eq(0)) td:not(:first-child)').on(
+					'click',
+					function() {
+						var select = $(this).parent().find('.cbSelect');
+						$(select).prop('checked', !$(select).prop('checked'))
+								.change();
+					});
+
+			$('#tab2 input[type=checkbox].cbSelect').change(function() {
+				if (this.checked) {
+					$(this).parent().parent().addClass('highlight');
+				} else {
+					$(this).parent().parent().removeClass('highlight');
+				}
+			});
+		}
+
+		function afterDelete(data) {
+			if (data.status == 'complete')
+				renderTable();
+			$('#tab2 .cbCheckAll').prop('checked', false);
 		}
 	</script>
 </h:head>
@@ -203,10 +240,35 @@
 							</div>
 							<!-- product manager tab-->
 							<div id="tab2" class="tab_content">
-								<h:link value="#{msgs['manager.addNewProduct']}"
-									outcome="add_product"></h:link>
-								<h:dataTable value="#{productDAO.listProducts}"
+								<!-- reset list -->
+								#{managerBackingBean.clearSelectedProduct()}
+								<h:commandButton value="#{msgs['manager.addNewProduct']}"
+									action="add_product"></h:commandButton>
+								<h:commandButton value="Delete"
+									action="#{productDAO.removeProduct(managerBackingBean)}">
+									<f:ajax render="tblProduct" onevent="afterDelete" />
+								</h:commandButton>
+
+								<!-- table product -->
+								<h:dataTable value="#{productDAO.listProducts}" id="tblProduct"
 									var="itemProduct" styleClass="oder">
+
+									<h:column>
+										<f:facet name="header">
+											<h:selectBooleanCheckbox onclick="selectAllTable()"
+												styleClass="cbCheckAll" binding="#{cbCheckAll}">
+												<f:ajax event="change"
+													listener="#{managerBackingBean.handleCheckAll(cbCheckAll.value, productDAO.listProducts)}">
+												</f:ajax>
+											</h:selectBooleanCheckbox>
+										</f:facet>
+										<h:selectBooleanCheckbox styleClass="cbSelect">
+											<f:ajax
+												listener="#{managerBackingBean.handleSelectedProduct(itemProduct)}"
+												event="change"></f:ajax>
+										</h:selectBooleanCheckbox>
+									</h:column>
+
 									<h:column>
 										<f:facet name="header">#{msgs['manager.productId']}</f:facet>
 								#{itemProduct.id}
@@ -215,6 +277,14 @@
 										<f:facet name="header">#{msgs['manager.productName']}</f:facet>
 								#{itemProduct.name}
 							</h:column>
+									<h:column>
+										<f:facet name="header">#{msgs['manager.category']}</f:facet>
+										#{itemProduct.category.name}
+									</h:column>
+									<h:column>
+										<f:facet name="header">#{msgs['manager.manufacturer']}</f:facet>
+										#{itemProduct.manufacturer.name}
+									</h:column>
 									<h:column>
 										<f:facet name="header">#{msgs['manager.price']}</f:facet>
 										<h:outputText value="#{itemProduct.price}">
@@ -228,16 +298,6 @@
 									<h:column>
 										<f:facet name="header">#{msgs['index.price_promotion']}</f:facet>
 										<h:outputText value=""></h:outputText>
-									</h:column>
-									<h:column>
-										<f:facet name="header"></f:facet>
-										<h:panelGroup>
-											<a class='btn view' href='#'
-												title="#{msgs['manager.viewDetail']}"></a>
-											<a class='btn edit' href='#' title="#{msgs['manager.edit']}"></a>
-											<a class='btn delete' href='#'
-												title="#{msgs['manager.delete']}"></a>
-										</h:panelGroup>
 									</h:column>
 								</h:dataTable>
 							</div>

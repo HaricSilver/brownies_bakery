@@ -13,7 +13,7 @@
 <h:body>
 	<f:view>
 		<c:choose>
-			<c:when test="${account.id !=0 &amp;&amp; account.type ==1}">
+			<c:when test="${account.verifyAdmin()}">
 				<h:form enctype="multipart/form-data">
 					<h:message for="" id="msgsAddProduct">Thêm không thành công</h:message>
 					<h:panelGrid columns="2">
@@ -26,14 +26,23 @@
 							<h:message for="txtName" id="msgsName"></h:message>
 						</h:panelGroup>
 						<h:outputText value="Giá"></h:outputText>
-						<h:inputText value="#{product.price}">
-							<f:validateDoubleRange minimum="0"></f:validateDoubleRange>
-						</h:inputText>
+						<h:panelGroup>
+							<h:inputText value="#{product.price}" id="txtPrice"
+								validatorMessage="Giá sản phẩm không đúng">
+								<f:validateDoubleRange minimum="0"></f:validateDoubleRange>
+								<f:ajax event="blur" render="msgsPrice"></f:ajax>
+							</h:inputText>
+							<h:message for="txtPrice" id="msgsPrice"></h:message>
+						</h:panelGroup>
 						<h:outputText value="Hình ảnh"></h:outputText>
 						<h:panelGroup>
-							<p:fileUpload value="#{uploader.uploadedFile}" mode="simple"
+							<p:fileUpload id="fuImg" value="#{uploader.uploadedFile}"
+								mode="simple"
 								allowTypes="/(\.|\/)(gif|jpg|jpeg|gif|png|PNG|GIF|JPG|JPEG)$/"
-								auto="true" />
+								auto="true" required="true"
+								requiredMessage="Chọn hình ảnh cho sản phẩm"
+								fileUploadListener="#{uploader.handleFileUpload}" />
+							<h:message for="fuImg"></h:message>
 						</h:panelGroup>
 					</h:panelGrid>
 					<h:commandButton value="Thêm" type="submit"
@@ -42,7 +51,7 @@
 				</h:form>
 			</c:when>
 			<c:otherwise>
-				<h:link value="Quay lại trang chủ" outcome="index"></h:link>
+				<h:link value="Đăng nhập" outcome="login"></h:link>
 			</c:otherwise>
 		</c:choose>
 	</f:view>

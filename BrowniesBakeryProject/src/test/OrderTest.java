@@ -1,6 +1,6 @@
 package test;
 
-import dao.OrderDAO;
+import java.util.Random;
 
 public class OrderTest {
 
@@ -33,8 +33,10 @@ public class OrderTest {
 		//
 		// System.out.println(bill.getProducts().keySet());
 
-		OrderDAO billdao = new OrderDAO();
-		System.out.println(billdao.list().get(0));
+		// OrderDAO billdao = new OrderDAO();
+		// System.out.println(billdao.list().get(0));
+		Random rd = new Random();
+		System.out.println(rd.nextInt(4));
 	}
 
 }

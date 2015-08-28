@@ -59,4 +59,8 @@ public class Account implements Serializable {
 		this.type = type;
 	}
 
+	public boolean verifyAdmin() {
+		return this.id != 0 && this.type == 1;
+	}
+
 }

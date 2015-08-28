@@ -163,6 +163,14 @@ table.oder tr:hover {
 	background-color: rgba(221, 221, 255, 1);
 }
 
+table.oder tr.highlight {
+	background-color: rgba(0, 64, 128, .1);
+}
+
+table.oder tr.highlight:hover {
+	background-color: rgba(0, 64, 128, .4);
+}
+
 table.oder tr td:nth-child(1), table.oder tr td:nth-child(2), table.oder tr td:last-child
 	{
 	text-align: center;

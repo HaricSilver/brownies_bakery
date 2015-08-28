@@ -27,6 +27,7 @@ public class Product implements Serializable {
 	private String[] images;
 	private boolean sale;
 	private int stock;
+	private boolean deleted;
 
 	public Product() {
 	}
@@ -111,8 +112,15 @@ public class Product implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		return (obj instanceof Product && ((Product) obj).id == this.id) ? true
-				: false;
+		return (obj instanceof Product && ((Product) obj).id == this.id) ? true : false;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 }

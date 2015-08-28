@@ -4,17 +4,16 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
+
+import org.hibernate.Session;
 
 import model.Account;
 import model.Category;
 import model.HisProduct;
 import model.Manufacturer;
-import model.Order;
 import model.Product;
 import model.User;
-
-import org.hibernate.Session;
-
 import util.Encrypter;
 import util.HibernateUtil;
 
@@ -38,8 +37,7 @@ public class SampleDataTest {
 		// manufacturer
 		Manufacturer manufacturer = new Manufacturer();
 		manufacturer.setName("KMC");
-		manufacturer
-				.setAddress("Tổ 5, Khu phố 2, Phường Linh Xuân, Quận Thủ Đức");
+		manufacturer.setAddress("Tổ 5, Khu phố 2, Phường Linh Xuân, Quận Thủ Đức");
 		session.save(manufacturer);
 
 		// sample catelory
@@ -65,57 +63,68 @@ public class SampleDataTest {
 		// sample product
 		Product p0;
 		int j = 0;
-		for (int i = 0; i < 27; i++) {
+		Random rd = new Random();
+		for (int i = 0; i < 45; i++) {
 			p0 = new Product();
 			p0.setCategory(category);
 			p0.setManufacturer(manufacturer);
 			p0.setName("Bánh kem " + (i + 1));
 			p0.setMainImage((j++ % 10) + ".jpg");
-			p0.setPrice(350000);
+			p0.setPrice(rd.nextInt(300000) + 150000);
+			p0.setSale(rd.nextInt(3) == 2);
 			session.save(p0);
+
+			if (p0.isSale()) {
+				HisProduct hisProduct = new HisProduct();
+				hisProduct.setProduct(p0);
+				hisProduct.setDateChange(Calendar.getInstance());
+				hisProduct.setName("Banh kem " + i);
+				hisProduct.setPrice(p0.getPrice() + rd.nextInt(250000));
+				session.save(hisProduct);
+			}
 		}
 
-		Product p = new Product();
-		p.setCategory(category);
-		p.setManufacturer(manufacturer);
-		p.setName("Bánh kem 1");
-		p.setMainImage("1.jpg");
-		p.setPrice(350000);
-		session.save(p);
-
-		Product p2 = new Product();
-		p2.setCategory(category);
-		p2.setManufacturer(manufacturer);
-		p2.setName("Bánh kem 2");
-		p2.setMainImage("2.jpg");
-		p2.setSale(true);
-		p2.setPrice(350000);
-		session.save(p2);
-
-		// sample history product
-		HisProduct hisProduct = new HisProduct();
-		hisProduct.setProduct(p);
-		hisProduct.setDateChange(Calendar.getInstance());
-		hisProduct.setName("Banh kem 1");
-		hisProduct.setPrice(900000);
-		session.save(hisProduct);
-
-		HisProduct hisProduct1 = new HisProduct();
-		hisProduct1.setProduct(p2);
-		hisProduct1.setDateChange(calendar);
-		hisProduct1.setName("Banh kem 2");
-		hisProduct1.setPrice(400000);
-		session.save(hisProduct1);
+		// Product p = new Product();
+		// p.setCategory(category);
+		// p.setManufacturer(manufacturer);
+		// p.setName("Bánh kem 1");
+		// p.setMainImage("1.jpg");
+		// p.setPrice(350000);
+		// session.save(p);
+		//
+		// Product p2 = new Product();
+		// p2.setCategory(category);
+		// p2.setManufacturer(manufacturer);
+		// p2.setName("Bánh kem 2");
+		// p2.setMainImage("2.jpg");
+		// p2.setSale(true);
+		// p2.setPrice(350000);
+		// session.save(p2);
+		//
+		// // sample history product
+		// HisProduct hisProduct = new HisProduct();
+		// hisProduct.setProduct(p);
+		// hisProduct.setDateChange(Calendar.getInstance());
+		// hisProduct.setName("Banh kem 1");
+		// hisProduct.setPrice(900000);
+		// session.save(hisProduct);
+		//
+		// HisProduct hisProduct1 = new HisProduct();
+		// hisProduct1.setProduct(p2);
+		// hisProduct1.setDateChange(calendar);
+		// hisProduct1.setName("Banh kem 2");
+		// hisProduct1.setPrice(400000);
+		// session.save(hisProduct1);
 
 		// sample order
-		Order order = new Order();
-		order.setUser(user);
-		order.setRecipient("Haric Silver");
-		order.setCreateDate(Calendar.getInstance());
-		order.setDeliveryDate(Calendar.getInstance());
-		order.addProduct(p);
-		order.addProduct(p2);
-		session.save(order);
+		// Order order = new Order();
+		// order.setUser(user);
+		// order.setRecipient("Haric Silver");
+		// order.setCreateDate(Calendar.getInstance());
+		// order.setDeliveryDate(Calendar.getInstance());
+		// order.addProduct(p);
+		// order.addProduct(p2);
+		// session.save(order);
 
 		session.getTransaction().commit();
 	}

@@ -45,12 +45,10 @@ public class Uploader implements Serializable {
 			File targetFolder = new File(
 					"D:\\Git Repository\\brownies_bakery\\BrowniesBakeryProject\\WebContent\\images");
 
-			this.fileName = System.currentTimeMillis() + "_"
-					+ uploadedFile.getFileName();
+			this.fileName = System.currentTimeMillis() + "_" + uploadedFile.getFileName();
 
 			InputStream inputStream = uploadedFile.getInputstream();
-			OutputStream out = new FileOutputStream(new File(targetFolder,
-					this.fileName));
+			OutputStream out = new FileOutputStream(new File(targetFolder, this.fileName));
 			int read = 0;
 			byte[] bytes = new byte[1024];
 			while ((read = inputStream.read(bytes)) != -1) {
@@ -66,12 +64,12 @@ public class Uploader implements Serializable {
 
 	// not use
 	public void handleFileUpload(FileUploadEvent event) {
+		System.out.println("Handle file upload event");
 		try {
 			File targetFolder = new File(
 					"D:\\Git Repository\\brownies_bakery\\BrowniesBakeryProject\\WebContent\\images");
 			InputStream inputStream = event.getFile().getInputstream();
-			OutputStream out = new FileOutputStream(new File(targetFolder,
-					event.getFile().getFileName()));
+			OutputStream out = new FileOutputStream(new File(targetFolder, event.getFile().getFileName()));
 			int read = 0;
 			byte[] bytes = new byte[1024];
 			while ((read = inputStream.read(bytes)) != -1) {
